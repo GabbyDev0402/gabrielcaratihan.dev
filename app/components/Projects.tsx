@@ -116,18 +116,18 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-20 bg-slate-100/70 border-y border-slate-200/80">
+    <section id="projects" className="py-20 bg-slate-100/70 dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-12">
           {/* Section Header */}
           <div className="text-center space-y-3 max-w-3xl mx-auto">
-            <span className="text-xs font-bold tracking-wider text-indigo-600 uppercase bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
+            <span className="text-xs font-bold tracking-wider text-indigo-600 dark:text-indigo-400 uppercase bg-indigo-50 dark:bg-indigo-950/60 px-3 py-1 rounded-full border border-indigo-100 dark:border-indigo-800">
               Featured Work
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-50 tracking-tight">
               Featured Engineering Projects
             </h2>
-            <p className="text-slate-500 text-base max-w-2xl mx-auto">
+            <p className="text-slate-500 dark:text-slate-400 text-base max-w-2xl mx-auto">
               Real-world enterprise applications built with agentic engineering workflows and scalable architectures.
             </p>
           </div>
@@ -143,10 +143,10 @@ export default function Projects() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.15, ease: "easeOut" }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-200/80 flex flex-col justify-between group"
+                  className="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-200/80 dark:border-slate-800 flex flex-col justify-between group"
                 >
                   {/* Top Image / Visual Banner */}
-                  <div className="h-52 relative overflow-hidden bg-slate-900">
+                  <div className="h-52 relative overflow-hidden bg-slate-900 dark:bg-slate-950">
                     {project.imageUrl ? (
                       <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-500">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -195,21 +195,21 @@ export default function Projects() {
                   {/* Card Body */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
                     <div className="space-y-3">
-                      <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors tracking-tight">
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors tracking-tight">
                         {project.title}
                       </h3>
-                      <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
+                      <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed line-clamp-3">
                         {project.shortDescription}
                       </p>
                     </div>
 
                     {/* Tech Stack Pills */}
-                    <div className="space-y-4 pt-4 border-t border-slate-100">
+                    <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
                       <div className="flex flex-wrap gap-1.5">
                         {project.techStack.map((tag, tIdx) => (
                           <span
                             key={tIdx}
-                            className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200/80"
+                            className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700"
                           >
                             {tag}
                           </span>
@@ -219,7 +219,7 @@ export default function Projects() {
                       {/* See More Details Button */}
                       <button
                         onClick={() => setSelectedProject(project)}
-                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white rounded-xl border border-indigo-200/80 hover:border-indigo-600 shadow-2xs transition-all duration-200 group/btn"
+                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white rounded-xl border border-indigo-200/80 dark:border-indigo-800 hover:border-indigo-600 shadow-2xs transition-all duration-200 group/btn"
                       >
                         See More Details
                         <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
@@ -243,7 +243,7 @@ export default function Projects() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
+              className="fixed inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm"
             />
 
             {/* Modal Dialog Box */}
@@ -252,7 +252,7 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-y-auto z-10 border border-slate-200 flex flex-col"
+              className="relative w-full max-w-4xl max-h-[90vh] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-y-auto z-10 border border-slate-200 dark:border-slate-800 flex flex-col"
             >
               {/* Close (X) Button */}
               <button
@@ -309,56 +309,56 @@ export default function Projects() {
               <div className="p-6 sm:p-8 space-y-6 flex-1">
                 {/* Full Description */}
                 <div className="space-y-2">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                     Project Overview
                   </h3>
-                  <p className="text-slate-700 text-base leading-relaxed font-normal">
+                  <p className="text-slate-700 dark:text-slate-300 text-base leading-relaxed font-normal">
                     {selectedProject.fullDescription}
                   </p>
                 </div>
 
                 {/* Agentic Engineering Workflow Callout Box */}
-                <div className="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-indigo-50/90 via-indigo-50/40 to-slate-50 border border-indigo-200/80 space-y-3 relative overflow-hidden">
-                  <div className="flex items-center gap-2 text-indigo-700 font-bold text-sm tracking-tight">
+                <div className="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-indigo-50/90 via-indigo-50/40 to-slate-50 dark:from-indigo-950/80 dark:via-slate-900 dark:to-slate-900 border border-indigo-200/80 dark:border-indigo-800/80 space-y-3 relative overflow-hidden">
+                  <div className="flex items-center gap-2 text-indigo-700 dark:text-indigo-400 font-bold text-sm tracking-tight">
                     <div className="p-2 rounded-lg bg-indigo-600 text-white shadow-xs">
                       <Sparkles className="w-4 h-4 animate-pulse" />
                     </div>
                     <span>Agentic Engineering Workflow</span>
                   </div>
-                  <p className="text-slate-700 text-sm leading-relaxed font-normal">
+                  <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed font-normal">
                     {selectedProject.agenticWorkflow}
                   </p>
                 </div>
 
                 {/* Demo Credentials Box */}
-                <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-                  <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
-                    <Key className="w-4 h-4 text-indigo-600" />
+                <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 space-y-3">
+                  <div className="flex items-center gap-2 text-slate-900 dark:text-slate-100 font-bold text-sm">
+                    <Key className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                     <span>Demo Access Credentials</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                    <div className="p-3 bg-white rounded-lg border border-slate-200">
-                      <span className="text-slate-400 block font-medium text-[10px] uppercase">
+                    <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                      <span className="text-slate-400 dark:text-slate-500 block font-medium text-[10px] uppercase">
                         Role
                       </span>
-                      <span className="font-semibold text-slate-800">
+                      <span className="font-semibold text-slate-800 dark:text-slate-200">
                         {selectedProject.demoCredentials.role}
                       </span>
                     </div>
-                    <div className="p-3 bg-white rounded-lg border border-slate-200">
-                      <span className="text-slate-400 block font-medium text-[10px] uppercase">
+                    <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                      <span className="text-slate-400 dark:text-slate-500 block font-medium text-[10px] uppercase">
                         Email
                       </span>
-                      <span className="font-semibold text-slate-800 truncate block">
+                      <span className="font-semibold text-slate-800 dark:text-slate-200 truncate block">
                         {selectedProject.demoCredentials.email}
                       </span>
                     </div>
                     {selectedProject.demoCredentials.password && (
-                      <div className="p-3 bg-white rounded-lg border border-slate-200">
-                        <span className="text-slate-400 block font-medium text-[10px] uppercase">
+                      <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                        <span className="text-slate-400 dark:text-slate-500 block font-medium text-[10px] uppercase">
                           Password
                         </span>
-                        <span className="font-semibold text-slate-800 font-mono">
+                        <span className="font-semibold text-slate-800 dark:text-slate-200 font-mono">
                           {selectedProject.demoCredentials.password}
                         </span>
                       </div>
@@ -368,14 +368,14 @@ export default function Projects() {
 
                 {/* Tech Stack Pills */}
                 <div className="space-y-2">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                     Technologies & Architecture
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.techStack.map((tech, tIdx) => (
                       <span
                         key={tIdx}
-                        className="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200"
+                        className="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700"
                       >
                         {tech}
                       </span>
@@ -384,14 +384,14 @@ export default function Projects() {
                 </div>
 
                 {/* Footer Action Buttons */}
-                <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-end gap-4">
+                <div className="pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-end gap-4">
                   <a
                     href={selectedProject.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl shadow-xs transition-colors"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-800 rounded-xl shadow-xs transition-colors"
                   >
-                    <GithubIcon className="w-4 h-4 text-slate-900" />
+                    <GithubIcon className="w-4 h-4 text-slate-900 dark:text-slate-100" />
                     View Source Code (GitHub)
                   </a>
 
