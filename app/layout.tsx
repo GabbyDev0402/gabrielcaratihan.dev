@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: "Gabriel Caratihan | Software Engineer & Systems Architect",
   description:
     "Software Engineer passionate about building full-stack, highly scalable SaaS applications that automate workflows and bridge the gap between operational bottlenecks and digital solutions.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   keywords: [
     "Gabriel Caratihan",
     "Software Engineer",
