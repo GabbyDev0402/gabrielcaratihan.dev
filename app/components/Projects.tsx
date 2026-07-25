@@ -19,7 +19,7 @@ export interface Project {
   id: string;
   title: string;
   shortDescription: string;
-  fullDescription: string;
+  fullDescription: string | React.ReactNode;
   agenticWorkflow: string;
   techStack: string[];
   demoCredentials: {
@@ -30,14 +30,84 @@ export interface Project {
   githubLink: string;
   liveLink: string;
   imageUrl?: string;
-  imagePlaceholder: {
+  imagePlaceholder?: string | {
     color: string;
     label: string;
   };
-  icon: typeof School;
+  icon?: typeof School;
+  isFeatured?: boolean;
 }
 
 const projects: Project[] = [
+  {
+    id: "eduflex-hr",
+    title: "Faculty Leave & Substitute Portal",
+    shortDescription:
+      "Enterprise HR workflow engine automating absence requests and peer-to-peer substitute coverage.",
+    techStack: ["Next.js", "Supabase", "PostgreSQL", "Tailwind"],
+    imagePlaceholder: "/eduflex-screenshot.png",
+    imageUrl: "/eduflex-screenshot.png",
+    githubLink: "https://github.com/GabbyDev0402/faculty-leave-hr-portal",
+    liveLink: "https://faculty-leave-management-portal.netlify.app/",
+    demoCredentials: {
+      role: "Admin, Teacher, or Sub",
+      email: "Use 1-Click Demo Buttons",
+      password: "No password required",
+    },
+    agenticWorkflow:
+      "Architected using advanced agentic workflows via Antigravity. Directed AI models (Gemini 3.5 Flash / 3.1 Pro) to rapidly prototype the Next.js App Router UI, establish relational PostgreSQL schemas, enforce Row Level Security (RLS) policies, and engineer backend database triggers.",
+    fullDescription: (
+      <div className="space-y-4 text-sm text-slate-600">
+        <p>
+          <strong>Overview:</strong> Designed a real-time state machine
+          transitioning data seamlessly between Initiators (Teachers), Gatekeepers
+          (HR Admins), and Resolvers (Substitutes).
+        </p>
+        <h4 className="font-bold text-slate-800 border-b pb-1 mt-4">
+          Key Enterprise Architecture
+        </h4>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>
+            <strong>Row Level Security (RLS):</strong> Locked down data queries
+            at the PostgreSQL database level.
+          </li>
+          <li>
+            <strong>Relational Modeling:</strong> Engineered a one-to-many
+            schema allowing substitutes to claim specific class blocks rather than
+            entire days.
+          </li>
+          <li>
+            <strong>Signed URLs:</strong> Secured lesson plan files using
+            Supabase Storage 60-second cryptographic URLs.
+          </li>
+          <li>
+            <strong>WebSocket Sync:</strong> Built reactive dashboards listening
+            to Postgres changes in real-time.
+          </li>
+        </ul>
+        <h4 className="font-bold text-slate-800 border-b pb-1 mt-4">
+          Engineering Challenges Solved
+        </h4>
+        <p>
+          <strong>1. Securing State Transitions:</strong> Migrated authorization
+          to the DB layer via SQL policies, ensuring UPDATE commands are rejected
+          unless the user holds the exact &apos;admin&apos; role.
+        </p>
+        <p>
+          <strong>2. Data Integrity for Accrued Leave:</strong> Implemented a
+          PostgreSQL Database Trigger (AFTER UPDATE) to automatically calculate
+          and deduct leave balances, protecting against frontend network drops.
+        </p>
+        <p>
+          <strong>3. Next.js Layout Overrides:</strong> Utilized the usePathname
+          hook to dynamically strip global wrappers and inject a full-bleed CSS
+          Grid exclusively for the /login route.
+        </p>
+      </div>
+    ),
+    isFeatured: true,
+    icon: Building2,
+  },
   {
     id: "enterprise-intranet",
     title: "Enterprise Communications Intranet",
@@ -133,9 +203,15 @@ export default function Projects() {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {projects.map((project, idx) => {
-              const IconComponent = project.icon;
+              const IconComponent = project.icon || Building2;
+              const displayImage =
+                project.imageUrl ||
+                (typeof project.imagePlaceholder === "string"
+                  ? project.imagePlaceholder
+                  : null);
+
               return (
                 <motion.div
                   key={project.id}
@@ -143,15 +219,19 @@ export default function Projects() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.15, ease: "easeOut" }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-200/80 flex flex-col justify-between group"
+                  className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative ${
+                    project.isFeatured
+                      ? "ring-2 ring-indigo-500 border-2 border-indigo-400 shadow-indigo-500/15"
+                      : "border border-slate-200/80"
+                  }`}
                 >
                   {/* Top Image / Visual Banner */}
-                  <div className="h-52 relative overflow-hidden bg-slate-900">
-                    {project.imageUrl ? (
+                  <div className="h-56 relative overflow-hidden bg-slate-900">
+                    {displayImage ? (
                       <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-500">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src={project.imageUrl}
+                          src={displayImage}
                           alt={project.title}
                           className="w-full h-full object-cover object-top"
                         />
@@ -161,6 +241,13 @@ export default function Projects() {
                             <IconComponent className="w-4 h-4" />
                           </div>
                         </div>
+                        {project.isFeatured && (
+                          <div className="absolute top-3 right-3 z-20">
+                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
+                              🌟 NEW & FEATURED
+                            </span>
+                          </div>
+                        )}
                         <div className="absolute bottom-3 left-3 right-3 z-10">
                           <span className="text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white px-2 py-0.5 rounded-md shadow-xs">
                             Live App Ready
@@ -169,23 +256,35 @@ export default function Projects() {
                       </div>
                     ) : (
                       <div
-                        className={`w-full h-full bg-gradient-to-br ${project.imagePlaceholder.color} p-6 flex flex-col justify-between relative overflow-hidden text-white`}
+                        className={`w-full h-full bg-gradient-to-br ${
+                          typeof project.imagePlaceholder === "object"
+                            ? project.imagePlaceholder.color
+                            : "from-indigo-600 to-blue-700"
+                        } p-6 flex flex-col justify-between relative overflow-hidden text-white`}
                       >
                         <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full pointer-events-none" />
                         <div className="flex items-center justify-between z-10">
                           <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-md text-white border border-white/20">
                             <IconComponent className="w-5 h-5" />
                           </div>
-                          <span className="text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
-                            SaaS Solution
-                          </span>
+                          {project.isFeatured ? (
+                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
+                              🌟 NEW & FEATURED
+                            </span>
+                          ) : (
+                            <span className="text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
+                              SaaS Solution
+                            </span>
+                          )}
                         </div>
                         <div className="z-10">
                           <p className="text-xs font-medium text-white/80 uppercase tracking-wider">
                             Screenshot Placeholder
                           </p>
                           <h4 className="text-sm font-semibold text-white truncate mt-0.5">
-                            {project.imagePlaceholder.label}
+                            {typeof project.imagePlaceholder === "object"
+                              ? project.imagePlaceholder.label
+                              : project.title}
                           </h4>
                         </div>
                       </div>
@@ -195,9 +294,11 @@ export default function Projects() {
                   {/* Card Body */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
                     <div className="space-y-3">
-                      <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors tracking-tight">
-                        {project.title}
-                      </h3>
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors tracking-tight">
+                          {project.title}
+                        </h3>
+                      </div>
                       <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
                         {project.shortDescription}
                       </p>
@@ -265,19 +366,31 @@ export default function Projects() {
 
               {/* Top Banner / Image Header */}
               <div className="h-64 sm:h-72 relative overflow-hidden bg-slate-950 rounded-t-2xl shrink-0">
-                {selectedProject.imageUrl ? (
+                {selectedProject.imageUrl || typeof selectedProject.imagePlaceholder === "string" ? (
                   <div className="w-full h-full relative">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={selectedProject.imageUrl}
+                      src={
+                        selectedProject.imageUrl ||
+                        (typeof selectedProject.imagePlaceholder === "string"
+                          ? selectedProject.imagePlaceholder
+                          : "")
+                      }
                       alt={selectedProject.title}
                       className="w-full h-full object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
                     <div className="absolute bottom-6 left-6 right-6 z-10 space-y-1">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-600 text-white shadow-md mb-1">
-                        <ShieldCheck className="w-3.5 h-3.5" />
-                        Verified SaaS Deployment
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-600 text-white shadow-md">
+                          <ShieldCheck className="w-3.5 h-3.5" />
+                          Verified SaaS Deployment
+                        </div>
+                        {selectedProject.isFeatured && (
+                          <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50">
+                            🌟 NEW & FEATURED
+                          </span>
+                        )}
                       </div>
                       <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
                         {selectedProject.title}
@@ -286,19 +399,33 @@ export default function Projects() {
                   </div>
                 ) : (
                   <div
-                    className={`w-full h-full bg-gradient-to-br ${selectedProject.imagePlaceholder.color} p-8 flex flex-col justify-end relative overflow-hidden text-white`}
+                    className={`w-full h-full bg-gradient-to-br ${
+                      typeof selectedProject.imagePlaceholder === "object"
+                        ? selectedProject.imagePlaceholder.color
+                        : "from-indigo-600 to-blue-700"
+                    } p-8 flex flex-col justify-end relative overflow-hidden text-white`}
                   >
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-bl-full pointer-events-none" />
                     <div className="z-10 space-y-1">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md border border-white/20 text-white mb-2">
-                        <ShieldCheck className="w-3.5 h-3.5" />
-                        Verified Architecture
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md border border-white/20 text-white">
+                          <ShieldCheck className="w-3.5 h-3.5" />
+                          Verified Architecture
+                        </div>
+                        {selectedProject.isFeatured && (
+                          <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50">
+                            🌟 NEW & FEATURED
+                          </span>
+                        )}
                       </div>
                       <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
                         {selectedProject.title}
                       </h2>
                       <p className="text-sm text-white/80 font-medium">
-                        Screenshot Placeholder: {selectedProject.imagePlaceholder.label}
+                        Screenshot Placeholder:{" "}
+                        {typeof selectedProject.imagePlaceholder === "object"
+                          ? selectedProject.imagePlaceholder.label
+                          : selectedProject.title}
                       </p>
                     </div>
                   </div>
@@ -307,14 +434,14 @@ export default function Projects() {
 
               {/* Modal Inner Content */}
               <div className="p-6 sm:p-8 space-y-6 flex-1">
-                {/* Full Description */}
+                {/* Full Description - Rendered directly as React Node */}
                 <div className="space-y-2">
                   <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
                     Project Overview
                   </h3>
-                  <p className="text-slate-700 text-base leading-relaxed font-normal">
+                  <div className="text-slate-700 text-base leading-relaxed font-normal">
                     {selectedProject.fullDescription}
-                  </p>
+                  </div>
                 </div>
 
                 {/* Agentic Engineering Workflow Callout Box */}

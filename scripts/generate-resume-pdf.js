@@ -18,7 +18,7 @@ const doc = new PDFDocument({
     Title: "Gabriel Caratihan - Resume",
     Author: "Gabriel Caratihan",
     Subject: "Software Engineer Portfolio Resume",
-    Keywords: "Software Engineer, Full Stack, SaaS, Next.js, TypeScript",
+    Keywords: "Software Engineer, Full Stack, SaaS, Next.js, TypeScript, Supabase, PostgreSQL",
   },
 });
 
@@ -112,13 +112,13 @@ doc.text(
   { lineGap: 3 }
 );
 doc.text(
-  "• Node.js / REST APIs\n• Firebase / Cloud Firestore\n• PostgreSQL / NoSQL\n• Netlify / Vercel",
+  "• Supabase / PostgreSQL\n• Node.js / REST APIs\n• Firebase / Cloud Firestore\n• Netlify / Vercel",
   col2X,
   currentY + 16,
   { lineGap: 3 }
 );
 doc.text(
-  "• Antigravity IDE (Gemini 3.5)\n• Agentic Prompt Engineering\n• Playwright E2E Testing\n• Git & CI/CD Workflows",
+  "• Antigravity IDE (Gemini 3.5)\n• Agentic Prompt Engineering\n• RLS & DB Triggers\n• Git & CI/CD Workflows",
   col3X,
   currentY + 16,
   { lineGap: 3 }
@@ -143,7 +143,7 @@ doc
   .fontSize(8.5)
   .font("Helvetica")
   .text(
-    "Architected and engineered applications using advanced agentic workflows via the Antigravity IDE. Directed AI models (Gemini 3.5 Flash / 3.1 Pro) to rapidly prototype UI/UX, establish NoSQL data schemas, enforce Cloud Firestore security rules, and generate automated Playwright E2E testing suites, significantly reducing the development lifecycle.",
+    "Architected and engineered applications using advanced agentic workflows via the Antigravity IDE. Directed AI models (Gemini 3.5 Flash / 3.1 Pro) to rapidly prototype UI/UX, establish PostgreSQL & NoSQL data schemas, enforce Row Level Security (RLS) policies, and generate automated Playwright E2E testing suites.",
     52,
     currentY + 26,
     { width: 508, lineGap: 3 }
@@ -172,7 +172,19 @@ page2Y = drawSectionTitle(doc, "Featured Engineering Projects", page2Y);
 
 const projectsData = [
   {
-    title: "1. Enterprise Communications Intranet",
+    title: "1. Faculty Leave & Substitute Portal (NEW & FEATURED)",
+    subtitle: "Enterprise Supabase HR Workflow Engine & Substitute Coverage Portal",
+    liveUrl: "https://faculty-leave-management-portal.netlify.app/",
+    githubUrl: "https://github.com/GabbyDev0402/faculty-leave-hr-portal",
+    imageFile: "eduflex-screenshot.png",
+    bullets: [
+      "Engineered PostgreSQL Row Level Security (RLS) policies and database triggers for automated leave balance deduction.",
+      "Built relational one-to-many schema for claiming class blocks and 60-second cryptographic signed URLs for lesson plans.",
+      "Integrated real-time Postgres WebSocket synchronization and dynamic Next.js layout overrides for /login."
+    ]
+  },
+  {
+    title: "2. Enterprise Communications Intranet",
     subtitle: "B2B Announcement & Administrative Compliance Portal",
     liveUrl: "https://washington-school-portal.netlify.app/admin",
     githubUrl: "https://github.com/GabbyDev0402/washington-school-portal",
@@ -184,7 +196,7 @@ const projectsData = [
     ]
   },
   {
-    title: "2. Washington Assessment Portal",
+    title: "3. Washington Assessment Portal",
     subtitle: "Multi-Tenant LMS with Automated Exam Engine & Analytics",
     liveUrl: "https://wcs-exam-portal.netlify.app/",
     githubUrl: "https://github.com/GabbyDev0402/washington-school-portal",
@@ -196,7 +208,7 @@ const projectsData = [
     ]
   },
   {
-    title: "3. AttendancePro Tracker",
+    title: "4. AttendancePro Tracker",
     subtitle: "Proactive Attendance Management & Truancy Early-Warning Engine",
     liveUrl: "https://wcsattendancetracker.netlify.app/",
     githubUrl: "https://github.com/GabbyDev0402/wcs-attendancetracker",
@@ -212,22 +224,36 @@ const projectsData = [
 projectsData.forEach((proj) => {
   const pStartY = page2Y;
 
+  // Check if we need a new page for project overflow
+  if (pStartY > 650) {
+    doc.addPage();
+    addHeader(doc);
+    page2Y = 120;
+  }
+
+  const currentStartY = page2Y;
+
   // Project Header
-  doc.fontSize(10.5).font("Helvetica-Bold").fillColor(COLOR_TEXT_DARK).text(proj.title, 40, pStartY);
-  doc.fontSize(8.5).font("Helvetica-Oblique").fillColor(COLOR_TEXT_LIGHT).text(proj.subtitle, 40, pStartY + 14);
+  doc.fontSize(10).font("Helvetica-Bold").fillColor(COLOR_TEXT_DARK).text(proj.title, 40, currentStartY);
+  doc.fontSize(8.2).font("Helvetica-Oblique").fillColor(COLOR_TEXT_LIGHT).text(proj.subtitle, 40, currentStartY + 13);
   
-  doc.fontSize(8).font("Helvetica-Bold").fillColor(COLOR_PRIMARY)
-     .text(`Live App: ${proj.liveUrl}   |   GitHub: ${proj.githubUrl}`, 40, pStartY + 27);
+  doc.fontSize(7.8).font("Helvetica-Bold").fillColor(COLOR_PRIMARY)
+     .text(`Live App: ${proj.liveUrl}   |   GitHub: ${proj.githubUrl}`, 40, currentStartY + 25);
 
   // Content Row: Screenshot on Right (170pt width), Bullets on Left (340pt width)
-  const contentY = pStartY + 40;
-  const imagePath = path.join(imagesDir, proj.imageFile);
+  const contentY = currentStartY + 37;
+  
+  // Try image from public/eduflex-screenshot.png or public/images/
+  let imagePath = path.join(imagesDir, proj.imageFile);
+  if (!fs.existsSync(imagePath)) {
+    imagePath = path.join(publicDir, proj.imageFile);
+  }
 
   if (fs.existsSync(imagePath)) {
     try {
       // Draw screenshot thumbnail
-      doc.image(imagePath, 390, contentY, { width: 180, height: 95 });
-      doc.rect(390, contentY, 180, 95).strokeColor(COLOR_BORDER).lineWidth(0.5).stroke();
+      doc.image(imagePath, 395, contentY, { width: 175, height: 85 });
+      doc.rect(395, contentY, 175, 85).strokeColor(COLOR_BORDER).lineWidth(0.5).stroke();
     } catch (e) {
       console.warn("Could not embed image:", proj.imageFile, e);
     }
@@ -235,16 +261,16 @@ projectsData.forEach((proj) => {
 
   // Draw Bullet Points
   let bulletY = contentY;
-  doc.fontSize(8.5).font("Helvetica").fillColor(COLOR_TEXT_MUTED);
+  doc.fontSize(8.2).font("Helvetica").fillColor(COLOR_TEXT_MUTED);
   proj.bullets.forEach((bullet) => {
-    doc.text(`•  ${bullet}`, 44, bulletY, { width: 335, lineGap: 2 });
-    bulletY += 28;
+    doc.text(`•  ${bullet}`, 44, bulletY, { width: 340, lineGap: 2 });
+    bulletY += 25;
   });
 
-  page2Y = contentY + 105;
+  page2Y = contentY + 92;
 });
 
-// Footer Notice on Page 2
+// Footer Notice
 doc
   .fillColor(COLOR_TEXT_LIGHT)
   .fontSize(8)
