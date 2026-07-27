@@ -20,10 +20,10 @@ export default function About() {
               About Me
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
-              Bridging Real-World Friction with Engineered Scalability
+              Translating Operational Bottlenecks into High-ROI Systems
             </h2>
             <p className="text-slate-500 text-base max-w-2xl mx-auto">
-              From classrooms to enterprise software systems.
+              Bridging non-technical business needs with scalable, enterprise-grade software.
             </p>
           </div>
 
@@ -59,15 +59,15 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Exact Bio Text Column */}
+              {/* Bio & Business Translation Column */}
               <div className="w-full md:w-2/3 space-y-6">
                 <div className="inline-flex items-center gap-2 text-indigo-600 font-semibold text-sm">
                   <Compass className="w-4 h-4" />
-                  <span>Engineering Philosophy</span>
+                  <span>Engineering & Business Philosophy</span>
                 </div>
 
                 <p className="text-slate-700 text-base sm:text-lg leading-relaxed font-normal">
-                  My journey into software engineering is rooted in my experience as an educator. While working as an ESL teacher at Washington School and simultaneously studying Computer Programming at Imus Computer College, I witnessed firsthand the administrative friction that slows down institutions. This dual perspective drives my engineering philosophy: I don't just write code; I architect systems that solve genuine operational challenges.
+                  My journey into software engineering is rooted in my experience as an educator. While working as an ESL teacher at Washington School and simultaneously studying Computer Programming at Imus Computer College, I witnessed firsthand the administrative friction that slows down institutions. This dual perspective drives my philosophy: I don't just write code; I bridge the gap between non-technical decision-makers who need ROI and the technical architectures that deliver it.
                 </p>
 
                 <div className="pt-4 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-slate-700">
@@ -77,11 +77,11 @@ export default function About() {
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
-                    <span>User-Centric Architecture</span>
+                    <span>Paper-to-Digital Transformation</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
-                    <span>Full-Stack SaaS Development</span>
+                    <span>ROI-Driven SaaS Architecture</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />

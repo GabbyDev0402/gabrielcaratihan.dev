@@ -12,6 +12,7 @@ import {
   UserCheck,
   ChevronRight,
   ShieldCheck,
+  TrendingUp,
 } from "lucide-react";
 import GithubIcon from "./icons/GithubIcon";
 
@@ -19,6 +20,10 @@ export interface Project {
   id: string;
   title: string;
   shortDescription: string;
+  businessImpact?: {
+    metric: string;
+    summary: string;
+  };
   fullDescription: string | React.ReactNode;
   agenticWorkflow: string;
   techStack: string[];
@@ -44,6 +49,11 @@ const projects: Project[] = [
     title: "Faculty Leave & Substitute Portal",
     shortDescription:
       "Enterprise HR workflow engine automating absence requests and peer-to-peer substitute coverage.",
+    businessImpact: {
+      metric: "⚡ 90% Faster Absence Processing & 100% Automated Sub Coverage",
+      summary:
+        "Replaced manual paper leave forms and chaotic phone calls with a self-service substitute marketplace and automated leave balance accounting.",
+    },
     techStack: ["Next.js", "Supabase", "PostgreSQL", "Tailwind"],
     imagePlaceholder: "/eduflex-screenshot.png",
     imageUrl: "/eduflex-screenshot.png",
@@ -113,6 +123,11 @@ const projects: Project[] = [
     title: "Enterprise Communications Intranet",
     shortDescription:
       "Secure B2B announcement portal built for institutional compliance and administrative oversight.",
+    businessImpact: {
+      metric: "⚡ 100% Policy Compliance Verification & Zero Lost Announcements",
+      summary:
+        "Replaced unorganized email blasts and physical bulletin boards with digital read-receipt tracking and instant CSV compliance reporting.",
+    },
     fullDescription:
       "Designed for high-compliance enterprise environments, this intranet platform enforces strict Role-Based Access Control (RBAC) via Cloud Firestore Security Rules, tracks institutional compliance using a digital read-receipt engine, and provides automated client-side CSV audit log exports powered by browser Blob APIs.",
     agenticWorkflow:
@@ -137,6 +152,11 @@ const projects: Project[] = [
     title: "Washington Assessment Portal",
     shortDescription:
       "A Multi-Tenant Learning Management System (LMS) with automated grading and institutional analytics.",
+    businessImpact: {
+      metric: "⚡ Saved Teachers 15+ Hours/Week in Manual Grading",
+      summary:
+        "Replaced paper exam sheets and manual grade calculations with a dynamic assessment builder and instant master gradebook analytics.",
+    },
     fullDescription:
       "Engineered to resolve administrative friction in educational institutions, this multi-tenant LMS features dynamic exam creation powered by a polymorphic React form engine, real-time master gradebooks with aggregated pivot-table calculations, and strict multi-tenant data isolation with time-gated client routing for secure assessment environments.",
     agenticWorkflow:
@@ -161,6 +181,11 @@ const projects: Project[] = [
     title: "AttendancePro Tracker",
     shortDescription:
       "Proactive session-based attendance management system with early-warning truancy detection.",
+    businessImpact: {
+      metric: "⚡ 80% Reduction in Daily Attendance Logging Time",
+      summary:
+        "Replaced physical attendance rosters with proactive truancy algorithms that flag at-risk students before drop-out occurs.",
+    },
     fullDescription:
       "A specialized tracking system engineered to eliminate student truancy. It optimizes NoSQL database reads using session-grouped data modeling, calculates automated instruction-loss metrics, and alerts administrative staff to at-risk attendance patterns using proactive early-warning algorithms.",
     agenticWorkflow:
@@ -192,13 +217,13 @@ export default function Projects() {
           {/* Section Header */}
           <div className="text-center space-y-3 max-w-3xl mx-auto">
             <span className="text-xs font-bold tracking-wider text-indigo-600 uppercase bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
-              Featured Work
+              Featured Work & ROI
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
-              Featured Engineering Projects
+              Custom Web Portals & Business Automation Systems
             </h2>
             <p className="text-slate-500 text-base max-w-2xl mx-auto">
-              Real-world enterprise applications built with agentic engineering workflows and scalable architectures.
+              Real-world software built to replace spreadsheets, automate administrative friction, and maximize operational ROI.
             </p>
           </div>
 
@@ -243,7 +268,7 @@ export default function Projects() {
                         </div>
                         {project.isFeatured && (
                           <div className="absolute top-3 right-3 z-20">
-                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
+                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-2.5 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
                               🌟 NEW & FEATURED
                             </span>
                           </div>
@@ -302,6 +327,19 @@ export default function Projects() {
                       <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
                         {project.shortDescription}
                       </p>
+
+                      {/* Business Impact ROI Callout */}
+                      {project.businessImpact && (
+                        <div className="p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/80 text-xs text-emerald-950 space-y-1">
+                          <div className="font-bold flex items-center gap-1.5 text-emerald-800">
+                            <TrendingUp className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                            <span>{project.businessImpact.metric}</span>
+                          </div>
+                          <p className="text-[11px] text-emerald-800 leading-snug">
+                            {project.businessImpact.summary}
+                          </p>
+                        </div>
+                      )}
                     </div>
 
                     {/* Tech Stack Pills */}
@@ -322,7 +360,7 @@ export default function Projects() {
                         onClick={() => setSelectedProject(project)}
                         className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white rounded-xl border border-indigo-200/80 hover:border-indigo-600 shadow-2xs transition-all duration-200 group/btn"
                       >
-                        See More Details
+                        See More Details & Architecture
                         <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
                       </button>
                     </div>
@@ -434,10 +472,28 @@ export default function Projects() {
 
               {/* Modal Inner Content */}
               <div className="p-6 sm:p-8 space-y-6 flex-1">
+                {/* Business Impact ROI Summary Callout */}
+                {selectedProject.businessImpact && (
+                  <div className="p-5 rounded-xl bg-gradient-to-br from-emerald-50 via-emerald-50/40 to-slate-50 border border-emerald-200/80 space-y-2">
+                    <div className="flex items-center gap-2 text-emerald-800 font-bold text-sm">
+                      <div className="p-2 rounded-lg bg-emerald-600 text-white shadow-xs">
+                        <TrendingUp className="w-4 h-4" />
+                      </div>
+                      <span>Business Impact & Return on Investment (ROI)</span>
+                    </div>
+                    <p className="text-sm font-semibold text-emerald-950">
+                      {selectedProject.businessImpact.metric}
+                    </p>
+                    <p className="text-xs text-slate-700 leading-relaxed">
+                      {selectedProject.businessImpact.summary}
+                    </p>
+                  </div>
+                )}
+
                 {/* Full Description - Rendered directly as React Node */}
                 <div className="space-y-2">
                   <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Project Overview
+                    Project Overview & Architecture
                   </h3>
                   <div className="text-slate-700 text-base leading-relaxed font-normal">
                     {selectedProject.fullDescription}

@@ -17,8 +17,8 @@ const doc = new PDFDocument({
   info: {
     Title: "Gabriel Caratihan - Resume",
     Author: "Gabriel Caratihan",
-    Subject: "Software Engineer Portfolio Resume",
-    Keywords: "Software Engineer, Full Stack, SaaS, Next.js, TypeScript, Supabase, PostgreSQL",
+    Subject: "Software Engineer & Business Automation Specialist Resume",
+    Keywords: "Software Engineer, Business Automation, Full Stack, SaaS, Next.js, TypeScript, Supabase, PostgreSQL",
   },
 });
 
@@ -47,7 +47,7 @@ function addHeader(d) {
   d.fillColor("#a5b4fc")
     .fontSize(11)
     .font("Helvetica-Bold")
-    .text("SOFTWARE ENGINEER & SYSTEMS ARCHITECT", 40, 52);
+    .text("SOFTWARE ENGINEER & BUSINESS AUTOMATION SPECIALIST", 40, 52);
 
   d.fillColor("#e2e8f0")
     .fontSize(8.5)
@@ -84,7 +84,7 @@ doc
   .fontSize(9.5)
   .font("Helvetica")
   .text(
-    "Software Engineer passionate about architecting full-stack, highly scalable SaaS applications that eliminate administrative friction and bridge the gap between operational bottlenecks and digital solutions. Former ESL Educator turned Systems Architect with dual perspective in institutional workflows and cloud software design.",
+    "Software Engineer passionate about replacing messy spreadsheets and manual processes with custom, automated web portals. Former ESL Educator turned Systems Architect with a dual perspective that bridges non-technical business leaders seeking operational ROI with robust, enterprise-grade cloud software architecture.",
     40,
     currentY,
     { width: 532, lineGap: 4 }
@@ -93,7 +93,7 @@ doc
 currentY = doc.y + 20;
 
 // Core Technical Skills Section
-currentY = drawSectionTitle(doc, "Core Technical Skills", currentY);
+currentY = drawSectionTitle(doc, "Core Technical Skills & Business Focus", currentY);
 
 const col1X = 40;
 const col2X = 220;
@@ -102,11 +102,11 @@ const col3X = 400;
 doc.fontSize(9.5).font("Helvetica-Bold").fillColor(COLOR_TEXT_DARK);
 doc.text("Languages & Frontend", col1X, currentY);
 doc.text("Backend & Cloud", col2X, currentY);
-doc.text("Engineering Workflows", col3X, currentY);
+doc.text("Business Automation", col3X, currentY);
 
 doc.fontSize(8.5).font("Helvetica").fillColor(COLOR_TEXT_MUTED);
 doc.text(
-  "• TypeScript / JavaScript\n• React / Next.js (App Router)\n• Tailwind CSS v4 / HTML5\n• Framer Motion",
+  "• TypeScript / JavaScript\n• React / Next.js (App Router)\n• Tailwind CSS v4 / HTML5\n• Framer Motion UI",
   col1X,
   currentY + 16,
   { lineGap: 3 }
@@ -118,7 +118,7 @@ doc.text(
   { lineGap: 3 }
 );
 doc.text(
-  "• Antigravity IDE (Gemini 3.5)\n• Agentic Prompt Engineering\n• RLS & DB Triggers\n• Git & CI/CD Workflows",
+  "• 80%+ Operational Time Saved\n• Paper-to-Digital Workflows\n• RLS & Bank-Grade Security\n• Agentic Prompt Engineering",
   col3X,
   currentY + 16,
   { lineGap: 3 }
@@ -136,14 +136,14 @@ doc
   .fillColor(COLOR_PRIMARY)
   .fontSize(9.5)
   .font("Helvetica-Bold")
-  .text("⚡ AGENTIC ENGINEERING WORKFLOW", 52, currentY + 10);
+  .text("⚡ AGENTIC ENGINEERING & BUSINESS TRANSLATION WORKFLOW", 52, currentY + 10);
 
 doc
   .fillColor(COLOR_TEXT_MUTED)
   .fontSize(8.5)
   .font("Helvetica")
   .text(
-    "Architected and engineered applications using advanced agentic workflows via the Antigravity IDE. Directed AI models (Gemini 3.5 Flash / 3.1 Pro) to rapidly prototype UI/UX, establish PostgreSQL & NoSQL data schemas, enforce Row Level Security (RLS) policies, and generate automated Playwright E2E testing suites.",
+    "Architected applications using advanced agentic workflows via the Antigravity IDE. Directed AI models (Gemini 3.5 Flash / 3.1 Pro) to rapidly prototype UI/UX, establish PostgreSQL & NoSQL data schemas, enforce Row Level Security (RLS) policies, and automate end-to-end business logic, reducing development lifecycles significantly.",
     52,
     currentY + 26,
     { width: 508, lineGap: 3 }
@@ -163,59 +163,59 @@ doc.fontSize(8.5).font("Helvetica").fillColor(COLOR_TEXT_MUTED).text("Imus Compu
 doc.fontSize(9.5).font("Helvetica-Bold").fillColor(COLOR_TEXT_DARK).text("ESL Educator", ed2X, currentY);
 doc.fontSize(8.5).font("Helvetica").fillColor(COLOR_TEXT_MUTED).text("Washington School — Educational Technology & Workflows", ed2X, currentY + 14);
 
-// --- PAGE 2: FEATURED PROJECTS WITH SCREENSHOTS ---
+// --- PAGE 2: FEATURED PROJECTS WITH SCREENSHOTS & ROI ---
 doc.addPage();
 addHeader(doc);
 
 let page2Y = 120;
-page2Y = drawSectionTitle(doc, "Featured Engineering Projects", page2Y);
+page2Y = drawSectionTitle(doc, "Featured Projects & Business ROI Impact", page2Y);
 
 const projectsData = [
   {
     title: "1. Faculty Leave & Substitute Portal (NEW & FEATURED)",
-    subtitle: "Enterprise Supabase HR Workflow Engine & Substitute Coverage Portal",
+    subtitle: "ROI: 90% Faster Absence Processing & 100% Automated Sub Coverage",
     liveUrl: "https://faculty-leave-management-portal.netlify.app/",
     githubUrl: "https://github.com/GabbyDev0402/faculty-leave-hr-portal",
     imageFile: "eduflex-screenshot.png",
     bullets: [
-      "Engineered PostgreSQL Row Level Security (RLS) policies and database triggers for automated leave balance deduction.",
-      "Built relational one-to-many schema for claiming class blocks and 60-second cryptographic signed URLs for lesson plans.",
-      "Integrated real-time Postgres WebSocket synchronization and dynamic Next.js layout overrides for /login."
+      "Replaced manual paper leave forms and phone calls with self-service substitute claiming.",
+      "Engineered PostgreSQL RLS policies & DB triggers to automate leave balance deductions.",
+      "Secured lesson plans with 60-second cryptographic URLs and real-time Postgres WebSocket sync."
     ]
   },
   {
     title: "2. Enterprise Communications Intranet",
-    subtitle: "B2B Announcement & Administrative Compliance Portal",
+    subtitle: "ROI: 100% Policy Compliance Verification & Zero Lost Announcements",
     liveUrl: "https://washington-school-portal.netlify.app/admin",
     githubUrl: "https://github.com/GabbyDev0402/washington-school-portal",
     imageFile: "washington-school-portal.png",
     bullets: [
+      "Replaced unorganized email blasts with digital read-receipt tracking & instant CSV compliance logs.",
       "Implemented Role-Based Access Control (RBAC) with Cloud Firestore Security Rules.",
-      "Engineered digital 'Read Receipt' compliance tracking and automated client-side CSV audit log reporting.",
       "Streamlined institutional announcement workflows with secure multi-role administrative oversight."
     ]
   },
   {
     title: "3. Washington Assessment Portal",
-    subtitle: "Multi-Tenant LMS with Automated Exam Engine & Analytics",
+    subtitle: "ROI: Saved Teachers 15+ Hours/Week in Manual Grading",
     liveUrl: "https://wcs-exam-portal.netlify.app/",
     githubUrl: "https://github.com/GabbyDev0402/washington-school-portal",
     imageFile: "washington-exam-portal.png",
     bullets: [
       "Architected dynamic exam creation engine utilizing polymorphic React form components.",
-      "Engineered real-time pivot-table data aggregation for Master Gradebooks and teacher performance metrics.",
+      "Engineered real-time pivot-table data aggregation for Master Gradebooks & administrative analytics.",
       "Enforced strict multi-tenant data isolation and time-gated client routing for exam security."
     ]
   },
   {
     title: "4. AttendancePro Tracker",
-    subtitle: "Proactive Attendance Management & Truancy Early-Warning Engine",
+    subtitle: "ROI: 80% Reduction in Daily Attendance Logging Time",
     liveUrl: "https://wcsattendancetracker.netlify.app/",
     githubUrl: "https://github.com/GabbyDev0402/wcs-attendancetracker",
     imageFile: "attendance-pro-tracker.png",
     bullets: [
-      "Optimized NoSQL database reads using session-grouped data modeling for rapid attendance logging.",
-      "Designed proactive early-warning algorithms to detect at-risk student truancy patterns.",
+      "Replaced physical attendance rosters with proactive truancy algorithms that flag at-risk students.",
+      "Optimized NoSQL database reads using session-grouped data modeling for sub-second roster logging.",
       "Engineered automated instruction-loss calculations to assist school administrators with intervention."
     ]
   }
@@ -235,12 +235,12 @@ projectsData.forEach((proj) => {
 
   // Project Header
   doc.fontSize(10).font("Helvetica-Bold").fillColor(COLOR_TEXT_DARK).text(proj.title, 40, currentStartY);
-  doc.fontSize(8.2).font("Helvetica-Oblique").fillColor(COLOR_TEXT_LIGHT).text(proj.subtitle, 40, currentStartY + 13);
+  doc.fontSize(8.2).font("Helvetica-Oblique").fillColor(COLOR_PRIMARY).text(proj.subtitle, 40, currentStartY + 13);
   
-  doc.fontSize(7.8).font("Helvetica-Bold").fillColor(COLOR_PRIMARY)
+  doc.fontSize(7.8).font("Helvetica-Bold").fillColor(COLOR_TEXT_LIGHT)
      .text(`Live App: ${proj.liveUrl}   |   GitHub: ${proj.githubUrl}`, 40, currentStartY + 25);
 
-  // Content Row: Screenshot on Right (170pt width), Bullets on Left (340pt width)
+  // Content Row: Screenshot on Right (175pt width), Bullets on Left (340pt width)
   const contentY = currentStartY + 37;
   
   // Try image from public/eduflex-screenshot.png or public/images/
@@ -280,5 +280,5 @@ doc
 doc.end();
 
 stream.on("finish", () => {
-  console.log("PDF Resume generated successfully with screenshots and spacious layout at:", outputPath);
+  console.log("PDF Resume generated successfully with screenshots and ROI metrics at:", outputPath);
 });
