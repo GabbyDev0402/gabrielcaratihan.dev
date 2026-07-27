@@ -9,15 +9,15 @@ if (!fs.existsSync(publicDir)) {
   fs.mkdirSync(publicDir, { recursive: true });
 }
 
-const outputPath = path.join(publicDir, "Gabriel_Caratihan_Resume.pdf");
+const outputPath = path.join(publicDir, "Gabriel_Caratihan_Portfolio_Upwork.pdf");
 const doc = new PDFDocument({
   size: "LETTER", // 612 x 792 pt
   margin: 40,
   autoFirstPage: false,
   info: {
-    Title: "Gabriel Caratihan - Resume",
+    Title: "Gabriel Caratihan - Upwork Portfolio Resume",
     Author: "Gabriel Caratihan",
-    Subject: "Software Engineer & Business Automation Specialist Resume",
+    Subject: "Software Engineer Portfolio (Upwork Compliant)",
     Keywords: "Software Engineer, Business Automation, Full Stack, SaaS, Next.js, TypeScript, Supabase, PostgreSQL",
   },
 });
@@ -175,8 +175,7 @@ const projectsData = [
   {
     title: "1. Faculty Leave & Substitute Portal (NEW & FEATURED)",
     subtitle: "ROI: 90% Faster Absence Processing & 100% Automated Sub Coverage",
-    liveUrl: "https://faculty-leave-management-portal.netlify.app/",
-    githubUrl: "https://github.com/GabbyDev0402/faculty-leave-hr-portal",
+    badgeText: "Enterprise Supabase HR Portal & Interactive Demo",
     imageFile: "eduflex-screenshot.png",
     bullets: [
       "Replaced manual paper leave forms and phone calls with self-service substitute claiming.",
@@ -187,8 +186,7 @@ const projectsData = [
   {
     title: "2. Enterprise Communications Intranet",
     subtitle: "ROI: 100% Policy Compliance Verification & Zero Lost Announcements",
-    liveUrl: "https://washington-school-portal.netlify.app/admin",
-    githubUrl: "https://github.com/GabbyDev0402/washington-school-portal",
+    badgeText: "High-Compliance Intranet & Audit Logging",
     imageFile: "washington-school-portal.png",
     bullets: [
       "Replaced unorganized email blasts with digital read-receipt tracking & instant CSV compliance logs.",
@@ -199,8 +197,7 @@ const projectsData = [
   {
     title: "3. Washington Assessment Portal",
     subtitle: "ROI: Saved Teachers 15+ Hours/Week in Manual Grading",
-    liveUrl: "https://wcs-exam-portal.netlify.app/",
-    githubUrl: "https://github.com/GabbyDev0402/washington-school-portal",
+    badgeText: "Multi-Tenant LMS & Assessment Engine",
     imageFile: "washington-exam-portal.png",
     bullets: [
       "Architected dynamic exam creation engine utilizing polymorphic React form components.",
@@ -211,8 +208,7 @@ const projectsData = [
   {
     title: "4. AttendancePro Tracker",
     subtitle: "ROI: 80% Reduction in Daily Attendance Logging Time",
-    liveUrl: "https://wcsattendancetracker.netlify.app/",
-    githubUrl: "https://github.com/GabbyDev0402/wcs-attendancetracker",
+    badgeText: "Session Attendance & Truancy Detection",
     imageFile: "attendance-pro-tracker.png",
     bullets: [
       "Replaced physical attendance rosters with proactive truancy algorithms that flag at-risk students.",
@@ -225,7 +221,6 @@ const projectsData = [
 projectsData.forEach((proj) => {
   const pStartY = page2Y;
 
-  // Check if we need a new page for project overflow
   if (pStartY > 650) {
     doc.addPage();
     addHeader(doc);
@@ -239,12 +234,11 @@ projectsData.forEach((proj) => {
   doc.fontSize(8.2).font("Helvetica-Oblique").fillColor(COLOR_PRIMARY).text(proj.subtitle, 40, currentStartY + 13);
   
   doc.fontSize(7.8).font("Helvetica-Bold").fillColor(COLOR_TEXT_LIGHT)
-     .text(`Category: ${proj.badgeText || "SaaS Portal"}   |   Live Demo & Repository Code Available via Upwork`, 40, currentStartY + 25);
+     .text(`Category: ${proj.badgeText}   |   Live Demo & Repository Code Available via Upwork`, 40, currentStartY + 25);
 
   // Content Row: Screenshot on Right (175pt width), Bullets on Left (340pt width)
   const contentY = currentStartY + 37;
   
-  // Try image from public/eduflex-screenshot.png or public/images/
   let imagePath = path.join(imagesDir, proj.imageFile);
   if (!fs.existsSync(imagePath)) {
     imagePath = path.join(publicDir, proj.imageFile);
@@ -252,7 +246,6 @@ projectsData.forEach((proj) => {
 
   if (fs.existsSync(imagePath)) {
     try {
-      // Draw screenshot thumbnail
       doc.image(imagePath, 395, contentY, { width: 175, height: 85 });
       doc.rect(395, contentY, 175, 85).strokeColor(COLOR_BORDER).lineWidth(0.5).stroke();
     } catch (e) {
@@ -271,15 +264,15 @@ projectsData.forEach((proj) => {
   page2Y = contentY + 92;
 });
 
-// Footer Notice
+// Footer Notice (Upwork Compliant)
 doc
   .fillColor(COLOR_TEXT_LIGHT)
   .fontSize(8)
   .font("Helvetica")
-  .text("Portfolio Resume — Gabriel Caratihan © 2026", 40, 750, { align: "center", width: 532 });
+  .text("Portfolio Resume (Upwork Version) — Gabriel Caratihan © 2026", 40, 750, { align: "center", width: 532 });
 
 doc.end();
 
 stream.on("finish", () => {
-  console.log("PDF Resume generated successfully with screenshots and ROI metrics at:", outputPath);
+  console.log("Upwork Compliant PDF Resume generated successfully at:", outputPath);
 });
