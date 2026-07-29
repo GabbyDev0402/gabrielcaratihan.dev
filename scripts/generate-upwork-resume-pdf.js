@@ -175,7 +175,7 @@ const projectsData = [
     title: "1. Mini AI DocuMind – Smart Knowledge Base (NEW & FEATURED)",
     subtitle: "ROI: 95% Faster Information Retrieval & Zero AI Hallucinations",
     badgeText: "AI & RAG Vector Engine",
-    imageFile: "eduflex-screenshot.png",
+    imageFile: "documind-screenshot.png",
     bullets: [
       "Built RAG Q&A assistant for SMEs converting company SOP handbooks into searchable vector embeddings.",
       "Integrated Google Gemini gemini-embedding-2 with Supabase pgvector cosine similarity search.",
@@ -183,7 +183,7 @@ const projectsData = [
     ]
   },
   {
-    title: "2. Faculty Leave & Substitute Portal (FEATURED)",
+    title: "2. Faculty Leave & Substitute Portal",
     subtitle: "ROI: 90% Faster Absence Processing & 100% Automated Sub Coverage",
     badgeText: "Enterprise HR Portal & Interactive Demo",
     imageFile: "eduflex-screenshot.png",

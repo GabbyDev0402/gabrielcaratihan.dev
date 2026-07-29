@@ -66,10 +66,8 @@ const projects: Project[] = [
       "pgvector",
       "Tailwind CSS",
     ],
-    imagePlaceholder: {
-      color: "from-purple-600 via-indigo-600 to-blue-700",
-      label: "Mini AI DocuMind Vector Search",
-    },
+    imagePlaceholder: "/documind-screenshot.png",
+    imageUrl: "/documind-screenshot.png",
     githubLink: "https://github.com/GabbyDev0402/mini-ai-documind",
     liveLink: "https://mini-ai-documind.vercel.app/",
     demoCredentials: {
@@ -199,7 +197,6 @@ const projects: Project[] = [
         </p>
       </div>
     ),
-    isFeatured: true,
     icon: Building2,
   },
   {
