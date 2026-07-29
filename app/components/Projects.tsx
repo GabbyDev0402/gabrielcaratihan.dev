@@ -11,8 +11,11 @@ import {
   Building2,
   UserCheck,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   ShieldCheck,
   TrendingUp,
+  Bot,
 } from "lucide-react";
 import GithubIcon from "./icons/GithubIcon";
 
@@ -24,6 +27,7 @@ export interface Project {
     metric: string;
     summary: string;
   };
+  category: string;
   fullDescription: string | React.ReactNode;
   agenticWorkflow: string;
   techStack: string[];
@@ -45,6 +49,85 @@ export interface Project {
 
 const projects: Project[] = [
   {
+    id: "documind-ai",
+    title: "Mini AI DocuMind – Smart Business Knowledge Base",
+    shortDescription:
+      "AI-powered RAG document search assistant converting internal company SOPs and handbooks into instant, fact-checked answers with source citations.",
+    businessImpact: {
+      metric: "⚡ 95% Faster Information Retrieval & Zero AI Hallucinations",
+      summary:
+        "Replaced manual handbook searches with a restricted RAG vector engine that answers SOP questions strictly using verified company documents.",
+    },
+    category: "AI & Automation",
+    techStack: [
+      "Next.js",
+      "Google Gemini API",
+      "Supabase",
+      "pgvector",
+      "Tailwind CSS",
+    ],
+    imagePlaceholder: {
+      color: "from-purple-600 via-indigo-600 to-blue-700",
+      label: "Mini AI DocuMind Vector Search",
+    },
+    githubLink: "https://github.com/GabbyDev0402/mini-ai-documind",
+    liveLink: "https://mini-ai-documind.vercel.app/",
+    demoCredentials: {
+      role: "Business Admin & Team Member",
+      email: "Try Live Demo or Ingest Documents",
+      password: "No password required",
+    },
+    agenticWorkflow:
+      "Architected using advanced agentic workflows via Antigravity IDE. Directed AI models (Gemini 3.5 Flash / 3.1 Pro) to engineer text chunking algorithms, integrate gemini-embedding-2 vectors with Supabase pgvector cosine similarity search, and enforce strict RAG prompt boundaries.",
+    fullDescription: (
+      <div className="space-y-4 text-sm text-slate-600">
+        <p>
+          <strong>Overview:</strong> Mini AI DocuMind is an intelligent document search
+          and Q&amp;A assistant built for Small and Medium Enterprises (SMEs). It allows
+          businesses to upload their internal documents—such as company policies, standard
+          operating procedures (SOPs), or training manuals—and turn them into an instant,
+          interactive AI assistant.
+        </p>
+        <h4 className="font-bold text-slate-800 border-b pb-1 mt-4">
+          Key Business Problems Solved
+        </h4>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>
+            <strong>Eliminates Wasted Time:</strong> Employees stop wasting hours searching
+            through long PDFs or physical manuals.
+          </li>
+          <li>
+            <strong>Replaces Outdated Search:</strong> Standard keyword search fails when people
+            don&apos;t use exact matching words; AI vector embeddings capture semantic meaning.
+          </li>
+          <li>
+            <strong>Zero AI Hallucinations:</strong> Restricts the LLM to answer strictly using
+            verified company context, eliminating false information.
+          </li>
+        </ul>
+        <h4 className="font-bold text-slate-800 border-b pb-1 mt-4">
+          Key Enterprise RAG Architecture
+        </h4>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>
+            <strong>Vector Ingestion:</strong> Text is split into chunks and embedded using
+            Google&apos;s <code>gemini-embedding-2</code> model into 768-dimensional vectors.
+          </li>
+          <li>
+            <strong>PostgreSQL pgvector:</strong> Utilizes Supabase <code>pgvector</code> cosine
+            similarity functions for sub-second semantic retrieval.
+          </li>
+          <li>
+            <strong>Source Citations &amp; Match Scores:</strong> Returns transparent document origin
+            references and confidence percentage match scores for auditability.
+          </li>
+        </ul>
+      </div>
+    ),
+    isFeatured: true,
+    icon: Bot,
+  },
+  {
     id: "eduflex-hr",
     title: "Faculty Leave & Substitute Portal",
     shortDescription:
@@ -54,6 +137,7 @@ const projects: Project[] = [
       summary:
         "Replaced manual paper leave forms and chaotic phone calls with a self-service substitute marketplace and automated leave balance accounting.",
     },
+    category: "Enterprise HR & Portals",
     techStack: ["Next.js", "Supabase", "PostgreSQL", "Tailwind"],
     imagePlaceholder: "/eduflex-screenshot.png",
     imageUrl: "/eduflex-screenshot.png",
@@ -128,6 +212,7 @@ const projects: Project[] = [
       summary:
         "Replaced unorganized email blasts and physical bulletin boards with digital read-receipt tracking and instant CSV compliance reporting.",
     },
+    category: "Enterprise HR & Portals",
     fullDescription:
       "Designed for high-compliance enterprise environments, this intranet platform enforces strict Role-Based Access Control (RBAC) via Cloud Firestore Security Rules, tracks institutional compliance using a digital read-receipt engine, and provides automated client-side CSV audit log exports powered by browser Blob APIs.",
     agenticWorkflow:
@@ -157,6 +242,7 @@ const projects: Project[] = [
       summary:
         "Replaced paper exam sheets and manual grade calculations with a dynamic assessment builder and instant master gradebook analytics.",
     },
+    category: "EdTech & Analytics",
     fullDescription:
       "Engineered to resolve administrative friction in educational institutions, this multi-tenant LMS features dynamic exam creation powered by a polymorphic React form engine, real-time master gradebooks with aggregated pivot-table calculations, and strict multi-tenant data isolation with time-gated client routing for secure assessment environments.",
     agenticWorkflow:
@@ -186,6 +272,7 @@ const projects: Project[] = [
       summary:
         "Replaced physical attendance rosters with proactive truancy algorithms that flag at-risk students before drop-out occurs.",
     },
+    category: "EdTech & Analytics",
     fullDescription:
       "A specialized tracking system engineered to eliminate student truancy. It optimizes NoSQL database reads using session-grouped data modeling, calculates automated instruction-loss metrics, and alerts administrative staff to at-risk attendance patterns using proactive early-warning algorithms.",
     agenticWorkflow:
@@ -207,168 +294,235 @@ const projects: Project[] = [
   },
 ];
 
+const categories = [
+  "All Projects",
+  "AI & Automation",
+  "Enterprise HR & Portals",
+  "EdTech & Analytics",
+];
+
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeCategory, setActiveCategory] = useState("All Projects");
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const filteredProjects = projects.filter((p) => {
+    if (activeCategory === "All Projects") return true;
+    return p.category === activeCategory;
+  });
+
+  const displayedProjects =
+    activeCategory === "All Projects" && !isExpanded
+      ? filteredProjects.slice(0, 3)
+      : filteredProjects;
 
   return (
     <section id="projects" className="py-20 bg-slate-100/70 border-y border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-12">
+        <div className="space-y-10">
           {/* Section Header */}
           <div className="text-center space-y-3 max-w-3xl mx-auto">
             <span className="text-xs font-bold tracking-wider text-indigo-600 uppercase bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
-              Featured Work & ROI
+              Featured Work &amp; ROI
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
-              Custom Web Portals & Business Automation Systems
+              Custom Web Portals &amp; Business Automation Systems
             </h2>
             <p className="text-slate-500 text-base max-w-2xl mx-auto">
               Real-world software built to replace spreadsheets, automate administrative friction, and maximize operational ROI.
             </p>
           </div>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {projects.map((project, idx) => {
-              const IconComponent = project.icon || Building2;
-              const displayImage =
-                project.imageUrl ||
-                (typeof project.imagePlaceholder === "string"
-                  ? project.imagePlaceholder
-                  : null);
-
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+            {categories.map((cat) => {
+              const isActive = activeCategory === cat;
               return (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.15, ease: "easeOut" }}
-                  className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative ${
-                    project.isFeatured
-                      ? "ring-2 ring-indigo-500 border-2 border-indigo-400 shadow-indigo-500/15"
-                      : "border border-slate-200/80"
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setActiveCategory(cat);
+                    setIsExpanded(false);
+                  }}
+                  className={`px-4 py-2 text-xs font-bold rounded-xl transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
+                      : "bg-white text-slate-600 border border-slate-200 hover:border-indigo-300 hover:text-indigo-600"
                   }`}
                 >
-                  {/* Top Image / Visual Banner */}
-                  <div className="h-56 relative overflow-hidden bg-slate-900">
-                    {displayImage ? (
-                      <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-500">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={displayImage}
-                          alt={project.title}
-                          className="w-full h-full object-cover object-top"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
-                        <div className="absolute top-3 left-3 z-10 flex items-center gap-2">
-                          <div className="p-2 rounded-lg bg-slate-900/70 backdrop-blur-md text-white border border-white/20">
-                            <IconComponent className="w-4 h-4" />
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Cards Grid */}
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <AnimatePresence>
+              {displayedProjects.map((project, idx) => {
+                const IconComponent = project.icon || Building2;
+                const displayImage =
+                  project.imageUrl ||
+                  (typeof project.imagePlaceholder === "string"
+                    ? project.imagePlaceholder
+                    : null);
+
+                return (
+                  <motion.div
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4, delay: idx * 0.1, ease: "easeOut" }}
+                    className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative ${
+                      project.isFeatured
+                        ? "ring-2 ring-indigo-500 border-2 border-indigo-400 shadow-indigo-500/15"
+                        : "border border-slate-200/80"
+                    }`}
+                  >
+                    {/* Top Image / Visual Banner */}
+                    <div className="h-56 relative overflow-hidden bg-slate-900">
+                      {displayImage ? (
+                        <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-500">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={displayImage}
+                            alt={project.title}
+                            className="w-full h-full object-cover object-top"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
+                          <div className="absolute top-3 left-3 z-10 flex items-center gap-2">
+                            <div className="p-2 rounded-lg bg-slate-900/70 backdrop-blur-md text-white border border-white/20">
+                              <IconComponent className="w-4 h-4" />
+                            </div>
                           </div>
-                        </div>
-                        {project.isFeatured && (
-                          <div className="absolute top-3 right-3 z-20">
-                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-2.5 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
-                              🌟 NEW & FEATURED
-                            </span>
-                          </div>
-                        )}
-                        <div className="absolute bottom-3 left-3 right-3 z-10">
-                          <span className="text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white px-2 py-0.5 rounded-md shadow-xs">
-                            Live App Ready
-                          </span>
-                        </div>
-                      </div>
-                    ) : (
-                      <div
-                        className={`w-full h-full bg-gradient-to-br ${
-                          typeof project.imagePlaceholder === "object"
-                            ? project.imagePlaceholder.color
-                            : "from-indigo-600 to-blue-700"
-                        } p-6 flex flex-col justify-between relative overflow-hidden text-white`}
-                      >
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full pointer-events-none" />
-                        <div className="flex items-center justify-between z-10">
-                          <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-md text-white border border-white/20">
-                            <IconComponent className="w-5 h-5" />
-                          </div>
-                          {project.isFeatured ? (
-                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
-                              🌟 NEW & FEATURED
-                            </span>
-                          ) : (
-                            <span className="text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
-                              SaaS Solution
-                            </span>
+                          {project.isFeatured && (
+                            <div className="absolute top-3 right-3 z-20">
+                              <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-2.5 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
+                                🌟 NEW &amp; FEATURED
+                              </span>
+                            </div>
                           )}
-                        </div>
-                        <div className="z-10">
-                          <p className="text-xs font-medium text-white/80 uppercase tracking-wider">
-                            Screenshot Placeholder
-                          </p>
-                          <h4 className="text-sm font-semibold text-white truncate mt-0.5">
-                            {typeof project.imagePlaceholder === "object"
-                              ? project.imagePlaceholder.label
-                              : project.title}
-                          </h4>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors tracking-tight">
-                          {project.title}
-                        </h3>
-                      </div>
-                      <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
-                        {project.shortDescription}
-                      </p>
-
-                      {/* Business Impact ROI Callout */}
-                      {project.businessImpact && (
-                        <div className="p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/80 text-xs text-emerald-950 space-y-1">
-                          <div className="font-bold flex items-center gap-1.5 text-emerald-800">
-                            <TrendingUp className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                            <span>{project.businessImpact.metric}</span>
+                          <div className="absolute bottom-3 left-3 right-3 z-10">
+                            <span className="text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white px-2 py-0.5 rounded-md shadow-xs">
+                              Live App Ready
+                            </span>
                           </div>
-                          <p className="text-[11px] text-emerald-800 leading-snug">
-                            {project.businessImpact.summary}
-                          </p>
+                        </div>
+                      ) : (
+                        <div
+                          className={`w-full h-full bg-gradient-to-br ${
+                            typeof project.imagePlaceholder === "object"
+                              ? project.imagePlaceholder.color
+                              : "from-indigo-600 to-blue-700"
+                          } p-6 flex flex-col justify-between relative overflow-hidden text-white`}
+                        >
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full pointer-events-none" />
+                          <div className="flex items-center justify-between z-10">
+                            <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-md text-white border border-white/20">
+                              <IconComponent className="w-5 h-5" />
+                            </div>
+                            {project.isFeatured ? (
+                              <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
+                                🌟 NEW &amp; FEATURED
+                              </span>
+                            ) : (
+                              <span className="text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
+                                SaaS Solution
+                              </span>
+                            )}
+                          </div>
+                          <div className="z-10">
+                            <p className="text-xs font-medium text-white/80 uppercase tracking-wider">
+                              AI &amp; RAG Architecture
+                            </p>
+                            <h4 className="text-sm font-semibold text-white truncate mt-0.5">
+                              {typeof project.imagePlaceholder === "object"
+                                ? project.imagePlaceholder.label
+                                : project.title}
+                            </h4>
+                          </div>
                         </div>
                       )}
                     </div>
 
-                    {/* Tech Stack Pills */}
-                    <div className="space-y-4 pt-4 border-t border-slate-100">
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.techStack.map((tag, tIdx) => (
-                          <span
-                            key={tIdx}
-                            className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200/80"
-                          >
-                            {tag}
-                          </span>
-                        ))}
+                    {/* Card Body */}
+                    <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors tracking-tight">
+                            {project.title}
+                          </h3>
+                        </div>
+                        <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
+                          {project.shortDescription}
+                        </p>
+
+                        {/* Business Impact ROI Callout */}
+                        {project.businessImpact && (
+                          <div className="p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/80 text-xs text-emerald-950 space-y-1">
+                            <div className="font-bold flex items-center gap-1.5 text-emerald-800">
+                              <TrendingUp className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                              <span>{project.businessImpact.metric}</span>
+                            </div>
+                            <p className="text-[11px] text-emerald-800 leading-snug">
+                              {project.businessImpact.summary}
+                            </p>
+                          </div>
+                        )}
                       </div>
 
-                      {/* See More Details Button */}
-                      <button
-                        onClick={() => setSelectedProject(project)}
-                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white rounded-xl border border-indigo-200/80 hover:border-indigo-600 shadow-2xs transition-all duration-200 group/btn"
-                      >
-                        See More Details & Architecture
-                        <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
-                      </button>
+                      {/* Tech Stack Pills */}
+                      <div className="space-y-4 pt-4 border-t border-slate-100">
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.techStack.map((tag, tIdx) => (
+                            <span
+                              key={tIdx}
+                              className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200/80"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* See More Details Button */}
+                        <button
+                          onClick={() => setSelectedProject(project)}
+                          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white rounded-xl border border-indigo-200/80 hover:border-indigo-600 shadow-2xs transition-all duration-200 group/btn"
+                        >
+                          See More Details &amp; Architecture
+                          <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Explore Catalog Expansion Button */}
+          {activeCategory === "All Projects" && (
+            <div className="pt-4 text-center">
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white border border-indigo-200 hover:border-indigo-600 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer group"
+              >
+                {isExpanded ? (
+                  <>
+                    Show Featured Projects Only
+                    <ChevronUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+                  </>
+                ) : (
+                  <>
+                    Explore Full Project Catalog ({projects.length} Projects)
+                    <ChevronDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -426,7 +580,7 @@ export default function Projects() {
                         </div>
                         {selectedProject.isFeatured && (
                           <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50">
-                            🌟 NEW & FEATURED
+                            🌟 NEW &amp; FEATURED
                           </span>
                         )}
                       </div>
@@ -452,7 +606,7 @@ export default function Projects() {
                         </div>
                         {selectedProject.isFeatured && (
                           <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50">
-                            🌟 NEW & FEATURED
+                            🌟 NEW &amp; FEATURED
                           </span>
                         )}
                       </div>
@@ -479,7 +633,7 @@ export default function Projects() {
                       <div className="p-2 rounded-lg bg-emerald-600 text-white shadow-xs">
                         <TrendingUp className="w-4 h-4" />
                       </div>
-                      <span>Business Impact & Return on Investment (ROI)</span>
+                      <span>Business Impact &amp; Return on Investment (ROI)</span>
                     </div>
                     <p className="text-sm font-semibold text-emerald-950">
                       {selectedProject.businessImpact.metric}
@@ -493,7 +647,7 @@ export default function Projects() {
                 {/* Full Description - Rendered directly as React Node */}
                 <div className="space-y-2">
                   <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Project Overview & Architecture
+                    Project Overview &amp; Architecture
                   </h3>
                   <div className="text-slate-700 text-base leading-relaxed font-normal">
                     {selectedProject.fullDescription}
@@ -552,7 +706,7 @@ export default function Projects() {
                 {/* Tech Stack Pills */}
                 <div className="space-y-2">
                   <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Technologies & Architecture
+                    Technologies &amp; Architecture
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.techStack.map((tech, tIdx) => (

@@ -18,7 +18,7 @@ const doc = new PDFDocument({
     Title: "Gabriel Caratihan - Resume",
     Author: "Gabriel Caratihan",
     Subject: "Software Engineer & Business Automation Specialist Resume",
-    Keywords: "Software Engineer, Business Automation, Full Stack, SaaS, Next.js, TypeScript, Supabase, PostgreSQL",
+    Keywords: "Software Engineer, Business Automation, Full Stack, SaaS, Next.js, TypeScript, Supabase, PostgreSQL, Gemini API, RAG",
   },
 });
 
@@ -49,7 +49,6 @@ function addHeader(d) {
     .font("Helvetica-Bold")
     .text("SOFTWARE ENGINEER & BUSINESS AUTOMATION SPECIALIST", 40, 52);
 
-  // Upwork Compliant Contact Line (No off-platform email/phone/socials)
   d.fillColor("#e2e8f0")
     .fontSize(8.5)
     .font("Helvetica")
@@ -102,7 +101,7 @@ const col3X = 400;
 
 doc.fontSize(9.5).font("Helvetica-Bold").fillColor(COLOR_TEXT_DARK);
 doc.text("Languages & Frontend", col1X, currentY);
-doc.text("Backend & Cloud", col2X, currentY);
+doc.text("Backend & AI Infrastructure", col2X, currentY);
 doc.text("Business Automation", col3X, currentY);
 
 doc.fontSize(8.5).font("Helvetica").fillColor(COLOR_TEXT_MUTED);
@@ -113,7 +112,7 @@ doc.text(
   { lineGap: 3 }
 );
 doc.text(
-  "• Supabase / PostgreSQL\n• Node.js / REST APIs\n• Firebase / Cloud Firestore\n• Netlify / Vercel",
+  "• Supabase / pgvector\n• Google Gemini API (RAG)\n• Node.js / REST APIs\n• Firebase / Cloud Firestore",
   col2X,
   currentY + 16,
   { lineGap: 3 }
@@ -173,8 +172,22 @@ page2Y = drawSectionTitle(doc, "Featured Projects & Business ROI Impact", page2Y
 
 const projectsData = [
   {
-    title: "1. Faculty Leave & Substitute Portal (NEW & FEATURED)",
+    title: "1. Mini AI DocuMind – Smart Knowledge Base (NEW & FEATURED)",
+    subtitle: "ROI: 95% Faster Information Retrieval & Zero AI Hallucinations",
+    badgeText: "AI & RAG Vector Engine",
+    liveUrl: "https://mini-ai-documind.vercel.app/",
+    githubUrl: "https://github.com/GabbyDev0402/mini-ai-documind",
+    imageFile: "eduflex-screenshot.png",
+    bullets: [
+      "Built RAG Q&A assistant for SMEs converting company SOP handbooks into searchable vector embeddings.",
+      "Integrated Google Gemini gemini-embedding-2 with Supabase pgvector cosine similarity search.",
+      "Restricted LLM answers strictly to verified company documents, returning clickable source citations."
+    ]
+  },
+  {
+    title: "2. Faculty Leave & Substitute Portal (FEATURED)",
     subtitle: "ROI: 90% Faster Absence Processing & 100% Automated Sub Coverage",
+    badgeText: "Enterprise HR System",
     liveUrl: "https://faculty-leave-management-portal.netlify.app/",
     githubUrl: "https://github.com/GabbyDev0402/faculty-leave-hr-portal",
     imageFile: "eduflex-screenshot.png",
@@ -185,8 +198,9 @@ const projectsData = [
     ]
   },
   {
-    title: "2. Enterprise Communications Intranet",
+    title: "3. Enterprise Communications Intranet",
     subtitle: "ROI: 100% Policy Compliance Verification & Zero Lost Announcements",
+    badgeText: "Compliance & Intranet Portal",
     liveUrl: "https://washington-school-portal.netlify.app/admin",
     githubUrl: "https://github.com/GabbyDev0402/washington-school-portal",
     imageFile: "washington-school-portal.png",
@@ -197,8 +211,9 @@ const projectsData = [
     ]
   },
   {
-    title: "3. Washington Assessment Portal",
+    title: "4. Washington Assessment Portal",
     subtitle: "ROI: Saved Teachers 15+ Hours/Week in Manual Grading",
+    badgeText: "EdTech & Assessment LMS",
     liveUrl: "https://wcs-exam-portal.netlify.app/",
     githubUrl: "https://github.com/GabbyDev0402/washington-school-portal",
     imageFile: "washington-exam-portal.png",
@@ -209,8 +224,9 @@ const projectsData = [
     ]
   },
   {
-    title: "4. AttendancePro Tracker",
+    title: "5. AttendancePro Tracker",
     subtitle: "ROI: 80% Reduction in Daily Attendance Logging Time",
+    badgeText: "Attendance & Early Warning Engine",
     liveUrl: "https://wcsattendancetracker.netlify.app/",
     githubUrl: "https://github.com/GabbyDev0402/wcs-attendancetracker",
     imageFile: "attendance-pro-tracker.png",
@@ -244,7 +260,6 @@ projectsData.forEach((proj) => {
   // Content Row: Screenshot on Right (175pt width), Bullets on Left (340pt width)
   const contentY = currentStartY + 37;
   
-  // Try image from public/eduflex-screenshot.png or public/images/
   let imagePath = path.join(imagesDir, proj.imageFile);
   if (!fs.existsSync(imagePath)) {
     imagePath = path.join(publicDir, proj.imageFile);
@@ -252,7 +267,6 @@ projectsData.forEach((proj) => {
 
   if (fs.existsSync(imagePath)) {
     try {
-      // Draw screenshot thumbnail
       doc.image(imagePath, 395, contentY, { width: 175, height: 85 });
       doc.rect(395, contentY, 175, 85).strokeColor(COLOR_BORDER).lineWidth(0.5).stroke();
     } catch (e) {

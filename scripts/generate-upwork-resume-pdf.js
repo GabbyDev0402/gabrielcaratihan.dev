@@ -18,7 +18,7 @@ const doc = new PDFDocument({
     Title: "Gabriel Caratihan - Upwork Portfolio Resume",
     Author: "Gabriel Caratihan",
     Subject: "Software Engineer Portfolio (Upwork Compliant)",
-    Keywords: "Software Engineer, Business Automation, Full Stack, SaaS, Next.js, TypeScript, Supabase, PostgreSQL",
+    Keywords: "Software Engineer, Business Automation, Full Stack, SaaS, Next.js, TypeScript, Supabase, PostgreSQL, Gemini API, RAG",
   },
 });
 
@@ -49,7 +49,6 @@ function addHeader(d) {
     .font("Helvetica-Bold")
     .text("SOFTWARE ENGINEER & BUSINESS AUTOMATION SPECIALIST", 40, 52);
 
-  // Upwork Compliant Contact Line (No off-platform email/phone/socials)
   d.fillColor("#e2e8f0")
     .fontSize(8.5)
     .font("Helvetica")
@@ -102,7 +101,7 @@ const col3X = 400;
 
 doc.fontSize(9.5).font("Helvetica-Bold").fillColor(COLOR_TEXT_DARK);
 doc.text("Languages & Frontend", col1X, currentY);
-doc.text("Backend & Cloud", col2X, currentY);
+doc.text("Backend & AI Infrastructure", col2X, currentY);
 doc.text("Business Automation", col3X, currentY);
 
 doc.fontSize(8.5).font("Helvetica").fillColor(COLOR_TEXT_MUTED);
@@ -113,7 +112,7 @@ doc.text(
   { lineGap: 3 }
 );
 doc.text(
-  "• Supabase / PostgreSQL\n• Node.js / REST APIs\n• Firebase / Cloud Firestore\n• Netlify / Vercel",
+  "• Supabase / pgvector\n• Google Gemini API (RAG)\n• Node.js / REST APIs\n• Firebase / Cloud Firestore",
   col2X,
   currentY + 16,
   { lineGap: 3 }
@@ -173,9 +172,20 @@ page2Y = drawSectionTitle(doc, "Featured Projects & Business ROI Impact", page2Y
 
 const projectsData = [
   {
-    title: "1. Faculty Leave & Substitute Portal (NEW & FEATURED)",
+    title: "1. Mini AI DocuMind – Smart Knowledge Base (NEW & FEATURED)",
+    subtitle: "ROI: 95% Faster Information Retrieval & Zero AI Hallucinations",
+    badgeText: "AI & RAG Vector Engine",
+    imageFile: "eduflex-screenshot.png",
+    bullets: [
+      "Built RAG Q&A assistant for SMEs converting company SOP handbooks into searchable vector embeddings.",
+      "Integrated Google Gemini gemini-embedding-2 with Supabase pgvector cosine similarity search.",
+      "Restricted LLM answers strictly to verified company documents, returning clickable source citations."
+    ]
+  },
+  {
+    title: "2. Faculty Leave & Substitute Portal (FEATURED)",
     subtitle: "ROI: 90% Faster Absence Processing & 100% Automated Sub Coverage",
-    badgeText: "Enterprise Supabase HR Portal & Interactive Demo",
+    badgeText: "Enterprise HR Portal & Interactive Demo",
     imageFile: "eduflex-screenshot.png",
     bullets: [
       "Replaced manual paper leave forms and phone calls with self-service substitute claiming.",
@@ -184,7 +194,7 @@ const projectsData = [
     ]
   },
   {
-    title: "2. Enterprise Communications Intranet",
+    title: "3. Enterprise Communications Intranet",
     subtitle: "ROI: 100% Policy Compliance Verification & Zero Lost Announcements",
     badgeText: "High-Compliance Intranet & Audit Logging",
     imageFile: "washington-school-portal.png",
@@ -195,7 +205,7 @@ const projectsData = [
     ]
   },
   {
-    title: "3. Washington Assessment Portal",
+    title: "4. Washington Assessment Portal",
     subtitle: "ROI: Saved Teachers 15+ Hours/Week in Manual Grading",
     badgeText: "Multi-Tenant LMS & Assessment Engine",
     imageFile: "washington-exam-portal.png",
@@ -206,7 +216,7 @@ const projectsData = [
     ]
   },
   {
-    title: "4. AttendancePro Tracker",
+    title: "5. AttendancePro Tracker",
     subtitle: "ROI: 80% Reduction in Daily Attendance Logging Time",
     badgeText: "Session Attendance & Truancy Detection",
     imageFile: "attendance-pro-tracker.png",
