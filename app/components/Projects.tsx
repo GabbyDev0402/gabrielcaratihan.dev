@@ -50,74 +50,63 @@ export interface Project {
 const projects: Project[] = [
   {
     id: "documind-ai",
-    title: "Mini AI DocuMind – Smart Business Knowledge Base",
+    title: "Mini AI DocuMind — Multi-Tenant Legal RAG Platform",
     shortDescription:
-      "AI-powered RAG document search assistant converting internal company SOPs and handbooks into instant, fact-checked answers with source citations.",
+      "Enterprise-grade legal & corporate research platform engineered to ingest PDF court rulings and multi-page documents at scale.",
     businessImpact: {
-      metric: "⚡ 95% Faster Information Retrieval & Zero AI Hallucinations",
+      metric: "⚡ Native PDF Page Citations & Mass Corpus Batch Ingestion (65k+ PDFs)",
       summary:
-        "Replaced manual handbook searches with a restricted RAG vector engine that answers SOP questions strictly using verified company documents.",
+        "Upgraded from a prototype RAG assistant into an idempotent, high-volume legal platform with unpdf page citations and CLI batch processing.",
     },
     category: "AI & Automation",
     techStack: [
-      "Next.js",
-      "Google Gemini API",
-      "Supabase",
-      "pgvector",
-      "Tailwind CSS",
+      "Next.js 16",
+      "Supabase (pgvector)",
+      "Gemini AI API",
+      "unpdf",
+      "Stripe API",
+      "Node.js CLI",
     ],
     imagePlaceholder: "/documind-screenshot.png",
     imageUrl: "/documind-screenshot.png",
     githubLink: "https://github.com/GabbyDev0402/mini-ai-documind",
     liveLink: "https://mini-ai-documind.vercel.app/",
     demoCredentials: {
-      role: "Business Admin & Team Member",
-      email: "Try Live Demo or Ingest Documents",
-      password: "No password required",
+      role: "Sandoval Legal Group Admin",
+      email: "demo@sandoval-legal.com",
+      password: "1-Click Demo Login",
     },
     agenticWorkflow:
-      "Architected using advanced agentic workflows via Antigravity IDE. Directed AI models (Gemini 3.5 Flash / 3.1 Pro) to engineer text chunking algorithms, integrate gemini-embedding-2 vectors with Supabase pgvector cosine similarity search, and enforce strict RAG prompt boundaries.",
+      "Architected using advanced agentic workflows via Antigravity IDE. Directed AI models to engineer unpdf serverless page-by-page text extraction, design idempotent overwrite deduplication pipelines, build a CLI batch script (ingest_batch_corpus.mjs) with exponential backoff rate-limit protection for 65,000+ PDFs, and enforce tenant-scoped PostgreSQL vector schemas.",
     fullDescription: (
       <div className="space-y-4 text-sm text-slate-600">
         <p>
-          <strong>Overview:</strong> Mini AI DocuMind is an intelligent document search
-          and Q&amp;A assistant built for Small and Medium Enterprises (SMEs). It allows
-          businesses to upload their internal documents—such as company policies, standard
-          operating procedures (SOPs), or training manuals—and turn them into an instant,
-          interactive AI assistant.
+          <strong>Overview:</strong> Upgraded Mini AI DocuMind from a prototype RAG
+          assistant into an enterprise-ready legal &amp; corporate research platform capable of
+          processing PDF court rulings and multi-page legal documents at scale for law firms
+          and corporate teams.
         </p>
         <h4 className="font-bold text-slate-800 border-b pb-1 mt-4">
-          Key Business Problems Solved
+          Key Technical Solutions Delivered
         </h4>
         <ul className="list-disc pl-5 space-y-1">
           <li>
-            <strong>Eliminates Wasted Time:</strong> Employees stop wasting hours searching
-            through long PDFs or physical manuals.
+            <strong>Native PDF Extraction &amp; Page Citations:</strong> Integrated <code>unpdf</code> serverless
+            text parser to extract text page-by-page. Built a citation engine grounding AI answers with exact
+            references (e.g. <code>[Ruling_1042.pdf, Page 3]</code>).
           </li>
           <li>
-            <strong>Replaces Outdated Search:</strong> Standard keyword search fails when people
-            don&apos;t use exact matching words; AI vector embeddings capture semantic meaning.
+            <strong>Idempotent Ingestion Engine:</strong> Built a clean overwrite deduplication pipeline ensuring
+            re-processing or re-uploading documents never creates duplicate chunks or state corruption.
           </li>
           <li>
-            <strong>Zero AI Hallucinations:</strong> Restricts the LLM to answer strictly using
-            verified company context, eliminating false information.
-          </li>
-        </ul>
-        <h4 className="font-bold text-slate-800 border-b pb-1 mt-4">
-          Key Enterprise RAG Architecture
-        </h4>
-        <ul className="list-disc pl-5 space-y-1">
-          <li>
-            <strong>Vector Ingestion:</strong> Text is split into chunks and embedded using
-            Google&apos;s <code>gemini-embedding-2</code> model into 768-dimensional vectors.
+            <strong>Mass Corpus Batch Script (65k+ PDFs):</strong> Developed a CLI batch ingestion script
+            (<code>scripts/ingest_batch_corpus.mjs</code>) designed for high-volume corpora (65,000+ PDFs / 500k+ chunks)
+            with exponential backoff rate-limit protection.
           </li>
           <li>
-            <strong>PostgreSQL pgvector:</strong> Utilizes Supabase <code>pgvector</code> cosine
-            similarity functions for sub-second semantic retrieval.
-          </li>
-          <li>
-            <strong>Source Citations &amp; Match Scores:</strong> Returns transparent document origin
-            references and confidence percentage match scores for auditability.
+            <strong>Multi-Tenant SaaS Foundation:</strong> Built B2B organization routing (<code>/org/[orgId]</code>),
+            true Supabase Auth, relational vector schema with page metadata, credit metering, and Stripe subscription billing.
           </li>
         </ul>
       </div>

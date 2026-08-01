@@ -172,16 +172,16 @@ page2Y = drawSectionTitle(doc, "Featured Projects & Business ROI Impact", page2Y
 
 const projectsData = [
   {
-    title: "1. Mini AI DocuMind – Smart Knowledge Base (NEW & FEATURED)",
-    subtitle: "ROI: 95% Faster Information Retrieval & Zero AI Hallucinations",
-    badgeText: "AI & RAG Vector Engine",
+    title: "1. Mini AI DocuMind — Legal RAG Platform (NEW & FEATURED)",
+    subtitle: "ROI: Page Citations, Idempotent Pipeline & 65k+ PDF Batch CLI",
+    badgeText: "Legal RAG & Ingestion Engine",
     liveUrl: "https://mini-ai-documind.vercel.app/",
     githubUrl: "https://github.com/GabbyDev0402/mini-ai-documind",
     imageFile: "documind-screenshot.png",
     bullets: [
-      "Built RAG Q&A assistant for SMEs converting company SOP handbooks into searchable vector embeddings.",
-      "Integrated Google Gemini gemini-embedding-2 with Supabase pgvector cosine similarity search.",
-      "Restricted LLM answers strictly to verified company documents, returning clickable source citations."
+      "Integrated unpdf serverless text parser for page-by-page citations (e.g. [Ruling_1042.pdf, Page 3]).",
+      "Built idempotent overwrite pipeline & CLI batch script (ingest_batch_corpus.mjs) for 65k+ PDFs.",
+      "Engineered multi-tenant organization routing (/org/[orgId]), pgvector RPC search, and Stripe billing."
     ]
   },
   {
