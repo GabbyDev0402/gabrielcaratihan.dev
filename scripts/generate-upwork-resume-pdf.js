@@ -183,7 +183,18 @@ const projectsData = [
     ]
   },
   {
-    title: "2. Faculty Leave & Substitute Portal",
+    title: "2. AttendancePro Tracker v2.0 (LIVE PRODUCTION SYSTEM)",
+    subtitle: "ROI: 80% Reduction in Logging Time & Zero Ghost Logins",
+    badgeText: "In Active Use @ Washington School",
+    imageFile: "attendance-pro-tracker.png",
+    bullets: [
+      "Officially deployed at Washington School. Engineered isolated student portals (/student/class/:classId).",
+      "Real-time attendance metric synchronization across 3 roles, homework lockouts, & 7-day date range filters.",
+      "Built AuthContext profile revocation hooks to block ghost logins for deleted student profiles."
+    ]
+  },
+  {
+    title: "3. Faculty Leave & Substitute Portal",
     subtitle: "ROI: 90% Faster Absence Processing & 100% Automated Sub Coverage",
     badgeText: "Enterprise HR Portal & Interactive Demo",
     imageFile: "eduflex-screenshot.png",
@@ -194,7 +205,7 @@ const projectsData = [
     ]
   },
   {
-    title: "3. Enterprise Communications Intranet",
+    title: "4. Enterprise Communications Intranet",
     subtitle: "ROI: 100% Policy Compliance Verification & Zero Lost Announcements",
     badgeText: "High-Compliance Intranet & Audit Logging",
     imageFile: "washington-school-portal.png",
@@ -205,7 +216,7 @@ const projectsData = [
     ]
   },
   {
-    title: "4. Washington Assessment Portal",
+    title: "5. Washington Assessment Portal",
     subtitle: "ROI: Saved Teachers 15+ Hours/Week in Manual Grading",
     badgeText: "Multi-Tenant LMS & Assessment Engine",
     imageFile: "washington-exam-portal.png",
@@ -213,17 +224,6 @@ const projectsData = [
       "Architected dynamic exam creation engine utilizing polymorphic React form components.",
       "Engineered real-time pivot-table data aggregation for Master Gradebooks & administrative analytics.",
       "Enforced strict multi-tenant data isolation and time-gated client routing for exam security."
-    ]
-  },
-  {
-    title: "5. AttendancePro Tracker",
-    subtitle: "ROI: 80% Reduction in Daily Attendance Logging Time",
-    badgeText: "Session Attendance & Truancy Detection",
-    imageFile: "attendance-pro-tracker.png",
-    bullets: [
-      "Replaced physical attendance rosters with proactive truancy algorithms that flag at-risk students.",
-      "Optimized NoSQL database reads using session-grouped data modeling for sub-second roster logging.",
-      "Engineered automated instruction-loss calculations to assist school administrators with intervention."
     ]
   }
 ];

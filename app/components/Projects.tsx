@@ -31,11 +31,12 @@ export interface Project {
   fullDescription: string | React.ReactNode;
   agenticWorkflow: string;
   techStack: string[];
-  demoCredentials: {
+  demoCredentials?: {
     role: string;
     email: string;
     password?: string;
   };
+  inActiveProduction?: boolean;
   githubLink: string;
   liveLink: string;
   imageUrl?: string;
@@ -113,6 +114,75 @@ const projects: Project[] = [
     ),
     isFeatured: true,
     icon: Bot,
+  },
+  {
+    id: "attendance-pro",
+    title: "AttendancePro Tracker v2.0",
+    shortDescription:
+      "Proactive session-based attendance & student classroom portal actively deployed and utilized in daily operations at Washington School.",
+    businessImpact: {
+      metric: "⚡ 80% Reduction in Attendance Logging Time & Zero Ghost Logins",
+      summary:
+        "Officially deployed at Washington School. Features real-time metric synchronization, dynamic student classroom portals, automated homework lockouts, and date range filters.",
+    },
+    category: "EdTech & Analytics",
+    techStack: ["React", "Next.js", "NoSQL", "Tailwind CSS", "Framer Motion"],
+    inActiveProduction: true,
+    githubLink: "https://github.com/GabbyDev0402/wcs-attendancetracker",
+    liveLink: "https://wcsattendancetracker.netlify.app/",
+    imageUrl: "/images/attendance-pro-tracker.png",
+    imagePlaceholder: {
+      color: "from-blue-600 to-indigo-800",
+      label: "AttendancePro v2.0 Production System",
+    },
+    agenticWorkflow:
+      "Architected using advanced agentic workflows via Antigravity IDE. Rapidly engineered isolated student classroom routing (/student/class/:classId), real-time attendance metric synchronization across 3 user roles, automated homework deadline lockdown timers, and AuthContext profile revocation hooks.",
+    fullDescription: (
+      <div className="space-y-4 text-sm text-slate-600">
+        <div className="p-4 rounded-xl bg-emerald-50/90 border border-emerald-200 space-y-1 text-emerald-950">
+          <div className="flex items-center gap-2 font-bold text-emerald-900 text-sm">
+            <Building2 className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>🏫 Officially Deployed &amp; In Active Production at Washington School</span>
+          </div>
+          <p className="text-xs text-emerald-900 leading-relaxed font-normal">
+            This platform is actively utilized in daily institutional operations by Washington School. Demo logins are disabled to safeguard private student and administrative data.
+          </p>
+        </div>
+
+        <p>
+          <strong>Overview:</strong> AttendancePro Tracker v2.0 is an enterprise educational management system engineered to eliminate student truancy, streamline daily attendance logging, and manage student classroom assignments.
+        </p>
+
+        <h4 className="font-bold text-slate-800 border-b pb-1 mt-4">
+          ✨ Highlights of What&apos;s Included in Version 2.0
+        </h4>
+        <ul className="list-disc pl-5 space-y-1.5">
+          <li>
+            <strong>Isolated Student Classroom Portals (<code>/student/class/:classId</code>):</strong> Dynamic portal routing for students to access dedicated classroom environments with instructor details, lesson topics, and targeted vocabulary homework.
+          </li>
+          <li>
+            <strong>Attendance Metric Engine Sync:</strong> Real-time calculation of student presence, lateness, absences, and excused counts synchronized instantly across Admin, Teacher, and Student views.
+          </li>
+          <li>
+            <strong>Homework Deadlines &amp; Lockdown:</strong> Automated lockouts for past-due vocabulary assignments to prevent overdue submissions.
+          </li>
+          <li>
+            <strong>Vocabulary &amp; History Date Filters:</strong> Rolling 7-day windows and calendar date pickers added to both Student and Teacher portals to prevent homework accumulation.
+          </li>
+          <li>
+            <strong>Unsubmit &amp; Edit Capability:</strong> Students can unsubmit pending daily diaries or vocabulary entries to edit and resubmit, instantly syncing with teacher review queues.
+          </li>
+          <li>
+            <strong>Strict Multi-Class Enrollment Mapping:</strong> Teacher Roster Manager updated to accurately parse and display all enrolled classes per student.
+          </li>
+          <li>
+            <strong>Deleted Profile Access Revocation:</strong> Automatic detection and sign-out in <code>AuthContext</code> to block ghost logins for deleted student profiles.
+          </li>
+        </ul>
+      </div>
+    ),
+    isFeatured: true,
+    icon: UserCheck,
   },
   {
     id: "eduflex-hr",
@@ -248,36 +318,6 @@ const projects: Project[] = [
     },
     icon: School,
   },
-  {
-    id: "attendance-pro",
-    title: "AttendancePro Tracker",
-    shortDescription:
-      "Proactive session-based attendance management system with early-warning truancy detection.",
-    businessImpact: {
-      metric: "⚡ 80% Reduction in Daily Attendance Logging Time",
-      summary:
-        "Replaced physical attendance rosters with proactive truancy algorithms that flag at-risk students before drop-out occurs.",
-    },
-    category: "EdTech & Analytics",
-    fullDescription:
-      "A specialized tracking system engineered to eliminate student truancy. It optimizes NoSQL database reads using session-grouped data modeling, calculates automated instruction-loss metrics, and alerts administrative staff to at-risk attendance patterns using proactive early-warning algorithms.",
-    agenticWorkflow:
-      "Architected and engineered using advanced agentic workflows via the Antigravity IDE. Directed AI models (Gemini 3.5 Flash / 3.1 Pro) to rapidly prototype UI/UX, establish NoSQL data schemas, enforce Cloud Firestore security rules, and generate automated Playwright E2E testing suites, significantly reducing the development lifecycle.",
-    techStack: ["React", "NoSQL", "Next.js", "Tailwind CSS", "Framer Motion"],
-    demoCredentials: {
-      role: "School Administrator",
-      email: "admin@attendancepro.demo",
-      password: "attendancePass2026!",
-    },
-    githubLink: "https://github.com/GabbyDev0402/wcs-attendancetracker",
-    liveLink: "https://wcsattendancetracker.netlify.app/",
-    imageUrl: "/images/attendance-pro-tracker.png",
-    imagePlaceholder: {
-      color: "from-blue-600 to-indigo-800",
-      label: "AttendancePro Algorithmic Analytics",
-    },
-    icon: UserCheck,
-  },
 ];
 
 const categories = [
@@ -390,10 +430,17 @@ export default function Projects() {
                               </span>
                             </div>
                           )}
-                          <div className="absolute bottom-3 left-3 right-3 z-10">
-                            <span className="text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white px-2 py-0.5 rounded-md shadow-xs">
-                              Live App Ready
-                            </span>
+                          <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between">
+                            {project.inActiveProduction ? (
+                              <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white px-2.5 py-0.5 rounded-md shadow-xs flex items-center gap-1">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-ping"></span>
+                                In Active Production @ Washington School
+                              </span>
+                            ) : (
+                              <span className="text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white px-2 py-0.5 rounded-md shadow-xs">
+                                Live App Ready
+                              </span>
+                            )}
                           </div>
                         </div>
                       ) : (
@@ -562,7 +609,9 @@ export default function Projects() {
                       <div className="flex flex-wrap items-center gap-2 mb-1">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-600 text-white shadow-md">
                           <ShieldCheck className="w-3.5 h-3.5" />
-                          Verified SaaS Deployment
+                          {selectedProject.inActiveProduction
+                            ? "In Active Production @ Washington School"
+                            : "Verified SaaS Deployment"}
                         </div>
                         {selectedProject.isFeatured && (
                           <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50">
@@ -653,41 +702,53 @@ export default function Projects() {
                   </p>
                 </div>
 
-                {/* Demo Credentials Box */}
-                <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-                  <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
-                    <Key className="w-4 h-4 text-indigo-600" />
-                    <span>Demo Access Credentials</span>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                    <div className="p-3 bg-white rounded-lg border border-slate-200">
-                      <span className="text-slate-400 block font-medium text-[10px] uppercase">
-                        Role
-                      </span>
-                      <span className="font-semibold text-slate-800">
-                        {selectedProject.demoCredentials.role}
-                      </span>
+                {/* Demo Credentials or Production Notice Box */}
+                {selectedProject.demoCredentials ? (
+                  <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                    <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
+                      <Key className="w-4 h-4 text-indigo-600" />
+                      <span>Demo Access Credentials</span>
                     </div>
-                    <div className="p-3 bg-white rounded-lg border border-slate-200">
-                      <span className="text-slate-400 block font-medium text-[10px] uppercase">
-                        Email
-                      </span>
-                      <span className="font-semibold text-slate-800 truncate block">
-                        {selectedProject.demoCredentials.email}
-                      </span>
-                    </div>
-                    {selectedProject.demoCredentials.password && (
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                       <div className="p-3 bg-white rounded-lg border border-slate-200">
                         <span className="text-slate-400 block font-medium text-[10px] uppercase">
-                          Password
+                          Role
                         </span>
-                        <span className="font-semibold text-slate-800 font-mono">
-                          {selectedProject.demoCredentials.password}
+                        <span className="font-semibold text-slate-800">
+                          {selectedProject.demoCredentials.role}
                         </span>
                       </div>
-                    )}
+                      <div className="p-3 bg-white rounded-lg border border-slate-200">
+                        <span className="text-slate-400 block font-medium text-[10px] uppercase">
+                          Email
+                        </span>
+                        <span className="font-semibold text-slate-800 truncate block">
+                          {selectedProject.demoCredentials.email}
+                        </span>
+                      </div>
+                      {selectedProject.demoCredentials.password && (
+                        <div className="p-3 bg-white rounded-lg border border-slate-200">
+                          <span className="text-slate-400 block font-medium text-[10px] uppercase">
+                            Password
+                          </span>
+                          <span className="font-semibold text-slate-800 font-mono">
+                            {selectedProject.demoCredentials.password}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="p-5 rounded-xl bg-emerald-50/80 border border-emerald-200 space-y-2">
+                    <div className="flex items-center gap-2 text-emerald-900 font-bold text-sm">
+                      <Building2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span>🏫 Live Production System — Active Institutional Use</span>
+                    </div>
+                    <p className="text-xs text-emerald-900 leading-relaxed font-normal">
+                      Public demo access credentials are disabled to safeguard private student profiles, daily diaries, and school administrative data at Washington School.
+                    </p>
+                  </div>
+                )}
 
                 {/* Tech Stack Pills */}
                 <div className="space-y-2">
