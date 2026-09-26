@@ -172,18 +172,7 @@ page2Y = drawSectionTitle(doc, "Featured Projects & Business ROI Impact", page2Y
 
 const projectsData = [
   {
-    title: "1. Mini AI DocuMind — Legal RAG Platform (NEW & FEATURED)",
-    subtitle: "ROI: Page Citations, Idempotent Pipeline & 65k+ PDF Batch CLI",
-    badgeText: "Legal RAG & Ingestion Engine",
-    imageFile: "documind-screenshot.png",
-    bullets: [
-      "Integrated unpdf serverless text parser for page-by-page citations (e.g. [Ruling_1042.pdf, Page 3]).",
-      "Built idempotent overwrite pipeline & CLI batch script (ingest_batch_corpus.mjs) for 65k+ PDFs.",
-      "Engineered multi-tenant organization routing (/org/[orgId]), pgvector RPC search, and Stripe billing."
-    ]
-  },
-  {
-    title: "2. AttendancePro Tracker v2.0 (LIVE PRODUCTION SYSTEM)",
+    title: "1. AttendancePro Tracker v2.0 (LIVE PRODUCTION SYSTEM)",
     subtitle: "ROI: 80% Reduction in Logging Time & Zero Ghost Logins",
     badgeText: "In Active Use @ Washington School",
     imageFile: "attendance-pro-tracker.png",
@@ -194,18 +183,7 @@ const projectsData = [
     ]
   },
   {
-    title: "3. Faculty Leave & Substitute Portal",
-    subtitle: "ROI: 90% Faster Absence Processing & 100% Automated Sub Coverage",
-    badgeText: "Enterprise HR Portal & Interactive Demo",
-    imageFile: "eduflex-screenshot.png",
-    bullets: [
-      "Replaced manual paper leave forms and phone calls with self-service substitute claiming.",
-      "Engineered PostgreSQL RLS policies & DB triggers to automate leave balance deductions.",
-      "Secured lesson plans with 60-second cryptographic URLs and real-time Postgres WebSocket sync."
-    ]
-  },
-  {
-    title: "4. Enterprise Communications Intranet",
+    title: "2. Enterprise Communications Intranet",
     subtitle: "ROI: 100% Policy Compliance Verification & Zero Lost Announcements",
     badgeText: "High-Compliance Intranet & Audit Logging",
     imageFile: "washington-school-portal.png",
@@ -216,7 +194,7 @@ const projectsData = [
     ]
   },
   {
-    title: "5. Washington Assessment Portal",
+    title: "3. Washington Assessment Portal",
     subtitle: "ROI: Saved Teachers 15+ Hours/Week in Manual Grading",
     badgeText: "Multi-Tenant LMS & Assessment Engine",
     imageFile: "washington-exam-portal.png",
