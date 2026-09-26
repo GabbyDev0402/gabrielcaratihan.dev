@@ -172,36 +172,25 @@ page2Y = drawSectionTitle(doc, "Featured Projects & Business ROI Impact", page2Y
 
 const projectsData = [
   {
-    title: "1. AttendancePro Tracker v2.0 (LIVE PRODUCTION SYSTEM)",
-    subtitle: "ROI: 80% Reduction in Logging Time & Zero Ghost Logins",
+    title: "1. Washington School International (Online Portal - PRODUCTION)",
+    subtitle: "ROI: 80%+ Reduction in Operational Friction & 100% Grade Sync",
     badgeText: "In Active Use @ Washington School",
     imageFile: "attendance-pro-tracker.png",
     bullets: [
-      "Officially deployed at Washington School. Engineered isolated student portals (/student/class/:classId).",
-      "Real-time attendance metric synchronization across 3 roles, homework lockouts, & 7-day date range filters.",
-      "Built AuthContext profile revocation hooks to block ghost logins for deleted student profiles."
+      "Engineered multi-role institutional portal (Admin, Faculty, Student) with React 19 and Firebase.",
+      "Architected 24-column Academic Performance Grid with dynamic SHS track mapping and .xls generation.",
+      "Developed polymorphic exam builder with live read receipts, rapid score desk, & diary workflows."
     ]
   },
   {
-    title: "2. Enterprise Communications Intranet",
-    subtitle: "ROI: 100% Policy Compliance Verification & Zero Lost Announcements",
-    badgeText: "High-Compliance Intranet & Audit Logging",
+    title: "2. Apply Copilot — AI Application Agent (CHROME EXTENSION)",
+    subtitle: "ROI: 90% Faster Applications & Zero Missed Secret Instructions",
+    badgeText: "AI Browser Agent (Gemini + Supabase)",
     imageFile: "washington-school-portal.png",
     bullets: [
-      "Replaced unorganized email blasts with digital read-receipt tracking & instant CSV compliance logs.",
-      "Implemented Role-Based Access Control (RBAC) with Cloud Firestore Security Rules.",
-      "Streamlined institutional announcement workflows with secure multi-role administrative oversight."
-    ]
-  },
-  {
-    title: "3. Washington Assessment Portal",
-    subtitle: "ROI: Saved Teachers 15+ Hours/Week in Manual Grading",
-    badgeText: "Multi-Tenant LMS & Assessment Engine",
-    imageFile: "washington-exam-portal.png",
-    bullets: [
-      "Architected dynamic exam creation engine utilizing polymorphic React form components.",
-      "Engineered real-time pivot-table data aggregation for Master Gradebooks & administrative analytics.",
-      "Enforced strict multi-tenant data isolation and time-gated client routing for exam security."
+      "Built Chrome Extension with live Supabase master brain integration for dynamic DOM form autofill.",
+      "Engineered secret instruction scanner detecting mandatory hidden keywords & required file uploads.",
+      "Generated 0-100% role compatibility match scores and tailored 3-paragraph cover letters via Gemini AI."
     ]
   }
 ];

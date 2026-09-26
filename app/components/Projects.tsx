@@ -9,10 +9,8 @@ import {
   Key,
   School,
   Building2,
-  UserCheck,
   ChevronRight,
-  ChevronDown,
-  ChevronUp,
+  ChevronLeft,
   ShieldCheck,
   TrendingUp,
   Bot,
@@ -50,160 +48,267 @@ export interface Project {
 
 const projects: Project[] = [
   {
-    id: "attendance-pro",
-    title: "AttendancePro Tracker v2.0",
+    id: "wsi-portal",
+    title: "Washington School International (Online) — Online Portal",
     shortDescription:
-      "Proactive session-based attendance & student classroom portal actively deployed and utilized in daily operations at Washington School.",
+      "Full-Stack School Management & Learning Platform serving Administrators, Faculty, and Students with automated 24-column grade sync.",
     businessImpact: {
-      metric: "⚡ 80% Reduction in Attendance Logging Time & Zero Ghost Logins",
+      metric: "⚡ 80%+ Reduction in Operational Friction & 100% Automated Grade Syncing",
       summary:
-        "Officially deployed at Washington School. Features real-time metric synchronization, dynamic student classroom portals, automated homework lockouts, and date range filters.",
+        "Officially deployed in active daily production at Washington School International. Replaced manual spreadsheets with a 24-column Academic Performance Grid, polymorphic exam builder, and real-time attendance analytics.",
     },
     category: "EdTech & Analytics",
-    techStack: ["React", "Next.js", "NoSQL", "Tailwind CSS", "Framer Motion"],
+    techStack: [
+      "React 19",
+      "Vite v8",
+      "Tailwind CSS v4",
+      "Firebase Firestore",
+      "Firebase Auth",
+      "Lucide React",
+    ],
     inActiveProduction: true,
     githubLink: "https://github.com/GabbyDev0402/wcs-attendancetracker",
     liveLink: "https://wcsattendancetracker.netlify.app/",
     imageUrl: "/images/attendance-pro-tracker.png",
     imagePlaceholder: {
       color: "from-blue-600 to-indigo-800",
-      label: "AttendancePro v2.0 Production System",
+      label: "Washington School International Portal",
     },
     agenticWorkflow:
-      "Architected using advanced agentic workflows via Antigravity IDE. Rapidly engineered isolated student classroom routing (/student/class/:classId), real-time attendance metric synchronization across 3 user roles, automated homework deadline lockdown timers, and AuthContext profile revocation hooks.",
+      "Architected and engineered using advanced agentic workflows via Antigravity IDE. Directed AI models to design a 24-column performance grid matching institutional Google Sheets, establish polymorphic assessment schemas, optimize Firestore query listeners to avoid read quota spikes, and generate client-side styled .xls spreadsheets.",
     fullDescription: (
-      <div className="space-y-4 text-sm text-slate-600">
+      <div className="space-y-5 text-sm text-slate-600">
         <div className="p-4 rounded-xl bg-emerald-50/90 border border-emerald-200 space-y-1 text-emerald-950">
           <div className="flex items-center gap-2 font-bold text-emerald-900 text-sm">
             <Building2 className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>🏫 Officially Deployed &amp; In Active Production at Washington School</span>
+            <span>🏫 Officially Deployed &amp; In Active Production at Washington School International</span>
           </div>
           <p className="text-xs text-emerald-900 leading-relaxed font-normal">
-            This platform is actively utilized in daily institutional operations by Washington School. Demo logins are disabled to safeguard private student and administrative data.
+            This platform orchestrates daily class operations, live student attendance tracking, rich interactive diary/vocabulary workflows, in-house polymorphic exams, and institutional academic performance reporting for real students and faculty.
           </p>
         </div>
 
-        <p>
-          <strong>Overview:</strong> AttendancePro Tracker v2.0 is an enterprise educational management system engineered to eliminate student truancy, streamline daily attendance logging, and manage student classroom assignments.
-        </p>
+        <div>
+          <h4 className="font-bold text-slate-800 border-b pb-1">📌 Project Overview</h4>
+          <p className="mt-2 leading-relaxed">
+            Originally conceived as a daily attendance logger, the system grew into a unified <strong>School Management &amp; Learning Platform</strong> serving Administrators, Faculty, and Students of an international distance-learning school.
+          </p>
+        </div>
 
+        <div>
+          <h4 className="font-bold text-slate-800 border-b pb-1">🏛️ Admin Console (Operations &amp; Analytics)</h4>
+          <ul className="list-disc pl-5 mt-2 space-y-1.5">
+            <li>
+              <strong>24-Column Academic Performance Master Grid:</strong> Replicates institutional spreadsheets across standard and ESL curricula. Separates Core subjects (English, Social Science, Science, Math) and Added subjects (MAPEH, Values, TLE, Literature), with dynamic Senior High School (SHS) course track resolution (e.g., <em>PPG</em>, <em>EmpTech</em>, <em>DIASS</em>, <em>MIL</em>).
+            </li>
+            <li>
+              <strong>Sub-Score Breakdown:</strong> Automatically calculates Multiple Choice, Essay/Vocabularies, and total earned points per student with instant general average and passing status.
+            </li>
+            <li>
+              <strong>Deficiency Audit &amp; 1-Click Clipboard Engine:</strong> Automatically audits missing test scores across grades and generates clipboard-ready deficiency notices with responsible teacher names.
+            </li>
+            <li>
+              <strong>Teacher Compliance Center:</strong> Real-time reactive queues tracking pending vocabulary and diary submissions awaiting teacher review.
+            </li>
+            <li>
+              <strong>Staff &amp; Student Provisioning:</strong> Account provisioning with 1-click magic password reset triggers and global student credential directory management.
+            </li>
+            <li>
+              <strong>Custom Exports:</strong> Generates styled binary <code>.xls</code> spreadsheets and streaming <code>.csv</code> files for administrative archiving.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-bold text-slate-800 border-b pb-1">👨‍🏫 Teacher Dashboard &amp; Classroom Studio</h4>
+          <ul className="list-disc pl-5 mt-2 space-y-1.5">
+            <li>
+              <strong>Master Schedule &amp; Daily Roll Call:</strong> Filterable daily class sessions with late-minute counters, excused, absent, and present statuses.
+            </li>
+            <li>
+              <strong>Polymorphic Exam Builder &amp; Scope Studio:</strong> In-house assessment studio supporting Multiple Choice (with dynamic answer keys), Exact Identification, Vocabulary Matching Pairs, and Rubric-based Essay prompts.
+            </li>
+            <li>
+              <strong>Interactive Read Receipts:</strong> Teachers publish exam scopes and instantly view live student read receipts, tracking who acknowledged the scope.
+            </li>
+            <li>
+              <strong>Rapid Score Entry Desk:</strong> Fast modal for grading objective and subjective sections, immediately pushing updates to institutional reports.
+            </li>
+            <li>
+              <strong>Diary &amp; Essay Review Portal:</strong> Teacher grading workflow with status filters (pending vs. graded), inline feedback, and timestamp tracking.
+            </li>
+            <li>
+              <strong>Printable Weekly Lesson Matrix:</strong> Print-ready spreadsheet layout displaying curriculum coverage, lesson summaries, and periods.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-bold text-slate-800 border-b pb-1">🎓 Student Digital Portal</h4>
+          <ul className="list-disc pl-5 mt-2 space-y-1.5">
+            <li>
+              <strong>Attendance Rate Analytics:</strong> Displays real-time student attendance rate (%), total logged sessions, late counts (with total late minutes), excused sessions, and absences without heavy database overhead.
+            </li>
+            <li>
+              <strong>Exam Scopes &amp; Live Acknowledgment:</strong> Students receive assessment scopes for all enrolled subjects and can confirm receipt with a 1-click acknowledgment button.
+            </li>
+            <li>
+              <strong>Interactive Daily Notebook:</strong> Rich-text daily diary submission desk and vocabulary sentence creator.
+            </li>
+            <li>
+              <strong>Dual Authentication:</strong> Passwordless or master-code student login system paired with faculty credentials.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-bold text-slate-800 border-b pb-1">⚡ Engineering Challenges Solved</h4>
+          <ul className="list-disc pl-5 mt-2 space-y-1.5">
+            <li>
+              <strong>Firestore Query Optimization &amp; Read Quota Safeguards:</strong> Redesigned student log listeners to avoid full-collection reads (<code>O(N)</code> queries), replacing heavy historical queries with cached client-side aggregation.
+            </li>
+            <li>
+              <strong>Polymorphic Assessment Data Engine:</strong> Engineered a flexible schema capable of rendering, saving, and auto-grading multiple disparate question models under a single uniform document structure.
+            </li>
+            <li>
+              <strong>Dynamic Senior High School Course Resolution:</strong> Implemented an intelligent subject-matching algorithm with alias fallbacks (mapping DIASS to Values, EmpTech to TLE, PPG to Literature) ensuring generic teacher exam titles reliably slot into the correct institutional report columns.
+            </li>
+            <li>
+              <strong>Excel-Accurate Web Spreadsheet Rendering:</strong> Built a 28-column master report that mirrors Google Sheets formatting in CSS/HTML with sticky student columns, pastel color banding, responsive printing styles, and native <code>.xls</code> binary generation.
+            </li>
+          </ul>
+        </div>
+      </div>
+    ),
+    isFeatured: true,
+    icon: School,
+  },
+  {
+    id: "apply-copilot",
+    title: "Apply Copilot — Intelligent AI Job Application Agent",
+    shortDescription:
+      "Chrome Extension agent with a live Supabase vector brain that auto-fills job application forms, detects hidden instructions, and generates tailored cover letters.",
+    businessImpact: {
+      metric: "⚡ 90% Faster Application Workflows & Zero Missed Secret Instructions",
+      summary:
+        "Engineered with Google Gemini AI API and Supabase. Detects hidden secret words, scans dynamic DOM inputs, calculates job match scores (0-100%), and writes custom cover letters.",
+    },
+    category: "AI & Automation",
+    techStack: [
+      "Chrome Extension (MV3)",
+      "React 19",
+      "Supabase",
+      "Gemini AI API",
+      "Vite",
+      "Tailwind CSS",
+    ],
+    githubLink: "https://github.com/GabbyDev0402/apply-copilot",
+    liveLink: "https://github.com/GabbyDev0402/apply-copilot",
+    imagePlaceholder: {
+      color: "from-purple-600 via-indigo-600 to-blue-600",
+      label: "Apply Copilot AI Assistant",
+    },
+    agenticWorkflow:
+      "Architected using advanced agentic workflows via Antigravity IDE. Engineered an expandable Copilot Panel with multi-page job context overrides, live Supabase master profile syncing, secret instruction detectors, and Gemini 3.5 Flash prompt orchestration for DOM form filling.",
+    fullDescription: (
+      <div className="space-y-4 text-sm text-slate-600">
+        <p>
+          <strong>Overview:</strong> Apply Copilot is an intelligent Chrome Extension engineered to eliminate the repetitive friction of job applications while preserving personalization. Powered by a live Supabase master brain and the Google Gemini API, it analyzes form fields, scans for hidden employer requirements, and automatically populates high-converting answers.
+        </p>
         <h4 className="font-bold text-slate-800 border-b pb-1 mt-4">
-          ✨ Highlights of What&apos;s Included in Version 2.0
+          Key Features &amp; AI Capabilities
         </h4>
         <ul className="list-disc pl-5 space-y-1.5">
           <li>
-            <strong>Isolated Student Classroom Portals (<code>/student/class/:classId</code>):</strong> Dynamic portal routing for students to access dedicated classroom environments with instructor details, lesson topics, and targeted vocabulary homework.
+            <strong>Expandable Glassmorphism Copilot Panel:</strong> A floating browser widget with intuitive multi-tab navigation (Actions, Manual Job Context override, Results).
           </li>
           <li>
-            <strong>Attendance Metric Engine Sync:</strong> Real-time calculation of student presence, lateness, absences, and excused counts synchronized instantly across Admin, Teacher, and Student views.
+            <strong>Live Supabase Brain Integration:</strong> Connects directly to a cloud PostgreSQL <code>master_profile</code> table, retrieving up-to-date work history, projects, and behavioral context on demand.
           </li>
           <li>
-            <strong>Homework Deadlines &amp; Lockdown:</strong> Automated lockouts for past-due vocabulary assignments to prevent overdue submissions.
+            <strong>Secret Word &amp; Instruction Scanner:</strong> Specifically analyzes job descriptions for hidden employer instructions (e.g. <em>&quot;Use the word Star in your subject&quot;</em>) and flags required attachments (video intro, PDF portfolio) in an interactive checklist.
           </li>
           <li>
-            <strong>Vocabulary &amp; History Date Filters:</strong> Rolling 7-day windows and calendar date pickers added to both Student and Teacher portals to prevent homework accumulation.
+            <strong>Job Compatibility Match Scorer:</strong> Evaluates candidate background against job postings, generating a 0–100% role compatibility score with 3 key justifications.
           </li>
           <li>
-            <strong>Unsubmit &amp; Edit Capability:</strong> Students can unsubmit pending daily diaries or vocabulary entries to edit and resubmit, instantly syncing with teacher review queues.
-          </li>
-          <li>
-            <strong>Strict Multi-Class Enrollment Mapping:</strong> Teacher Roster Manager updated to accurately parse and display all enrolled classes per student.
-          </li>
-          <li>
-            <strong>Deleted Profile Access Revocation:</strong> Automatic detection and sign-out in <code>AuthContext</code> to block ghost logins for deleted student profiles.
+            <strong>Tailored 3-Paragraph Cover Letter Generator:</strong> Crafts concise, role-specific cover letters grounded in real achievements with 1-click clipboard copying.
           </li>
         </ul>
       </div>
     ),
     isFeatured: true,
-    icon: UserCheck,
-  },
-  {
-    id: "enterprise-intranet",
-    title: "Enterprise Communications Intranet",
-    shortDescription:
-      "Secure B2B announcement portal built for institutional compliance and administrative oversight.",
-    businessImpact: {
-      metric: "⚡ 100% Policy Compliance Verification & Zero Lost Announcements",
-      summary:
-        "Replaced unorganized email blasts and physical bulletin boards with digital read-receipt tracking and instant CSV compliance reporting.",
-    },
-    category: "Enterprise HR & Portals",
-    fullDescription:
-      "Designed for high-compliance enterprise environments, this intranet platform enforces strict Role-Based Access Control (RBAC) via Cloud Firestore Security Rules, tracks institutional compliance using a digital read-receipt engine, and provides automated client-side CSV audit log exports powered by browser Blob APIs.",
-    agenticWorkflow:
-      "Architected and engineered using advanced agentic workflows via the Antigravity IDE. Directed AI models (Gemini 3.5 Flash / 3.1 Pro) to rapidly prototype UI/UX, establish NoSQL data schemas, enforce Cloud Firestore security rules, and generate automated Playwright E2E testing suites, significantly reducing the development lifecycle.",
-    techStack: ["React", "Firestore", "RBAC", "Tailwind CSS", "TypeScript"],
-    demoCredentials: {
-      role: "Compliance Officer",
-      email: "audit@enterprise-intranet.demo",
-      password: "compliancePass2026!",
-    },
-    githubLink: "https://github.com/GabbyDev0402/washington-school-portal",
-    liveLink: "https://washington-school-portal.netlify.app/admin",
-    imageUrl: "/images/washington-school-portal.png",
-    imagePlaceholder: {
-      color: "from-slate-800 to-indigo-900",
-      label: "Washington School Intranet Console",
-    },
-    icon: Building2,
-  },
-  {
-    id: "washington-portal",
-    title: "Washington Assessment Portal",
-    shortDescription:
-      "A Multi-Tenant Learning Management System (LMS) with automated grading and institutional analytics.",
-    businessImpact: {
-      metric: "⚡ Saved Teachers 15+ Hours/Week in Manual Grading",
-      summary:
-        "Replaced paper exam sheets and manual grade calculations with a dynamic assessment builder and instant master gradebook analytics.",
-    },
-    category: "EdTech & Analytics",
-    fullDescription:
-      "Engineered to resolve administrative friction in educational institutions, this multi-tenant LMS features dynamic exam creation powered by a polymorphic React form engine, real-time master gradebooks with aggregated pivot-table calculations, and strict multi-tenant data isolation with time-gated client routing for secure assessment environments.",
-    agenticWorkflow:
-      "Architected and engineered using advanced agentic workflows via the Antigravity IDE. Directed AI models (Gemini 3.5 Flash / 3.1 Pro) to rapidly prototype UI/UX, establish NoSQL data schemas, enforce Cloud Firestore security rules, and generate automated Playwright E2E testing suites, significantly reducing the development lifecycle.",
-    techStack: ["React", "Next.js", "Firebase", "Tailwind CSS", "TypeScript"],
-    demoCredentials: {
-      role: "Institutional Administrator",
-      email: "admin@washington-lms.demo",
-      password: "demoPass2026!",
-    },
-    githubLink: "https://github.com/GabbyDev0402/washington-school-portal",
-    liveLink: "https://wcs-exam-portal.netlify.app/",
-    imageUrl: "/images/washington-exam-portal.png",
-    imagePlaceholder: {
-      color: "from-indigo-600 to-blue-700",
-      label: "Washington LMS Admin Dashboard",
-    },
-    icon: School,
+    icon: Bot,
   },
 ];
 
-const categories = [
-  "All Projects",
-  "AI & Automation",
-  "Enterprise HR & Portals",
-  "EdTech & Analytics",
-];
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 240 : -240,
+    opacity: 0,
+    scale: 0.94,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      x: { type: "spring" as const, stiffness: 280, damping: 28 },
+      opacity: { duration: 0.25 },
+      scale: { duration: 0.25 },
+    },
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? 240 : -240,
+    opacity: 0,
+    scale: 0.94,
+    transition: {
+      x: { type: "spring" as const, stiffness: 280, damping: 28 },
+      opacity: { duration: 0.2 },
+      scale: { duration: 0.2 },
+    },
+  }),
+};
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [activeCategory, setActiveCategory] = useState("All Projects");
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
-  const filteredProjects = projects.filter((p) => {
-    if (activeCategory === "All Projects") return true;
-    return p.category === activeCategory;
-  });
+  const total = projects.length;
+  const activeProject = projects[currentIndex];
+  const nextIndex = (currentIndex + 1) % total;
+  const prevIndex = (currentIndex - 1 + total) % total;
+  const nextProject = projects[nextIndex];
+  const prevProject = projects[prevIndex];
 
-  const displayedProjects =
-    activeCategory === "All Projects" && !isExpanded
-      ? filteredProjects.slice(0, 3)
-      : filteredProjects;
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % total);
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + total) % total);
+  };
+
+  const goToSlide = (idx: number) => {
+    if (idx === currentIndex) return;
+    setDirection(idx > currentIndex ? 1 : -1);
+    setCurrentIndex(idx);
+  };
+
+  const IconComponent = activeProject.icon || Building2;
+  const displayImage =
+    activeProject.imageUrl ||
+    (typeof activeProject.imagePlaceholder === "string"
+      ? activeProject.imagePlaceholder
+      : null);
 
   return (
-    <section id="projects" className="py-20 bg-slate-100/70 border-y border-slate-200/80">
+    <section id="projects" className="py-20 bg-slate-100/70 border-y border-slate-200/80 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-10">
           {/* Section Header */}
@@ -219,207 +324,269 @@ export default function Projects() {
             </p>
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
-            {categories.map((cat) => {
-              const isActive = activeCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => {
-                    setActiveCategory(cat);
-                    setIsExpanded(false);
-                  }}
-                  className={`px-4 py-2 text-xs font-bold rounded-xl transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
-                      : "bg-white text-slate-600 border border-slate-200 hover:border-indigo-300 hover:text-indigo-600"
-                  }`}
+          {/* Interactive Peeking Stage Slider */}
+          <div className="relative flex items-center justify-center w-full max-w-6xl mx-auto min-h-[580px] py-4">
+            {/* Left Peeking Card Preview (Desktop Only) */}
+            {total > 1 && (
+              <div
+                onClick={handlePrev}
+                role="button"
+                tabIndex={0}
+                aria-label="Previous project preview"
+                className="hidden lg:block absolute -left-20 xl:-left-12 w-80 h-[520px] rounded-2xl overflow-hidden opacity-35 hover:opacity-75 transition-all duration-300 scale-[0.92] cursor-pointer z-0 border border-slate-300 bg-white shadow-md select-none group"
+              >
+                <div className="h-44 bg-slate-900 relative">
+                  {prevProject.imageUrl ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={prevProject.imageUrl}
+                      alt={prevProject.title}
+                      className="w-full h-full object-cover object-top opacity-60"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-indigo-700 to-purple-800 opacity-60" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
+                  <div className="absolute top-3 left-3">
+                    <span className="text-[10px] font-bold uppercase tracking-wider bg-slate-900/80 backdrop-blur-md text-white px-2 py-0.5 rounded-md border border-white/20">
+                      ← Previous
+                    </span>
+                  </div>
+                </div>
+                <div className="p-5 space-y-2">
+                  <span className="text-[11px] font-bold text-indigo-600 uppercase tracking-wider">
+                    {prevProject.category}
+                  </span>
+                  <h4 className="text-base font-bold text-slate-800 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+                    {prevProject.title}
+                  </h4>
+                  <p className="text-xs text-slate-500 line-clamp-3">
+                    {prevProject.shortDescription}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Active Center Card with Directional Sliding */}
+            <div className="w-full max-w-2xl z-10 mx-auto px-2 sm:px-4">
+              <AnimatePresence custom={direction} mode="wait">
+                <motion.div
+                  key={activeProject.id}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-indigo-400 ring-4 ring-indigo-500/10 flex flex-col justify-between"
                 >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Cards Grid */}
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            <AnimatePresence>
-              {displayedProjects.map((project, idx) => {
-                const IconComponent = project.icon || Building2;
-                const displayImage =
-                  project.imageUrl ||
-                  (typeof project.imagePlaceholder === "string"
-                    ? project.imagePlaceholder
-                    : null);
-
-                return (
-                  <motion.div
-                    key={project.id}
-                    layout
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.4, delay: idx * 0.1, ease: "easeOut" }}
-                    className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative ${
-                      project.isFeatured
-                        ? "ring-2 ring-indigo-500 border-2 border-indigo-400 shadow-indigo-500/15"
-                        : "border border-slate-200/80"
-                    }`}
-                  >
-                    {/* Top Image / Visual Banner */}
-                    <div className="h-56 relative overflow-hidden bg-slate-900">
-                      {displayImage ? (
-                        <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-500">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={displayImage}
-                            alt={project.title}
-                            className="w-full h-full object-cover object-top"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
-                          <div className="absolute top-3 left-3 z-10 flex items-center gap-2">
-                            <div className="p-2 rounded-lg bg-slate-900/70 backdrop-blur-md text-white border border-white/20">
-                              <IconComponent className="w-4 h-4" />
-                            </div>
-                          </div>
-                          {project.isFeatured && (
-                            <div className="absolute top-3 right-3 z-20">
-                              <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-2.5 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
-                                🌟 NEW &amp; FEATURED
-                              </span>
-                            </div>
-                          )}
-                          <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between">
-                            {project.inActiveProduction ? (
-                              <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white px-2.5 py-0.5 rounded-md shadow-xs flex items-center gap-1">
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-ping"></span>
-                                In Active Production @ Washington School
-                              </span>
-                            ) : (
-                              <span className="text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white px-2 py-0.5 rounded-md shadow-xs">
-                                Live App Ready
-                              </span>
-                            )}
+                  {/* Top Image / Visual Banner */}
+                  <div className="h-60 sm:h-64 relative overflow-hidden bg-slate-900">
+                    {displayImage ? (
+                      <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-500">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={displayImage}
+                          alt={activeProject.title}
+                          className="w-full h-full object-cover object-top"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-black/20" />
+                        <div className="absolute top-3 left-3 z-10 flex items-center gap-2">
+                          <div className="p-2.5 rounded-xl bg-slate-900/80 backdrop-blur-md text-white border border-white/20 shadow-md">
+                            <IconComponent className="w-5 h-5" />
                           </div>
                         </div>
-                      ) : (
-                        <div
-                          className={`w-full h-full bg-gradient-to-br ${
-                            typeof project.imagePlaceholder === "object"
-                              ? project.imagePlaceholder.color
-                              : "from-indigo-600 to-blue-700"
-                          } p-6 flex flex-col justify-between relative overflow-hidden text-white`}
-                        >
-                          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full pointer-events-none" />
-                          <div className="flex items-center justify-between z-10">
-                            <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-md text-white border border-white/20">
-                              <IconComponent className="w-5 h-5" />
-                            </div>
-                            {project.isFeatured ? (
-                              <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
-                                🌟 NEW &amp; FEATURED
-                              </span>
-                            ) : (
-                              <span className="text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
-                                SaaS Solution
-                              </span>
-                            )}
+                        {activeProject.isFeatured && (
+                          <div className="absolute top-3 right-3 z-20">
+                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
+                              🌟 FEATURED SHOWCASE
+                            </span>
                           </div>
-                          <div className="z-10">
-                            <p className="text-xs font-medium text-white/80 uppercase tracking-wider">
-                              AI &amp; RAG Architecture
-                            </p>
-                            <h4 className="text-sm font-semibold text-white truncate mt-0.5">
-                              {typeof project.imagePlaceholder === "object"
-                                ? project.imagePlaceholder.label
-                                : project.title}
-                            </h4>
+                        )}
+                        <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between">
+                          {activeProject.inActiveProduction ? (
+                            <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-ping"></span>
+                              In Active Production @ Washington School
+                            </span>
+                          ) : (
+                            <span className="text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white px-2.5 py-1 rounded-md shadow-xs">
+                              Live Ready Tool
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <div
+                        className={`w-full h-full bg-gradient-to-br ${
+                          typeof activeProject.imagePlaceholder === "object"
+                            ? activeProject.imagePlaceholder.color
+                            : "from-indigo-600 to-blue-700"
+                        } p-6 flex flex-col justify-between relative overflow-hidden text-white`}
+                      >
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full pointer-events-none" />
+                        <div className="flex items-center justify-between z-10">
+                          <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-md text-white border border-white/20">
+                            <IconComponent className="w-5 h-5" />
                           </div>
+                          {activeProject.isFeatured && (
+                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
+                              🌟 FEATURED SHOWCASE
+                            </span>
+                          )}
+                        </div>
+                        <div className="z-10">
+                          <p className="text-xs font-medium text-white/80 uppercase tracking-wider">
+                            {activeProject.category}
+                          </p>
+                          <h4 className="text-base font-semibold text-white truncate mt-0.5">
+                            {typeof activeProject.imagePlaceholder === "object"
+                              ? activeProject.imagePlaceholder.label
+                              : activeProject.title}
+                          </h4>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Card Body */}
+                  <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                          {activeProject.title}
+                        </h3>
+                      </div>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        {activeProject.shortDescription}
+                      </p>
+
+                      {/* Business Impact ROI Callout */}
+                      {activeProject.businessImpact && (
+                        <div className="p-3.5 rounded-xl bg-emerald-50/90 border border-emerald-200/90 text-xs text-emerald-950 space-y-1">
+                          <div className="font-bold flex items-center gap-1.5 text-emerald-800 text-xs sm:text-sm">
+                            <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                            <span>{activeProject.businessImpact.metric}</span>
+                          </div>
+                          <p className="text-[11px] text-emerald-800 leading-snug">
+                            {activeProject.businessImpact.summary}
+                          </p>
                         </div>
                       )}
                     </div>
 
-                    {/* Card Body */}
-                    <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors tracking-tight">
-                            {project.title}
-                          </h3>
-                        </div>
-                        <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
-                          {project.shortDescription}
-                        </p>
-
-                        {/* Business Impact ROI Callout */}
-                        {project.businessImpact && (
-                          <div className="p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/80 text-xs text-emerald-950 space-y-1">
-                            <div className="font-bold flex items-center gap-1.5 text-emerald-800">
-                              <TrendingUp className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                              <span>{project.businessImpact.metric}</span>
-                            </div>
-                            <p className="text-[11px] text-emerald-800 leading-snug">
-                              {project.businessImpact.summary}
-                            </p>
-                          </div>
-                        )}
+                    {/* Tech Stack Pills & Modal Trigger */}
+                    <div className="space-y-4 pt-4 border-t border-slate-100">
+                      <div className="flex flex-wrap gap-1.5">
+                        {activeProject.techStack.map((tag, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200/80"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                       </div>
 
-                      {/* Tech Stack Pills */}
-                      <div className="space-y-4 pt-4 border-t border-slate-100">
-                        <div className="flex flex-wrap gap-1.5">
-                          {project.techStack.map((tag, tIdx) => (
-                            <span
-                              key={tIdx}
-                              className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200/80"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* See More Details Button */}
-                        <button
-                          onClick={() => setSelectedProject(project)}
-                          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white rounded-xl border border-indigo-200/80 hover:border-indigo-600 shadow-2xs transition-all duration-200 group/btn"
-                        >
-                          See More Details &amp; Architecture
-                          <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
-                        </button>
-                      </div>
+                      <button
+                        onClick={() => setSelectedProject(activeProject)}
+                        className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white rounded-xl border border-indigo-200/80 hover:border-indigo-600 shadow-2xs transition-all duration-200 group/btn cursor-pointer"
+                      >
+                        Explore Complete Architecture &amp; Case Study
+                        <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
+                      </button>
                     </div>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </motion.div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
-          {/* Explore Catalog Expansion Button */}
-          {activeCategory === "All Projects" && (
-            <div className="pt-4 text-center">
-              <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white border border-indigo-200 hover:border-indigo-600 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer group"
+            {/* Right Peeking Card Preview (Desktop Only) */}
+            {total > 1 && (
+              <div
+                onClick={handleNext}
+                role="button"
+                tabIndex={0}
+                aria-label="Next project preview"
+                className="hidden lg:block absolute -right-20 xl:-right-12 w-80 h-[520px] rounded-2xl overflow-hidden opacity-35 hover:opacity-75 transition-all duration-300 scale-[0.92] cursor-pointer z-0 border border-slate-300 bg-white shadow-md select-none group"
               >
-                {isExpanded ? (
-                  <>
-                    Show Featured Projects Only
-                    <ChevronUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
-                  </>
-                ) : (
-                  <>
-                    Explore Full Project Catalog ({projects.length} Projects)
-                    <ChevronDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
-                  </>
-                )}
-              </button>
+                <div className="h-44 bg-slate-900 relative">
+                  {nextProject.imageUrl ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={nextProject.imageUrl}
+                      alt={nextProject.title}
+                      className="w-full h-full object-cover object-top opacity-60"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-purple-700 via-indigo-700 to-blue-800 opacity-60" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
+                  <div className="absolute top-3 right-3">
+                    <span className="text-[10px] font-bold uppercase tracking-wider bg-slate-900/80 backdrop-blur-md text-white px-2 py-0.5 rounded-md border border-white/20">
+                      Next Up →
+                    </span>
+                  </div>
+                </div>
+                <div className="p-5 space-y-2">
+                  <span className="text-[11px] font-bold text-indigo-600 uppercase tracking-wider">
+                    {nextProject.category}
+                  </span>
+                  <h4 className="text-base font-bold text-slate-800 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+                    {nextProject.title}
+                  </h4>
+                  <p className="text-xs text-slate-500 line-clamp-3">
+                    {nextProject.shortDescription}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Bottom Sliding Navigation Controls */}
+          {total > 1 && (
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <div className="inline-flex items-center gap-3 bg-white p-2 rounded-2xl shadow-md border border-slate-200">
+                <button
+                  onClick={handlePrev}
+                  className="inline-flex items-center justify-center p-2.5 rounded-xl bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 transition-all cursor-pointer group"
+                  aria-label="Previous project"
+                >
+                  <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
+                </button>
+
+                <div className="flex items-center gap-2 px-2">
+                  {projects.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => goToSlide(i)}
+                      className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        currentIndex === i
+                          ? "w-8 bg-indigo-600 shadow-xs"
+                          : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                  <span className="text-xs font-bold text-slate-400 ml-2 font-mono">
+                    0{currentIndex + 1} / 0{total}
+                  </span>
+                </div>
+
+                <button
+                  onClick={handleNext}
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md shadow-indigo-500/20 group"
+                  aria-label="Next project"
+                >
+                  <span>Next Project</span>
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </div>
             </div>
           )}
         </div>
       </div>
 
-      {/* Framer Motion Deep-Dive Modal */}
+      {/* Deep-Dive Case Study Modal */}
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8">
@@ -443,7 +610,7 @@ export default function Projects() {
               {/* Close (X) Button */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-slate-900/60 hover:bg-slate-900/80 text-white backdrop-blur-md transition-colors focus:outline-hidden"
+                className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-slate-900/60 hover:bg-slate-900/80 text-white backdrop-blur-md transition-colors focus:outline-hidden cursor-pointer"
                 aria-label="Close dialog"
               >
                 <X className="w-5 h-5" />
@@ -471,11 +638,11 @@ export default function Projects() {
                           <ShieldCheck className="w-3.5 h-3.5" />
                           {selectedProject.inActiveProduction
                             ? "In Active Production @ Washington School"
-                            : "Verified SaaS Deployment"}
+                            : "Verified Deployment"}
                         </div>
                         {selectedProject.isFeatured && (
                           <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50">
-                            🌟 NEW &amp; FEATURED
+                            🌟 FEATURED SHOWCASE
                           </span>
                         )}
                       </div>
@@ -501,7 +668,7 @@ export default function Projects() {
                         </div>
                         {selectedProject.isFeatured && (
                           <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50">
-                            🌟 NEW &amp; FEATURED
+                            🌟 FEATURED SHOWCASE
                           </span>
                         )}
                       </div>
@@ -509,7 +676,7 @@ export default function Projects() {
                         {selectedProject.title}
                       </h2>
                       <p className="text-sm text-white/80 font-medium">
-                        Screenshot Placeholder:{" "}
+                        Screenshot:{" "}
                         {typeof selectedProject.imagePlaceholder === "object"
                           ? selectedProject.imagePlaceholder.label
                           : selectedProject.title}
@@ -521,7 +688,7 @@ export default function Projects() {
 
               {/* Modal Inner Content */}
               <div className="p-6 sm:p-8 space-y-6 flex-1">
-                {/* Business Impact ROI Summary Callout */}
+                {/* Business Impact ROI Callout */}
                 {selectedProject.businessImpact && (
                   <div className="p-5 rounded-xl bg-gradient-to-br from-emerald-50 via-emerald-50/40 to-slate-50 border border-emerald-200/80 space-y-2">
                     <div className="flex items-center gap-2 text-emerald-800 font-bold text-sm">
@@ -539,10 +706,10 @@ export default function Projects() {
                   </div>
                 )}
 
-                {/* Full Description - Rendered directly as React Node */}
+                {/* Case Study Details */}
                 <div className="space-y-2">
                   <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Project Overview &amp; Architecture
+                    Project Overview &amp; Technical Case Study
                   </h3>
                   <div className="text-slate-700 text-base leading-relaxed font-normal">
                     {selectedProject.fullDescription}
@@ -605,7 +772,7 @@ export default function Projects() {
                       <span>🏫 Live Production System — Active Institutional Use</span>
                     </div>
                     <p className="text-xs text-emerald-900 leading-relaxed font-normal">
-                      Public demo access credentials are disabled to safeguard private student profiles, daily diaries, and school administrative data at Washington School.
+                      Public demo access credentials are disabled to safeguard private student profiles, daily diaries, and school administrative data at Washington School International.
                     </p>
                   </div>
                 )}
