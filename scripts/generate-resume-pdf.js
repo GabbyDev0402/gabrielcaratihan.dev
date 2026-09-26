@@ -165,34 +165,35 @@ doc.fontSize(8.5).font("Helvetica").fillColor(COLOR_TEXT_MUTED).text("Washington
 
 // --- PAGE 2: FEATURED PROJECTS WITH SCREENSHOTS & ROI ---
 doc.addPage();
+addHeader(doc);
 let page2Y = 120;
 page2Y = drawSectionTitle(doc, "Featured Projects & Business ROI Impact", page2Y);
 
 const projectsData = [
   {
     title: "1. Washington School International (Online Portal - PRODUCTION)",
-    subtitle: "ROI: 80%+ Reduction in Operational Friction & 100% Grade Sync",
-    badgeText: "In Active Use @ Washington School",
+    subtitle: "ROI: 80%+ Reduction in Operational Friction & 100% Automated Grade Sync",
+    badgeText: "In Active Production @ Washington School",
     liveUrl: "https://wcsattendancetracker.netlify.app/",
     githubUrl: "https://github.com/GabbyDev0402/wcs-attendancetracker",
     imageFile: "attendance-pro-tracker.png",
     bullets: [
-      "Engineered multi-role institutional portal (Admin, Faculty, Student) with React 19 and Firebase.",
-      "Architected 24-column Academic Performance Grid with dynamic SHS track mapping and .xls generation.",
-      "Developed polymorphic exam builder with live read receipts, rapid score desk, & diary workflows."
+      "Engineered multi-role institutional portal (Admin, Faculty, Student) with React 19 and Firebase Firestore.",
+      "Architected 24-column Academic Performance Grid with dynamic SHS track mapping and styled .xls spreadsheet export.",
+      "Developed polymorphic assessment builder with live read receipts, rapid scoring desk, and diary/vocabulary workflows."
     ]
   },
   {
-    title: "2. Apply Copilot — AI Application Agent (CHROME EXTENSION)",
-    subtitle: "ROI: 90% Faster Applications & Zero Missed Secret Instructions",
-    badgeText: "AI Browser Agent (Gemini + Supabase)",
-    liveUrl: "https://github.com/GabbyDev0402/apply-copilot",
-    githubUrl: "https://github.com/GabbyDev0402/apply-copilot",
-    imageFile: "washington-school-portal.png",
+    title: "2. Washington School Learning Resource Center (LMS & OPAC - PRODUCTION)",
+    subtitle: "ROI: 93% Faster Cataloging & <10s Circulation Desk Throughput",
+    badgeText: "In Active Production @ Washington School",
+    liveUrl: "https://wsi-library.netlify.app/",
+    githubUrl: "https://github.com/supportwashingtonschool/wsi-library-management-system",
+    imageFile: "wsi-library-opac.png",
     bullets: [
-      "Built Chrome Extension with live Supabase master brain integration for dynamic DOM form autofill.",
-      "Engineered secret instruction scanner detecting mandatory hidden keywords & required file uploads.",
-      "Generated 0-100% role compatibility match scores and tailored 3-paragraph cover letters via Gemini AI."
+      "Engineered cloud-native LMS & 24/7 OPAC public catalog using Next.js 14 App Router, TypeScript, and Supabase RLS.",
+      "Built multi-tier ISBN metadata enrichment pipeline (Google Books + Open Library API) with resilient fallback.",
+      "Developed in-browser Code128 barcode generation, <10s circulation desk, & zero-password student clearance portal."
     ]
   }
 ];

@@ -9,6 +9,7 @@ import {
   Key,
   School,
   Building2,
+  BookOpen,
   ChevronRight,
   ChevronLeft,
   ShieldCheck,
@@ -184,61 +185,194 @@ const projects: Project[] = [
     icon: School,
   },
   {
-    id: "apply-copilot",
-    title: "Apply Copilot — Intelligent AI Job Application Agent",
+    id: "wsi-library",
+    title: "Washington School Learning Resource Center — Library Management System & OPAC",
     shortDescription:
-      "Chrome Extension agent with a live Supabase vector brain that auto-fills job application forms, detects hidden instructions, and generates tailored cover letters.",
+      "Cloud-native library management system and 24/7 OPAC public catalog modernizing book cataloging, circulation desks, and inventory auditing.",
     businessImpact: {
-      metric: "⚡ 90% Faster Application Workflows & Zero Missed Secret Instructions",
+      metric: "⚡ 93% Faster Book Cataloging & <10s Circulation Desk Throughput",
       summary:
-        "Engineered with Google Gemini AI API and Supabase. Detects hidden secret words, scans dynamic DOM inputs, calculates job match scores (0-100%), and writes custom cover letters.",
+        "In active production at Washington School Philippines. Features Google Books/OpenLibrary auto-fetch, batch printable barcode generation, zero-password student clearance portal, and 40–60% reduction in unreturned inventory shrinkage.",
     },
-    category: "AI & Automation",
+    category: "EdTech & Automation",
     techStack: [
-      "Chrome Extension (MV3)",
-      "React 19",
-      "Supabase",
-      "Gemini AI API",
-      "Vite",
+      "Next.js 14 (App Router)",
+      "TypeScript",
       "Tailwind CSS",
+      "Supabase (PostgreSQL & RLS)",
+      "React-Barcode",
+      "Server Actions",
     ],
-    githubLink: "https://github.com/GabbyDev0402/apply-copilot",
-    liveLink: "https://github.com/GabbyDev0402/apply-copilot",
+    inActiveProduction: true,
+    githubLink: "https://github.com/supportwashingtonschool/wsi-library-management-system",
+    liveLink: "https://wsi-library.netlify.app/",
+    imageUrl: "/images/wsi-library-opac.png",
     imagePlaceholder: {
-      color: "from-purple-600 via-indigo-600 to-blue-600",
-      label: "Apply Copilot AI Assistant",
+      color: "from-blue-700 via-indigo-700 to-sky-800",
+      label: "Washington School Learning Resource Center",
     },
     agenticWorkflow:
-      "Architected using advanced agentic workflows via Antigravity IDE. Engineered an expandable Copilot Panel with multi-page job context overrides, live Supabase master profile syncing, secret instruction detectors, and Gemini 3.5 Flash prompt orchestration for DOM form filling.",
+      "Architected and engineered using advanced agentic workflows via Antigravity IDE. Directed AI models to design a normalized Supabase PostgreSQL relational schema with Row-Level Security (RLS) isolating circulation write permissions, build a resilient multi-tier ISBN metadata enrichment pipeline with fallback mechanisms, craft @media print styles for batch Code128 barcode generation sheets, and optimize zero-friction student clearance search queries.",
     fullDescription: (
-      <div className="space-y-4 text-sm text-slate-600">
-        <p>
-          <strong>Overview:</strong> Apply Copilot is an intelligent Chrome Extension engineered to eliminate the repetitive friction of job applications while preserving personalization. Powered by a live Supabase master brain and the Google Gemini API, it analyzes form fields, scans for hidden employer requirements, and automatically populates high-converting answers.
-        </p>
-        <h4 className="font-bold text-slate-800 border-b pb-1 mt-4">
-          Key Features &amp; AI Capabilities
-        </h4>
-        <ul className="list-disc pl-5 space-y-1.5">
-          <li>
-            <strong>Expandable Glassmorphism Copilot Panel:</strong> A floating browser widget with intuitive multi-tab navigation (Actions, Manual Job Context override, Results).
-          </li>
-          <li>
-            <strong>Live Supabase Brain Integration:</strong> Connects directly to a cloud PostgreSQL <code>master_profile</code> table, retrieving up-to-date work history, projects, and behavioral context on demand.
-          </li>
-          <li>
-            <strong>Secret Word &amp; Instruction Scanner:</strong> Specifically analyzes job descriptions for hidden employer instructions (e.g. <em>&quot;Use the word Star in your subject&quot;</em>) and flags required attachments (video intro, PDF portfolio) in an interactive checklist.
-          </li>
-          <li>
-            <strong>Job Compatibility Match Scorer:</strong> Evaluates candidate background against job postings, generating a 0–100% role compatibility score with 3 key justifications.
-          </li>
-          <li>
-            <strong>Tailored 3-Paragraph Cover Letter Generator:</strong> Crafts concise, role-specific cover letters grounded in real achievements with 1-click clipboard copying.
-          </li>
-        </ul>
+      <div className="space-y-6 text-sm text-slate-600">
+        <div className="p-4 rounded-xl bg-emerald-50/90 border border-emerald-200 space-y-1 text-emerald-950">
+          <div className="flex items-center gap-2 font-bold text-emerald-900 text-sm">
+            <Building2 className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>🏫 Officially Deployed &amp; In Active Production at Washington School Philippines</span>
+          </div>
+          <p className="text-xs text-emerald-900 leading-relaxed font-normal">
+            A cloud-native, production-grade library management system and 24/7 OPAC (Online Public Access Catalog) replacing manual paper logbooks and fragmented spreadsheets across all campus libraries.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="font-bold text-slate-800 border-b pb-1">📌 Executive Summary</h4>
+          <p className="mt-2 leading-relaxed">
+            The <strong>Washington School Learning Resource Center</strong> is a custom-architected enterprise platform built for Washington School Philippines. It automates book cataloging with multi-tier ISBN metadata enrichment, streamlines high-volume student checkout/return circulation desks, empowers students with zero-friction self-service account lookups, and equips administrators with real-time overdue auditing and inventory loss analytics.
+          </p>
+        </div>
+
+        {/* Quantified ROI & Operational Impact Table */}
+        <div>
+          <h4 className="font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+            <TrendingUp className="w-4 h-4 text-emerald-600" />
+            💼 Core Business Impact &amp; Quantified ROI
+          </h4>
+          <div className="mt-3 overflow-x-auto border border-slate-200 rounded-xl shadow-xs">
+            <table className="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr className="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold">
+                  <th className="py-2.5 px-3">Operational Domain</th>
+                  <th className="py-2.5 px-3">Legacy Process</th>
+                  <th className="py-2.5 px-3">WSI Resource Center Solution</th>
+                  <th className="py-2.5 px-3">Quantified ROI &amp; Impact</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 text-slate-600">
+                <tr className="hover:bg-slate-50/60">
+                  <td className="py-2.5 px-3 font-semibold text-slate-800">Cataloging &amp; Ingestion</td>
+                  <td className="py-2.5 px-3">Manual typing of titles, authors, and classification (8–12 mins/book)</td>
+                  <td className="py-2.5 px-3">1-Click Multi-Tier ISBN metadata auto-fetch (Google Books + OpenLibrary)</td>
+                  <td className="py-2.5 px-3 font-bold text-emerald-700">⚡ 93% reduction in cataloging time (&lt;40s/title); zero entry errors</td>
+                </tr>
+                <tr className="hover:bg-slate-50/60">
+                  <td className="py-2.5 px-3 font-semibold text-slate-800">Circulation Desk</td>
+                  <td className="py-2.5 px-3">Paper logbooks, handwritten borrower cards, manual due-date stamping</td>
+                  <td className="py-2.5 px-3">Barcode-scanned rapid checkout/return modal with instant Supabase SSR state</td>
+                  <td className="py-2.5 px-3 font-bold text-emerald-700">⚡ Circulation throughput: &lt;10s per student; zero lost slips</td>
+                </tr>
+                <tr className="hover:bg-slate-50/60">
+                  <td className="py-2.5 px-3 font-semibold text-slate-800">Student Access &amp; Discovery</td>
+                  <td className="py-2.5 px-3">Physical card catalog during library operating hours only</td>
+                  <td className="py-2.5 px-3">24/7 Responsive OPAC with real-time copy availability and genre browsing</td>
+                  <td className="py-2.5 px-3 font-bold text-indigo-700">📈 100% anytime book discovery; instant mobile browsing</td>
+                </tr>
+                <tr className="hover:bg-slate-50/60">
+                  <td className="py-2.5 px-3 font-semibold text-slate-800">Account Auditing &amp; Holds</td>
+                  <td className="py-2.5 px-3">Manual registry checks during clearance periods (days of staff effort)</td>
+                  <td className="py-2.5 px-3">Zero-password Student ID lookup showing active loans, due dates &amp; overdue holds</td>
+                  <td className="py-2.5 px-3 font-bold text-emerald-700">⚡ Instant self-service clearance audits; zero staff bottlenecks</td>
+                </tr>
+                <tr className="hover:bg-slate-50/60">
+                  <td className="py-2.5 px-3 font-semibold text-slate-800">Asset Loss &amp; Shrinkage</td>
+                  <td className="py-2.5 px-3">Unaccounted missing books discovered only during annual manual inventory</td>
+                  <td className="py-2.5 px-3">Real-time automated overdue tracking with student borrower logging</td>
+                  <td className="py-2.5 px-3 font-bold text-emerald-700">🛡️ 40–60% reduction in unreturned inventory shrinkage</td>
+                </tr>
+                <tr className="hover:bg-slate-50/60">
+                  <td className="py-2.5 px-3 font-semibold text-slate-800">Hardware &amp; Deployment</td>
+                  <td className="py-2.5 px-3">Proprietary legacy LMS requiring specialized barcode hardware &amp; local server</td>
+                  <td className="py-2.5 px-3">Web-first architecture using standard USB/Bluetooth barcode scanners &amp; Netlify</td>
+                  <td className="py-2.5 px-3 font-bold text-indigo-700">🚀 100% hardware-agnostic &amp; zero maintenance overhead</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Technical Architecture & Solutions */}
+        <div>
+          <h4 className="font-bold text-slate-800 border-b pb-1">🏗️ Technical Architecture &amp; Engineering Solutions</h4>
+          <ul className="list-disc pl-5 mt-2 space-y-2">
+            <li>
+              <strong>Multi-Tier ISBN Ingestion Pipeline with Intelligent Fallback:</strong> Overcame metadata API limitations across diverse K-12 books (bestsellers, local publishers, vintage textbooks) with a resilient server-side pipeline querying Google Books API, catching null/404 responses, and falling back seamlessly to Open Library API before prompting for manual override.
+            </li>
+            <li>
+              <strong>Barcode Engine &amp; Dynamic Sheet Generation (<code>react-barcode</code>):</strong> Code128 barcode rendering directly in-browser paired with a custom print stylesheet (<code>@media print</code>) to batch-print standardized barcode label sheets directly onto standard sticker paper, eliminating third-party label maker software.
+            </li>
+            <li>
+              <strong>High-Throughput Circulation Desk Modal:</strong> Purpose-built modal optimized for continuous barcode scanning. The librarian scans the student ID barcode (or enters the student number), the student's active loan profile loads reactively, the librarian scans the book barcode, and Supabase Server Actions validate availability and set calculated due dates in an atomic transaction.
+            </li>
+            <li>
+              <strong>Zero-Friction Student Self-Service Portal (No Password Friction):</strong> Eliminates young learner password reset bottlenecks by providing a public-facing inquiry portal where students enter only their Student ID Number to view active loans, due date countdowns, and borrowing history.
+            </li>
+            <li>
+              <strong>Administrative Control Center &amp; Executive Metrics:</strong> Real-time KPI suite tracking Total Books, Active Borrowers, Circulating Copies, and Overdue Alerts with full inventory CRUD and copy-level status tracking.
+            </li>
+          </ul>
+        </div>
+
+        {/* Visual Showcase Gallery */}
+        <div>
+          <h4 className="font-bold text-slate-800 border-b pb-2">📸 Live System Interface &amp; Modules</h4>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+            <div className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/wsi-library-opac.png"
+                alt="WSI Library OPAC Catalog"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100">
+                <span className="font-bold text-xs text-slate-800 block">24/7 Public OPAC &amp; Student Catalog</span>
+                <span className="text-[11px] text-slate-500">Live search with real-time copy availability and genre browsing</span>
+              </div>
+            </div>
+
+            <div className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/wsi-library-admin.png"
+                alt="Executive Librarian Dashboard"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100">
+                <span className="font-bold text-xs text-slate-800 block">Executive Librarian Dashboard</span>
+                <span className="text-[11px] text-slate-500">Real-time KPIs, overdue auditing, and loan velocity metrics</span>
+              </div>
+            </div>
+
+            <div className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/wsi-library-circulation.png"
+                alt="Rapid Circulation Desk"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100">
+                <span className="font-bold text-xs text-slate-800 block">Rapid Circulation Desk Modal</span>
+                <span className="text-[11px] text-slate-500">Barcode-driven student loan checkout and check-in (&lt;10s)</span>
+              </div>
+            </div>
+
+            <div className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/wsi-library-barcodes.png"
+                alt="Printable Barcode Sheet Generator"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100">
+                <span className="font-bold text-xs text-slate-800 block">Batch Barcode Label Generator</span>
+                <span className="text-[11px] text-slate-500">Code128 in-browser rendering with printable sticker sheet CSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     ),
     isFeatured: true,
-    icon: Bot,
+    icon: BookOpen,
   },
 ];
 
