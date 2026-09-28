@@ -175,7 +175,7 @@ const projectsData = [
     title: "1. Washington School International (Online Portal - PRODUCTION)",
     subtitle: "ROI: 80%+ Reduction in Operational Friction & 100% Automated Grade Sync",
     badgeText: "In Active Production @ Washington School",
-    imageFile: "attendance-pro-tracker.png",
+    imageFile: "wsi-online-portal-screenshots/admin-dashboard-screenshot.png",
     bullets: [
       "Engineered multi-role institutional portal (Admin, Faculty, Student) with React 19 and Firebase Firestore.",
       "Architected 24-column Academic Performance Grid with dynamic SHS track mapping and styled .xls spreadsheet export.",

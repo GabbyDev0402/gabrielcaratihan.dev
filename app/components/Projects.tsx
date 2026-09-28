@@ -70,7 +70,7 @@ const projects: Project[] = [
     inActiveProduction: true,
     githubLink: "https://github.com/GabbyDev0402/wcs-attendancetracker",
     liveLink: "https://wcsattendancetracker.netlify.app/",
-    imageUrl: "/images/attendance-pro-tracker.png",
+    imageUrl: "/images/wsi-online-portal-screenshots/admin-dashboard-screenshot.png",
     imagePlaceholder: {
       color: "from-blue-600 to-indigo-800",
       label: "Washington School International Portal",
@@ -178,6 +178,172 @@ const projects: Project[] = [
               <strong>Excel-Accurate Web Spreadsheet Rendering:</strong> Built a 28-column master report that mirrors Google Sheets formatting in CSS/HTML with sticky student columns, pastel color banding, responsive printing styles, and native <code>.xls</code> binary generation.
             </li>
           </ul>
+        </div>
+
+        {/* Visual Showcase Gallery */}
+        <div>
+          <div className="flex items-center justify-between border-b pb-2">
+            <h4 className="font-bold text-slate-800 flex items-center gap-2">
+              📸 Live System Interface &amp; Production Module Gallery
+            </h4>
+            <span className="text-[11px] text-slate-400">Click any module to inspect full 1920×1200 HD</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+            {/* 1. Admin Dashboard */}
+            <a
+              href="/images/wsi-online-portal-screenshots/admin-dashboard-screenshot.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/wsi-online-portal-screenshots/admin-dashboard-screenshot.png"
+                alt="Executive Admin Dashboard"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Executive Admin Dashboard</span>
+                  <span className="text-[11px] text-slate-500">Live school operations, active enrollment metrics, and roll call monitoring</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+
+            {/* 2. Admin 24-Column Grid Console */}
+            <a
+              href="/images/wsi-online-portal-screenshots/admin-console_screensh.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/wsi-online-portal-screenshots/admin-console_screensh.png"
+                alt="24-Column Academic Performance Grid"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">24-Column Academic Master Grid</span>
+                  <span className="text-[11px] text-slate-500">Spreadsheet-accurate grading matrix with dynamic SHS track resolution &amp; .xls export</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+
+            {/* 3. Teacher Dashboard */}
+            <a
+              href="/images/wsi-online-portal-screenshots/teacher_dashboard_screenshot.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/wsi-online-portal-screenshots/teacher_dashboard_screenshot.png"
+                alt="Teacher Schedule & Operations Hub"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Teacher Operations &amp; Daily Schedule</span>
+                  <span className="text-[11px] text-slate-500">Filterable daily class sessions, pending assignment queues, and roll call controls</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+
+            {/* 4. Teacher Classroom Portal */}
+            <a
+              href="/images/wsi-online-portal-screenshots/teacher-classroom-portal-screenshot.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/wsi-online-portal-screenshots/teacher-classroom-portal-screenshot.png"
+                alt="Teacher Classroom Studio"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Teacher Classroom Studio</span>
+                  <span className="text-[11px] text-slate-500">Live attendance logging with late-minute counters, scoring desks, and lesson matrix</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+
+            {/* 5. In-App Quiz & Exam Builder */}
+            <a
+              href="/images/wsi-online-portal-screenshots/in-app_quiz_builder.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/wsi-online-portal-screenshots/in-app_quiz_builder.png"
+                alt="Polymorphic In-App Quiz & Exam Builder"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Polymorphic Exam &amp; Quiz Builder</span>
+                  <span className="text-[11px] text-slate-500">In-house assessment studio supporting MC, Identification, Matching Pairs, and Essay rubrics</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+
+            {/* 6. Student Digital Portal */}
+            <a
+              href="/images/wsi-online-portal-screenshots/student-portal-screenshot.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/wsi-online-portal-screenshots/student-portal-screenshot.png"
+                alt="Student Digital Portal"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Student Digital Portal</span>
+                  <span className="text-[11px] text-slate-500">Personalized dashboard with attendance analytics (%), late-minute tracking, &amp; exam scopes</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+
+            {/* 7. Student Classroom Portal */}
+            <a
+              href="/images/wsi-online-portal-screenshots/student-classroom-portals-screenshot.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sm:col-span-2 border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/wsi-online-portal-screenshots/student-classroom-portals-screenshot.png"
+                alt="Student Classroom View & Daily Assignments"
+                className="w-full h-44 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Student Classroom View &amp; Daily Assignments</span>
+                  <span className="text-[11px] text-slate-500">Daily interactive diary submission desk, vocabulary sentence builder, and 1-click exam scope confirmations</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     ),
@@ -314,59 +480,96 @@ const projects: Project[] = [
 
         {/* Visual Showcase Gallery */}
         <div>
-          <h4 className="font-bold text-slate-800 border-b pb-2">📸 Live System Interface &amp; Modules</h4>
+          <div className="flex items-center justify-between border-b pb-2">
+            <h4 className="font-bold text-slate-800 flex items-center gap-2">
+              📸 Live System Interface &amp; Modules
+            </h4>
+            <span className="text-[11px] text-slate-400">Click any module to inspect full HD</span>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
-            <div className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group">
+            <a
+              href="/images/wsi-library-opac.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/wsi-library-opac.png"
                 alt="WSI Library OPAC Catalog"
                 className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-2.5 bg-white border-t border-slate-100">
-                <span className="font-bold text-xs text-slate-800 block">24/7 Public OPAC &amp; Student Catalog</span>
-                <span className="text-[11px] text-slate-500">Live search with real-time copy availability and genre browsing</span>
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">24/7 Public OPAC &amp; Student Catalog</span>
+                  <span className="text-[11px] text-slate-500">Live search with real-time copy availability and genre browsing</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
               </div>
-            </div>
+            </a>
 
-            <div className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group">
+            <a
+              href="/images/wsi-library-admin.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/wsi-library-admin.png"
                 alt="Executive Librarian Dashboard"
                 className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-2.5 bg-white border-t border-slate-100">
-                <span className="font-bold text-xs text-slate-800 block">Executive Librarian Dashboard</span>
-                <span className="text-[11px] text-slate-500">Real-time KPIs, overdue auditing, and loan velocity metrics</span>
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Executive Librarian Dashboard</span>
+                  <span className="text-[11px] text-slate-500">Real-time KPIs, overdue auditing, and loan velocity metrics</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
               </div>
-            </div>
+            </a>
 
-            <div className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group">
+            <a
+              href="/images/wsi-library-circulation.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/wsi-library-circulation.png"
                 alt="Rapid Circulation Desk"
                 className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-2.5 bg-white border-t border-slate-100">
-                <span className="font-bold text-xs text-slate-800 block">Rapid Circulation Desk Modal</span>
-                <span className="text-[11px] text-slate-500">Barcode-driven student loan checkout and check-in (&lt;10s)</span>
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Rapid Circulation Desk Modal</span>
+                  <span className="text-[11px] text-slate-500">Barcode-driven student loan checkout and check-in (&lt;10s)</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
               </div>
-            </div>
+            </a>
 
-            <div className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group">
+            <a
+              href="/images/wsi-library-barcodes.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/wsi-library-barcodes.png"
                 alt="Printable Barcode Sheet Generator"
                 className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="p-2.5 bg-white border-t border-slate-100">
-                <span className="font-bold text-xs text-slate-800 block">Batch Barcode Label Generator</span>
-                <span className="text-[11px] text-slate-500">Code128 in-browser rendering with printable sticker sheet CSS</span>
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Batch Barcode Label Generator</span>
+                  <span className="text-[11px] text-slate-500">Code128 in-browser rendering with printable sticker sheet CSS</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>

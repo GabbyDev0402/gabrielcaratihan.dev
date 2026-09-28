@@ -176,7 +176,7 @@ const projectsData = [
     badgeText: "In Active Production @ Washington School",
     liveUrl: "https://wcsattendancetracker.netlify.app/",
     githubUrl: "https://github.com/GabbyDev0402/wcs-attendancetracker",
-    imageFile: "attendance-pro-tracker.png",
+    imageFile: "wsi-online-portal-screenshots/admin-dashboard-screenshot.png",
     bullets: [
       "Engineered multi-role institutional portal (Admin, Faculty, Student) with React 19 and Firebase Firestore.",
       "Architected 24-column Academic Performance Grid with dynamic SHS track mapping and styled .xls spreadsheet export.",
