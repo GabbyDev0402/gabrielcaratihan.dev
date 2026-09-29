@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Gabriel Caratihan | Software Engineer & Systems Architect",
+  title: "Gabriel Caratihan | Business Automation Engineer & Custom Web Portal Specialist",
   description:
-    "Software Engineer passionate about building full-stack, highly scalable SaaS applications that automate workflows and bridge the gap between operational bottlenecks and digital solutions.",
+    "I build custom web portals that automate administrative processes, centralize data, and eliminate operational bottlenecks for schools and organizations.",
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
@@ -20,18 +20,19 @@ export const metadata: Metadata = {
   },
   keywords: [
     "Gabriel Caratihan",
-    "Software Engineer",
-    "Full-Stack Engineer",
-    "SaaS Developer",
-    "Next.js Developer",
-    "Enterprise Solutions",
-    "Workflow Automation",
+    "Business Automation Engineer",
+    "Workflow Automation Specialist",
+    "Custom Web Portals",
+    "Spreadsheet Replacement",
+    "School Management Systems",
+    "Internal Business Tools",
+    "Operational Efficiency",
   ],
   authors: [{ name: "Gabriel Caratihan" }],
   openGraph: {
-    title: "Gabriel Caratihan | Software Engineer",
+    title: "Gabriel Caratihan | Business Automation Engineer",
     description:
-      "Engineering Enterprise Solutions for Real-World Problems. Full-Stack SaaS Developer & Systems Architect.",
+      "Replacing Spreadsheets, Paperwork, and Manual Workflows with Custom Business Systems.",
     type: "website",
     url: "https://github.com/GabbyDev0402",
   },

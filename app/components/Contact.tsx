@@ -25,10 +25,10 @@ export default function Contact() {
 
   // Template mailto link
   const defaultTemplateSubject = encodeURIComponent(
-    "Inquiry: Software Engineering & SaaS Project"
+    "Workflow Automation Consultation: Replacing Spreadsheets & Manual Workflows"
   );
   const defaultTemplateBody = encodeURIComponent(
-    `Hi Gabriel,\n\nI visited your software engineering portfolio and would like to discuss a project / opportunity.\n\nOrganization / Company: \nProject Scope / Role: \nEstimated Timeline: \n\nBest regards,\n[Your Name]`
+    `Hi Gabriel,\n\nI saw your portfolio and would like to schedule a consultation to discuss automating our operations.\n\nOrganization / Institution: \nCurrent Manual Bottleneck (e.g., spreadsheets, attendance, reporting): \nGoal or Target Timeline: \n\nBest regards,\n[Your Name]`
   );
   const defaultMailtoUrl = `mailto:${recipientEmail}?subject=${defaultTemplateSubject}&body=${defaultTemplateBody}`;
 
@@ -45,7 +45,7 @@ export default function Contact() {
     e.preventDefault();
 
     const formattedSubject = encodeURIComponent(
-      subject || `Portfolio Inquiry from ${name || "a Client"}`
+      subject || `Workflow Consultation Inquiry from ${name || "Client"}`
     );
     const formattedBody = encodeURIComponent(
       `Hi Gabriel,\n\n${message}\n\nSender Name: ${name}\nSender Email: ${email}`
@@ -73,17 +73,17 @@ export default function Contact() {
         >
           {/* Header */}
           <div className="text-center space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/80">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-200/80">
               <Sparkles className="w-3.5 h-3.5" />
-              Direct Communication
+              Free Operational Workflow Review
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight leading-tight">
-              Ready to build scalable solutions together? Let’s connect.
+              Still Managing Critical Operations with Spreadsheets?
             </h2>
 
             <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              Have a software engineering opportunity, an enterprise workflow challenge, or a SaaS project? Compose a message or launch your mail app instantly below.
+              Let&apos;s identify where automation can save your team time and reduce administrative overhead.
             </p>
           </div>
 
@@ -100,7 +100,7 @@ export default function Contact() {
                 className="inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 rounded-xl shadow-md shadow-indigo-500/20 transition-all text-center"
               >
                 <Mail className="w-4 h-4" />
-                Launch Mail App
+                Schedule a Consultation
               </a>
 
               {/* Webmail / Gmail Compose Shortcut */}
@@ -156,10 +156,10 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-slate-900">
-                  Compose Custom Pre-Template Message
+                  Request a Free Workflow Review
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Fill in your message below and click send to automatically compose in your email client.
+                  Share details about your team&apos;s current manual processes, and I will outline how a custom portal can automate them.
                 </p>
               </div>
             </div>
@@ -173,7 +173,7 @@ export default function Contact() {
                   Redirecting to your Email Client...
                 </h4>
                 <p className="text-xs text-slate-600 max-w-md mx-auto">
-                  If your mail application didn't open automatically, click the button below to compose manually or copy your email message.
+                  If your mail application didn&apos;t open automatically, click the button below to compose manually or copy your email message.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 pt-2">
                   <a
@@ -195,28 +195,28 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                      Your Name
+                      Your Name &amp; Title
                     </label>
                     <input
                       type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Jane Doe"
+                      placeholder="Jane Doe (Principal / Ops Manager)"
                       className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-slate-900 bg-white outline-none transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                      Your Email
+                      Work Email
                     </label>
                     <input
                       type="email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="jane@company.com"
+                      placeholder="jane@school.edu or jane@company.com"
                       className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-slate-900 bg-white outline-none transition-all"
                     />
                   </div>
@@ -224,28 +224,28 @@ export default function Contact() {
 
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                    Subject
+                    Subject / Project Focus
                   </label>
                   <input
                     type="text"
                     required
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    placeholder="Full-Stack SaaS Development / Engineering Role"
+                    placeholder="Spreadsheet Replacement / School Portal Consultation"
                     className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-slate-900 bg-white outline-none transition-all"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                    Message Details
+                    Current Bottleneck &amp; Workflow Details
                   </label>
                   <textarea
                     rows={4}
                     required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Describe your project, engineering requirements, or opportunity..."
+                    placeholder="Tell me about the repetitive spreadsheets, manual paperwork, or reporting delays your team is dealing with..."
                     className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-slate-900 bg-white outline-none transition-all resize-none"
                   />
                 </div>
@@ -256,7 +256,7 @@ export default function Contact() {
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 rounded-xl shadow-md shadow-indigo-500/20 transition-all"
                   >
                     <Send className="w-4 h-4" />
-                    Compose & Send via Email App
+                    Request Workflow Consultation
                   </button>
 
                   <a

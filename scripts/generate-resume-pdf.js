@@ -45,9 +45,9 @@ function addHeader(d) {
     .text("GABRIEL CARATIHAN", 40, 24);
 
   d.fillColor("#a5b4fc")
-    .fontSize(11)
+    .fontSize(10)
     .font("Helvetica-Bold")
-    .text("SOFTWARE ENGINEER & BUSINESS AUTOMATION SPECIALIST", 40, 52);
+    .text("BUSINESS AUTOMATION ENGINEER & WORKFLOW SPECIALIST", 40, 52);
 
   d.fillColor("#e2e8f0")
     .fontSize(8.5)
@@ -84,7 +84,7 @@ doc
   .fontSize(9.5)
   .font("Helvetica")
   .text(
-    "Software Engineer passionate about replacing messy spreadsheets and manual processes with custom, automated web portals. Former ESL Educator turned Systems Architect with a dual perspective that bridges non-technical business leaders seeking operational ROI with robust, enterprise-grade cloud software architecture.",
+    "Business Automation Engineer specializing in replacing spreadsheets, paperwork, and manual workflows with custom business systems. Former Educator with a dual perspective that bridges non-technical school administrators and business owners with streamlined, production-ready web portals that eliminate administrative bottlenecks and deliver measurable ROI.",
     40,
     currentY,
     { width: 532, lineGap: 4 }

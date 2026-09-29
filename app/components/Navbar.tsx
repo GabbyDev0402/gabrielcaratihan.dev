@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Download, Code2 } from "lucide-react";
+import { Menu, X, Download, Workflow } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,49 +16,61 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group focus:outline-hidden"
           >
             <div className="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:bg-indigo-700 transition-colors">
-              <Code2 className="w-5 h-5" />
+              <Workflow className="w-5 h-5" />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-slate-900 tracking-tight text-base group-hover:text-indigo-600 transition-colors">
                 Gabriel Caratihan
               </span>
-              <span className="text-[11px] font-medium text-indigo-600 tracking-wide uppercase -mt-1">
-                Software Engineer
+              <span className="text-[10px] font-semibold text-indigo-600 tracking-wide uppercase -mt-0.5">
+                Business Automation Engineer
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-7">
+            <a
+              href="#problems"
+              className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
+            >
+              Problems I Solve
+            </a>
+            <a
+              href="#projects"
+              className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
+            >
+              Case Studies
+            </a>
+            <a
+              href="#why-me"
+              className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
+            >
+              Why Hire Me
+            </a>
             <a
               href="#about"
               className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
             >
               About
             </a>
-            <a
-              href="#projects"
-              className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
-            >
-              Projects
-            </a>
           </nav>
 
           {/* Action Button */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <a
               href="/Gabriel_Caratihan_Resume.pdf"
               download="Gabriel_Caratihan_Resume.pdf"
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 hover:text-indigo-600 hover:border-indigo-300 shadow-xs transition-all"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 hover:text-indigo-600 hover:border-indigo-300 shadow-xs transition-all"
             >
               <Download className="w-3.5 h-3.5" />
               Resume PDF
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 active:bg-indigo-800 shadow-sm shadow-indigo-500/20 transition-all focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
+              className="inline-flex items-center justify-center px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 active:bg-indigo-800 shadow-sm shadow-indigo-500/20 transition-all focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
             >
-              Get in Touch
+              Book a Free Review
             </a>
           </div>
 
@@ -82,20 +94,34 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden glass-card border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 animate-in slide-in-from-top duration-200">
+        <div className="md:hidden glass-card border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 animate-in slide-in-from-top duration-200">
           <a
-            href="#about"
+            href="#problems"
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-indigo-50/50"
           >
-            About
+            Problems I Solve
           </a>
           <a
             href="#projects"
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-indigo-50/50"
           >
-            Projects
+            Case Studies
+          </a>
+          <a
+            href="#why-me"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-indigo-50/50"
+          >
+            Why Hire Me
+          </a>
+          <a
+            href="#about"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-indigo-50/50"
+          >
+            About
           </a>
           <div className="pt-2 border-t border-slate-200 flex flex-col gap-2">
             <a
@@ -109,9 +135,9 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center px-4 py-2.5 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 shadow-sm"
+              className="w-full text-center px-4 py-2.5 text-sm font-bold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 shadow-sm"
             >
-              Get in Touch
+              Book a Free Workflow Review
             </a>
           </div>
         </div>

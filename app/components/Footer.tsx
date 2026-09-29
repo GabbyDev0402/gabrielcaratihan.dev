@@ -6,9 +6,13 @@ export default function Footer() {
     <footer className="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-          <p className="text-slate-400 text-xs sm:text-sm font-medium">
-            © 2026 Gabriel Caratihan. Built with Next.js and Tailwind CSS.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
+            <span className="font-bold text-white text-sm">Gabriel Caratihan</span>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <p className="text-slate-400 text-xs sm:text-sm font-medium">
+              Custom Web Portals &amp; Business Automation Systems
+            </p>
+          </div>
 
           <div className="flex items-center gap-6 text-xs font-semibold">
             <a

@@ -5,8 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
   ExternalLink,
-  Sparkles,
-  Key,
   School,
   Building2,
   BookOpen,
@@ -14,7 +12,12 @@ import {
   ChevronLeft,
   ShieldCheck,
   TrendingUp,
-  Bot,
+  CheckCircle2,
+  AlertTriangle,
+  ArrowRight,
+  ChevronDown,
+  Layers,
+  Calendar,
 } from "lucide-react";
 import GithubIcon from "./icons/GithubIcon";
 
@@ -27,19 +30,13 @@ export interface Project {
     summary: string;
   };
   category: string;
-  fullDescription: string | React.ReactNode;
-  agenticWorkflow: string;
+  fullDescription: React.ReactNode;
   techStack: string[];
-  demoCredentials?: {
-    role: string;
-    email: string;
-    password?: string;
-  };
   inActiveProduction?: boolean;
   githubLink: string;
   liveLink: string;
   imageUrl?: string;
-  imagePlaceholder?: string | {
+  imagePlaceholder?: {
     color: string;
     label: string;
   };
@@ -50,22 +47,22 @@ export interface Project {
 const projects: Project[] = [
   {
     id: "wsi-portal",
-    title: "Washington School International (Online) — Online Portal",
+    title: "Washington School International Online Portal",
     shortDescription:
-      "Full-Stack School Management & Learning Platform serving Administrators, Faculty, and Students with automated 24-column grade sync.",
+      "A custom-built school operations platform that replaced manual spreadsheets, centralized attendance tracking, automated grading workflows, and provided administrators with real-time academic visibility.",
     businessImpact: {
-      metric: "⚡ 80%+ Reduction in Operational Friction & 100% Automated Grade Syncing",
+      metric: "⚡ 80%+ Reduction in Operational Friction & 100% Automated Grade Sync",
       summary:
-        "Officially deployed in active daily production at Washington School International. Replaced manual spreadsheets with a 24-column Academic Performance Grid, polymorphic exam builder, and real-time attendance analytics.",
+        "In active daily production at Washington School International. Replaced manual spreadsheets with a 24-column Academic Performance Grid, in-house assessment tools, and real-time attendance analytics.",
     },
-    category: "EdTech & Analytics",
+    category: "EdTech & Operations",
     techStack: [
       "React 19",
-      "Vite v8",
-      "Tailwind CSS v4",
+      "Vite",
+      "Tailwind CSS",
       "Firebase Firestore",
       "Firebase Auth",
-      "Lucide React",
+      "Spreadsheet Engine",
     ],
     inActiveProduction: true,
     githubLink: "https://github.com/GabbyDev0402/wcs-attendancetracker",
@@ -73,120 +70,302 @@ const projects: Project[] = [
     imageUrl: "/images/wsi-online-portal-screenshots/admin-dashboard-screenshot.png",
     imagePlaceholder: {
       color: "from-blue-600 to-indigo-800",
-      label: "Washington School International Portal",
+      label: "Washington School International Online Portal",
     },
-    agenticWorkflow:
-      "Architected and engineered using advanced agentic workflows via Antigravity IDE. Directed AI models to design a 24-column performance grid matching institutional Google Sheets, establish polymorphic assessment schemas, optimize Firestore query listeners to avoid read quota spikes, and generate client-side styled .xls spreadsheets.",
     fullDescription: (
-      <div className="space-y-5 text-sm text-slate-600">
+      <div className="space-y-8 text-slate-700">
+        {/* Production Verification Badge */}
         <div className="p-4 rounded-xl bg-emerald-50/90 border border-emerald-200 space-y-1 text-emerald-950">
           <div className="flex items-center gap-2 font-bold text-emerald-900 text-sm">
             <Building2 className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>🏫 Officially Deployed &amp; In Active Production at Washington School International</span>
+            <span>🏫 Deployed &amp; In Active Daily Production at Washington School International</span>
           </div>
           <p className="text-xs text-emerald-900 leading-relaxed font-normal">
-            This platform orchestrates daily class operations, live student attendance tracking, rich interactive diary/vocabulary workflows, in-house polymorphic exams, and institutional academic performance reporting for real students and faculty.
+            Orchestrating daily class roll calls, exam workflows, student diaries, and institutional grading reports across distance-learning classrooms.
           </p>
         </div>
 
-        <div>
-          <h4 className="font-bold text-slate-800 border-b pb-1">📌 Project Overview</h4>
-          <p className="mt-2 leading-relaxed">
-            Originally conceived as a daily attendance logger, the system grew into a unified <strong>School Management &amp; Learning Platform</strong> serving Administrators, Faculty, and Students of an international distance-learning school.
-          </p>
-        </div>
-
-        <div>
-          <h4 className="font-bold text-slate-800 border-b pb-1">🏛️ Admin Console (Operations &amp; Analytics)</h4>
-          <ul className="list-disc pl-5 mt-2 space-y-1.5">
-            <li>
-              <strong>24-Column Academic Performance Master Grid:</strong> Replicates institutional spreadsheets across standard and ESL curricula. Separates Core subjects (English, Social Science, Science, Math) and Added subjects (MAPEH, Values, TLE, Literature), with dynamic Senior High School (SHS) course track resolution (e.g., <em>PPG</em>, <em>EmpTech</em>, <em>DIASS</em>, <em>MIL</em>).
-            </li>
-            <li>
-              <strong>Sub-Score Breakdown:</strong> Automatically calculates Multiple Choice, Essay/Vocabularies, and total earned points per student with instant general average and passing status.
-            </li>
-            <li>
-              <strong>Deficiency Audit &amp; 1-Click Clipboard Engine:</strong> Automatically audits missing test scores across grades and generates clipboard-ready deficiency notices with responsible teacher names.
-            </li>
-            <li>
-              <strong>Teacher Compliance Center:</strong> Real-time reactive queues tracking pending vocabulary and diary submissions awaiting teacher review.
-            </li>
-            <li>
-              <strong>Staff &amp; Student Provisioning:</strong> Account provisioning with 1-click magic password reset triggers and global student credential directory management.
-            </li>
-            <li>
-              <strong>Custom Exports:</strong> Generates styled binary <code>.xls</code> spreadsheets and streaming <code>.csv</code> files for administrative archiving.
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="font-bold text-slate-800 border-b pb-1">👨‍🏫 Teacher Dashboard &amp; Classroom Studio</h4>
-          <ul className="list-disc pl-5 mt-2 space-y-1.5">
-            <li>
-              <strong>Master Schedule &amp; Daily Roll Call:</strong> Filterable daily class sessions with late-minute counters, excused, absent, and present statuses.
-            </li>
-            <li>
-              <strong>Polymorphic Exam Builder &amp; Scope Studio:</strong> In-house assessment studio supporting Multiple Choice (with dynamic answer keys), Exact Identification, Vocabulary Matching Pairs, and Rubric-based Essay prompts.
-            </li>
-            <li>
-              <strong>Interactive Read Receipts:</strong> Teachers publish exam scopes and instantly view live student read receipts, tracking who acknowledged the scope.
-            </li>
-            <li>
-              <strong>Rapid Score Entry Desk:</strong> Fast modal for grading objective and subjective sections, immediately pushing updates to institutional reports.
-            </li>
-            <li>
-              <strong>Diary &amp; Essay Review Portal:</strong> Teacher grading workflow with status filters (pending vs. graded), inline feedback, and timestamp tracking.
-            </li>
-            <li>
-              <strong>Printable Weekly Lesson Matrix:</strong> Print-ready spreadsheet layout displaying curriculum coverage, lesson summaries, and periods.
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="font-bold text-slate-800 border-b pb-1">🎓 Student Digital Portal</h4>
-          <ul className="list-disc pl-5 mt-2 space-y-1.5">
-            <li>
-              <strong>Attendance Rate Analytics:</strong> Displays real-time student attendance rate (%), total logged sessions, late counts (with total late minutes), excused sessions, and absences without heavy database overhead.
-            </li>
-            <li>
-              <strong>Exam Scopes &amp; Live Acknowledgment:</strong> Students receive assessment scopes for all enrolled subjects and can confirm receipt with a 1-click acknowledgment button.
-            </li>
-            <li>
-              <strong>Interactive Daily Notebook:</strong> Rich-text daily diary submission desk and vocabulary sentence creator.
-            </li>
-            <li>
-              <strong>Dual Authentication:</strong> Passwordless or master-code student login system paired with faculty credentials.
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="font-bold text-slate-800 border-b pb-1">⚡ Engineering Challenges Solved</h4>
-          <ul className="list-disc pl-5 mt-2 space-y-1.5">
-            <li>
-              <strong>Firestore Query Optimization &amp; Read Quota Safeguards:</strong> Redesigned student log listeners to avoid full-collection reads (<code>O(N)</code> queries), replacing heavy historical queries with cached client-side aggregation.
-            </li>
-            <li>
-              <strong>Polymorphic Assessment Data Engine:</strong> Engineered a flexible schema capable of rendering, saving, and auto-grading multiple disparate question models under a single uniform document structure.
-            </li>
-            <li>
-              <strong>Dynamic Senior High School Course Resolution:</strong> Implemented an intelligent subject-matching algorithm with alias fallbacks (mapping DIASS to Values, EmpTech to TLE, PPG to Literature) ensuring generic teacher exam titles reliably slot into the correct institutional report columns.
-            </li>
-            <li>
-              <strong>Excel-Accurate Web Spreadsheet Rendering:</strong> Built a 28-column master report that mirrors Google Sheets formatting in CSS/HTML with sticky student columns, pastel color banding, responsive printing styles, and native <code>.xls</code> binary generation.
-            </li>
-          </ul>
-        </div>
-
-        {/* Visual Showcase Gallery */}
-        <div>
-          <div className="flex items-center justify-between border-b pb-2">
-            <h4 className="font-bold text-slate-800 flex items-center gap-2">
-              📸 Live System Interface &amp; Production Module Gallery
+        {/* 1. CLIENT PROBLEM */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-rose-100 text-rose-700 font-bold text-xs flex items-center justify-center">
+              1
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Client Problem: Disconnected Spreadsheets &amp; Administrative Overhead
             </h4>
-            <span className="text-[11px] text-slate-400">Click any module to inspect full 1920×1200 HD</span>
+          </div>
+          <p className="text-sm leading-relaxed text-slate-600">
+            Administrators and teachers relied on disconnected spreadsheets, manual grade calculations, attendance paper logs, and multiple separate communication channels.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Duplicate Data Entry
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Faculty had to re-type attendance marks and test scores across daily logs, subject sheets, and administrative binders.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Reporting Delays
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Compiling multi-subject quarterly report cards required days of manual administrative consolidation and formula verification.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Human Error &amp; Formula Drift
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Accidental cell overwrites, broken formulas, and untracked edits in shared spreadsheets jeopardized academic records.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Administrative Burden
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Staff spent hours each week chasing missing exam submissions instead of focusing on instruction and student care.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 2. BUSINESS SOLUTION */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center">
+              2
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Business Solution: Unified School Operations Platform
+            </h4>
+          </div>
+          <p className="text-sm leading-relaxed text-slate-600">
+            Designed and deployed a centralized platform that allows administrators, teachers, and students to operate inside one integrated system.
+          </p>
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2 text-xs">
+            <span className="font-bold text-slate-800 block text-xs uppercase tracking-wider">
+              The platform centralizes:
+            </span>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <div className="flex items-center gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                <span>Daily Attendance</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                <span>Automated Grading</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                <span>In-House Exams</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                <span>Student Submissions</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                <span>Academic Reports</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                <span>Faculty Workflows</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. BUSINESS RESULTS */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center">
+              3
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Business Results &amp; Operational ROI
+            </h4>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                80%+ Reduction in Operational Friction
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Eliminated manual attendance tallies, paper logbooks, and fragmented chat communications.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                100% Automated Grade Synchronization
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Scores entered in classroom assessments calculate directly into the institutional performance master grid.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                Active Production Deployment
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Officially used every school day by administrators, faculty, and international distance learners.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                Real-Time Academic Visibility
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Leadership can audit missing grades in 1 click and generate copy-paste notices for responsible teachers.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 4. KEY FEATURES */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center">
+              4
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Key Features by Operational Role
+            </h4>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            {/* Admin Console */}
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/90 space-y-2">
+              <span className="font-bold text-slate-900 block text-sm border-b pb-1">
+                🏛️ Administrative Dashboard
+              </span>
+              <ul className="space-y-1.5 text-slate-600">
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Operational Reporting:</strong> Live roll call rates, active enrollment, and session metrics.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Performance Tracking:</strong> Master grid reconciling Core and Added subjects with .xls exports.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Staff Management:</strong> Teacher compliance center auditing pending assignment reviews.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Student Onboarding:</strong> 1-click password reset triggers and global student credential directory.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Teacher Studio */}
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/90 space-y-2">
+              <span className="font-bold text-slate-900 block text-sm border-b pb-1">
+                👨‍🏫 Faculty Workspace
+              </span>
+              <ul className="space-y-1.5 text-slate-600">
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Attendance Tracking:</strong> Filterable class sessions with late-minute counters.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Assessment Creation:</strong> In-house studio for multiple choice, identification, and essays.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Assignment Grading:</strong> Rapid scoring desks and status-filtered student diary reviews.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Classroom Workflows:</strong> Print-ready weekly curriculum lesson matrices.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Student Portal */}
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/90 space-y-2">
+              <span className="font-bold text-slate-900 block text-sm border-b pb-1">
+                🎓 Student Portal
+              </span>
+              <ul className="space-y-1.5 text-slate-600">
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Attendance Analytics:</strong> Personal attendance rate (%), total sessions, and late minutes.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Assignment Submission:</strong> Interactive daily diary and vocabulary sentence creator.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Academic Standing:</strong> Clear visibility into enrolled subjects and submission status.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Exam Tracking:</strong> Assessment scopes delivered with 1-click student read receipts.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* 5. TECHNICAL HIGHLIGHTS (Collapsible Section) */}
+        <div className="space-y-3">
+          <details className="group border border-slate-200 rounded-xl p-4 bg-slate-50/70 hover:bg-slate-50 transition-colors cursor-pointer">
+            <summary className="font-bold text-slate-800 text-sm flex items-center justify-between select-none">
+              <span className="flex items-center gap-2">
+                <span>⚙️ Technical Highlights &amp; Architecture</span>
+                <span className="text-[11px] font-normal text-slate-500">(Click to expand engineering details)</span>
+              </span>
+              <ChevronDown className="w-4 h-4 text-slate-500 group-open:rotate-180 transition-transform" />
+            </summary>
+            <div className="pt-4 border-t border-slate-200/80 mt-3 space-y-2.5 text-xs text-slate-600">
+              <p>
+                <strong>Database Query Safeguards:</strong> Redesigned student log listeners to avoid full-collection reads, replacing heavy historical queries with cached client-side aggregation to prevent read quota spikes.
+              </p>
+              <p>
+                <strong>Subject Resolution Engine:</strong> Implemented an intelligent subject-matching algorithm with alias fallbacks (mapping course titles like DIASS to Values, EmpTech to TLE, and PPG to Literature) ensuring teacher exam titles reliably slot into the correct institutional report columns.
+              </p>
+              <p>
+                <strong>Assessment Schema:</strong> Engineered a uniform schema capable of rendering, saving, and auto-grading Multiple Choice, Exact Identification, Vocabulary Matching Pairs, and Rubrics under one uniform document model.
+              </p>
+              <p>
+                <strong>Web Spreadsheet Rendering:</strong> Built a 28-column master report that mirrors Google Sheets formatting in CSS/HTML with sticky student columns, pastel color banding, responsive printing styles, and native client-side <code>.xls</code> binary generation.
+              </p>
+              <p>
+                <strong>Architecture:</strong> React 19, Vite v8, Tailwind CSS v4, Firebase Firestore &amp; Authentication.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        {/* 6. PROJECT GALLERY */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between border-b pb-2">
+            <h4 className="font-bold text-slate-800 text-sm flex items-center gap-2">
+              📸 Project Gallery: Production System in Action
+            </h4>
+            <span className="text-[11px] text-slate-400">Click any image to inspect full 1920×1200 HD</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
@@ -293,7 +472,7 @@ const projects: Project[] = [
               />
               <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
                 <div>
-                  <span className="font-bold text-xs text-slate-800 block">Polymorphic Exam &amp; Quiz Builder</span>
+                  <span className="font-bold text-xs text-slate-800 block">In-App Quiz &amp; Exam Builder</span>
                   <span className="text-[11px] text-slate-500">In-house assessment studio supporting MC, Identification, Matching Pairs, and Essay rubrics</span>
                 </div>
                 <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
@@ -345,6 +524,25 @@ const projects: Project[] = [
             </a>
           </div>
         </div>
+
+        {/* 7. CTA BANNER INSIDE MODAL */}
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-50 via-white to-slate-50 border border-indigo-200/90 text-center space-y-3">
+          <h4 className="text-base font-bold text-slate-900">
+            Need a Similar Custom Operations Portal for Your School or Team?
+          </h4>
+          <p className="text-xs text-slate-600 max-w-lg mx-auto">
+            Let&apos;s eliminate manual spreadsheets and centralize your operations into an integrated system built around how your team works.
+          </p>
+          <div className="pt-1">
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-indigo-500/20 transition-all"
+            >
+              <Calendar className="w-4 h-4" />
+              <span>Book a Free Workflow Review</span>
+            </a>
+          </div>
+        </div>
       </div>
     ),
     isFeatured: true,
@@ -352,22 +550,21 @@ const projects: Project[] = [
   },
   {
     id: "wsi-library",
-    title: "Washington School Learning Resource Center — Library Management System & OPAC",
+    title: "Washington School Learning Resource Center",
     shortDescription:
-      "Cloud-native library management system and 24/7 OPAC public catalog modernizing book cataloging, circulation desks, and inventory auditing.",
+      "A modern library management platform that replaced paper circulation logs, manual cataloging, and fragmented inventory tracking.",
     businessImpact: {
-      metric: "⚡ 93% Faster Book Cataloging & <10s Circulation Desk Throughput",
+      metric: "⚡ 93% Faster Cataloging & <10s Circulation Transactions",
       summary:
-        "In active production at Washington School Philippines. Features Google Books/OpenLibrary auto-fetch, batch printable barcode generation, zero-password student clearance portal, and 40–60% reduction in unreturned inventory shrinkage.",
+        "In active production at Washington School Philippines. Features automatic ISBN book data retrieval, barcode-driven checkout desks, 24/7 public catalog search, and automated clearance audits.",
     },
-    category: "EdTech & Automation",
+    category: "EdTech & Operations",
     techStack: [
       "Next.js 14 (App Router)",
       "TypeScript",
       "Tailwind CSS",
       "Supabase (PostgreSQL & RLS)",
       "React-Barcode",
-      "Server Actions",
     ],
     inActiveProduction: true,
     githubLink: "https://github.com/supportwashingtonschool/wsi-library-management-system",
@@ -377,115 +574,263 @@ const projects: Project[] = [
       color: "from-blue-700 via-indigo-700 to-sky-800",
       label: "Washington School Learning Resource Center",
     },
-    agenticWorkflow:
-      "Architected and engineered using advanced agentic workflows via Antigravity IDE. Directed AI models to design a normalized Supabase PostgreSQL relational schema with Row-Level Security (RLS) isolating circulation write permissions, build a resilient multi-tier ISBN metadata enrichment pipeline with fallback mechanisms, craft @media print styles for batch Code128 barcode generation sheets, and optimize zero-friction student clearance search queries.",
     fullDescription: (
-      <div className="space-y-6 text-sm text-slate-600">
+      <div className="space-y-8 text-slate-700">
+        {/* Production Verification Badge */}
         <div className="p-4 rounded-xl bg-emerald-50/90 border border-emerald-200 space-y-1 text-emerald-950">
           <div className="flex items-center gap-2 font-bold text-emerald-900 text-sm">
             <Building2 className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>🏫 Officially Deployed &amp; In Active Production at Washington School Philippines</span>
+            <span>🏫 Deployed &amp; In Active Production at Washington School Philippines</span>
           </div>
           <p className="text-xs text-emerald-900 leading-relaxed font-normal">
-            A cloud-native, production-grade library management system and 24/7 OPAC (Online Public Access Catalog) replacing manual paper logbooks and fragmented spreadsheets across all campus libraries.
+            A centralized library management system and 24/7 public OPAC catalog replacing manual paper logs and book registries.
           </p>
         </div>
 
-        <div>
-          <h4 className="font-bold text-slate-800 border-b pb-1">📌 Executive Summary</h4>
-          <p className="mt-2 leading-relaxed">
-            The <strong>Washington School Learning Resource Center</strong> is a custom-architected enterprise platform built for Washington School Philippines. It automates book cataloging with multi-tier ISBN metadata enrichment, streamlines high-volume student checkout/return circulation desks, empowers students with zero-friction self-service account lookups, and equips administrators with real-time overdue auditing and inventory loss analytics.
-          </p>
-        </div>
-
-        {/* Quantified ROI & Operational Impact Table */}
-        <div>
-          <h4 className="font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-emerald-600" />
-            💼 Core Business Impact &amp; Quantified ROI
-          </h4>
-          <div className="mt-3 overflow-x-auto border border-slate-200 rounded-xl shadow-xs">
-            <table className="w-full text-left text-xs border-collapse">
-              <thead>
-                <tr className="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold">
-                  <th className="py-2.5 px-3">Operational Domain</th>
-                  <th className="py-2.5 px-3">Legacy Process</th>
-                  <th className="py-2.5 px-3">WSI Resource Center Solution</th>
-                  <th className="py-2.5 px-3">Quantified ROI &amp; Impact</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-600">
-                <tr className="hover:bg-slate-50/60">
-                  <td className="py-2.5 px-3 font-semibold text-slate-800">Cataloging &amp; Ingestion</td>
-                  <td className="py-2.5 px-3">Manual typing of titles, authors, and classification (8–12 mins/book)</td>
-                  <td className="py-2.5 px-3">1-Click Multi-Tier ISBN metadata auto-fetch (Google Books + OpenLibrary)</td>
-                  <td className="py-2.5 px-3 font-bold text-emerald-700">⚡ 93% reduction in cataloging time (&lt;40s/title); zero entry errors</td>
-                </tr>
-                <tr className="hover:bg-slate-50/60">
-                  <td className="py-2.5 px-3 font-semibold text-slate-800">Circulation Desk</td>
-                  <td className="py-2.5 px-3">Paper logbooks, handwritten borrower cards, manual due-date stamping</td>
-                  <td className="py-2.5 px-3">Barcode-scanned rapid checkout/return modal with instant Supabase SSR state</td>
-                  <td className="py-2.5 px-3 font-bold text-emerald-700">⚡ Circulation throughput: &lt;10s per student; zero lost slips</td>
-                </tr>
-                <tr className="hover:bg-slate-50/60">
-                  <td className="py-2.5 px-3 font-semibold text-slate-800">Student Access &amp; Discovery</td>
-                  <td className="py-2.5 px-3">Physical card catalog during library operating hours only</td>
-                  <td className="py-2.5 px-3">24/7 Responsive OPAC with real-time copy availability and genre browsing</td>
-                  <td className="py-2.5 px-3 font-bold text-indigo-700">📈 100% anytime book discovery; instant mobile browsing</td>
-                </tr>
-                <tr className="hover:bg-slate-50/60">
-                  <td className="py-2.5 px-3 font-semibold text-slate-800">Account Auditing &amp; Holds</td>
-                  <td className="py-2.5 px-3">Manual registry checks during clearance periods (days of staff effort)</td>
-                  <td className="py-2.5 px-3">Zero-password Student ID lookup showing active loans, due dates &amp; overdue holds</td>
-                  <td className="py-2.5 px-3 font-bold text-emerald-700">⚡ Instant self-service clearance audits; zero staff bottlenecks</td>
-                </tr>
-                <tr className="hover:bg-slate-50/60">
-                  <td className="py-2.5 px-3 font-semibold text-slate-800">Asset Loss &amp; Shrinkage</td>
-                  <td className="py-2.5 px-3">Unaccounted missing books discovered only during annual manual inventory</td>
-                  <td className="py-2.5 px-3">Real-time automated overdue tracking with student borrower logging</td>
-                  <td className="py-2.5 px-3 font-bold text-emerald-700">🛡️ 40–60% reduction in unreturned inventory shrinkage</td>
-                </tr>
-                <tr className="hover:bg-slate-50/60">
-                  <td className="py-2.5 px-3 font-semibold text-slate-800">Hardware &amp; Deployment</td>
-                  <td className="py-2.5 px-3">Proprietary legacy LMS requiring specialized barcode hardware &amp; local server</td>
-                  <td className="py-2.5 px-3">Web-first architecture using standard USB/Bluetooth barcode scanners &amp; Netlify</td>
-                  <td className="py-2.5 px-3 font-bold text-indigo-700">🚀 100% hardware-agnostic &amp; zero maintenance overhead</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Technical Architecture & Solutions */}
-        <div>
-          <h4 className="font-bold text-slate-800 border-b pb-1">🏗️ Technical Architecture &amp; Engineering Solutions</h4>
-          <ul className="list-disc pl-5 mt-2 space-y-2">
-            <li>
-              <strong>Multi-Tier ISBN Ingestion Pipeline with Intelligent Fallback:</strong> Overcame metadata API limitations across diverse K-12 books (bestsellers, local publishers, vintage textbooks) with a resilient server-side pipeline querying Google Books API, catching null/404 responses, and falling back seamlessly to Open Library API before prompting for manual override.
-            </li>
-            <li>
-              <strong>Barcode Engine &amp; Dynamic Sheet Generation (<code>react-barcode</code>):</strong> Code128 barcode rendering directly in-browser paired with a custom print stylesheet (<code>@media print</code>) to batch-print standardized barcode label sheets directly onto standard sticker paper, eliminating third-party label maker software.
-            </li>
-            <li>
-              <strong>High-Throughput Circulation Desk Modal:</strong> Purpose-built modal optimized for continuous barcode scanning. The librarian scans the student ID barcode (or enters the student number), the student's active loan profile loads reactively, the librarian scans the book barcode, and Supabase Server Actions validate availability and set calculated due dates in an atomic transaction.
-            </li>
-            <li>
-              <strong>Zero-Friction Student Self-Service Portal (No Password Friction):</strong> Eliminates young learner password reset bottlenecks by providing a public-facing inquiry portal where students enter only their Student ID Number to view active loans, due date countdowns, and borrowing history.
-            </li>
-            <li>
-              <strong>Administrative Control Center &amp; Executive Metrics:</strong> Real-time KPI suite tracking Total Books, Active Borrowers, Circulating Copies, and Overdue Alerts with full inventory CRUD and copy-level status tracking.
-            </li>
-          </ul>
-        </div>
-
-        {/* Visual Showcase Gallery */}
-        <div>
-          <div className="flex items-center justify-between border-b pb-2">
-            <h4 className="font-bold text-slate-800 flex items-center gap-2">
-              📸 Live System Interface &amp; Modules
+        {/* 1. CLIENT PROBLEM */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-rose-100 text-rose-700 font-bold text-xs flex items-center justify-center">
+              1
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Client Problem: Manual Paper Records &amp; Ingestion Bottlenecks
             </h4>
-            <span className="text-[11px] text-slate-400">Click any module to inspect full HD</span>
           </div>
+          <p className="text-sm leading-relaxed text-slate-600">
+            Library staff spent significant operational time dealing with friction across manual cataloging, paper checkouts, and student clearance:
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Entering Book Data Manually
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Staff spent 8 to 12 minutes per book hand-typing titles, authors, publishers, and classification numbers into spreadsheets.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Paper-Based Rentals
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Handwritten borrower cards, paper logbooks, and physical due-date stamping caused long queues and lost slips.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Managing Overdue Books &amp; Losses
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Unaccounted missing books were discovered only during annual manual inventory counts without automated borrower alerts.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Student Clearance Bottlenecks
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Staff spent days manually cross-checking physical binders during graduation and term clearance periods.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 2. BUSINESS SOLUTION */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center">
+              2
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Business Solution: Centralized Library Management &amp; Self-Service Catalog
+            </h4>
+          </div>
+          <p className="text-sm leading-relaxed text-slate-600">
+            Built a centralized library management and self-service catalog platform designed for speed, accuracy, and student self-sufficiency:
+          </p>
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2 text-xs">
+            <span className="font-bold text-slate-800 block text-xs uppercase tracking-wider">
+              System Capabilities:
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>ISBN Lookup Automation:</strong> 1-click book metadata auto-fetch populating title, author, and cover art in seconds.</span>
+              </div>
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>Barcode Workflows:</strong> In-browser generation of printable label sheets for book spines and student IDs.</span>
+              </div>
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>Online Catalog Search:</strong> 24/7 web access for students and parents to check real-time shelf availability.</span>
+              </div>
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>Student Self-Service:</strong> Zero-password Student ID lookup showing active loans, due dates, and hold status.</span>
+              </div>
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>Circulation Management:</strong> High-speed barcode scan checkout and return modal (&lt;10s per student).</span>
+              </div>
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>Administrative Oversight:</strong> Automated overdue tracking, inventory loss auditing, and KPI analytics.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. BUSINESS RESULTS */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center">
+              3
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Business Results &amp; Operational ROI
+            </h4>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                93% Faster Cataloging
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Book ingestion dropped from 8–12 minutes down to under 40 seconds per title with zero data entry errors.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                Under 10-Second Circulation Transactions
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Scan-based checkout process replaced handwritten borrower cards and physical due date stamping.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                24/7 Public Catalog Availability
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Instant anytime book discovery with real-time copy availability for students and parents from any device.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                Reduced Inventory Loss &amp; Automated Auditing
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                40–60% reduction in unreturned inventory shrinkage, plus instant self-service clearance auditing with zero staff bottleneck.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 4. KEY FEATURES */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center">
+              4
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Key Features &amp; Functional Modules
+            </h4>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+              <span className="font-bold text-slate-900 block text-xs border-b pb-1">
+                📚 Cataloging
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Automatic book data retrieval via multi-tier ISBN auto-fetch, batch barcode sticker sheet generation, and cover image ingestion.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+              <span className="font-bold text-slate-900 block text-xs border-b pb-1">
+                ⚡ Circulation
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Scan-based checkout and return desk with real-time shelf status updates, automatic due dates, and overdue day counters.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+              <span className="font-bold text-slate-900 block text-xs border-b pb-1">
+                🎓 Student Access
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                24/7 responsive public search portal (OPAC), category filters, and zero-password student clearance and active loan lookups.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+              <span className="font-bold text-slate-900 block text-xs border-b pb-1">
+                📊 Administration
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Real-time KPI dashboards, inventory status reporting (Available, Borrowed, Lost), and automated overdue borrower logging.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 5. TECHNICAL HIGHLIGHTS (Collapsible Section) */}
+        <div className="space-y-3">
+          <details className="group border border-slate-200 rounded-xl p-4 bg-slate-50/70 hover:bg-slate-50 transition-colors cursor-pointer">
+            <summary className="font-bold text-slate-800 text-sm flex items-center justify-between select-none">
+              <span className="flex items-center gap-2">
+                <span>⚙️ Technical Highlights &amp; Architecture</span>
+                <span className="text-[11px] font-normal text-slate-500">(Click to expand engineering details)</span>
+              </span>
+              <ChevronDown className="w-4 h-4 text-slate-500 group-open:rotate-180 transition-transform" />
+            </summary>
+            <div className="pt-4 border-t border-slate-200/80 mt-3 space-y-2.5 text-xs text-slate-600">
+              <p>
+                <strong>Multi-Tier ISBN Ingestion Pipeline:</strong> Queries Google Books API with automatic fallback to Open Library API before prompting for manual override, ensuring resilient metadata retrieval for diverse K-12 books.
+              </p>
+              <p>
+                <strong>In-Browser Barcode Engine:</strong> Code128 barcode rendering directly in-browser paired with a custom print stylesheet (<code>@media print</code>) to batch-print standardized barcode label sheets directly onto standard sticker paper without proprietary software.
+              </p>
+              <p>
+                <strong>App Router &amp; Server Components:</strong> Built with Next.js 14 App Router, React Server Components (RSC), and Server Actions for fast catalog search indexing, low bandwidth overhead, and atomic circulation transactions.
+              </p>
+              <p>
+                <strong>Row-Level Security (RLS):</strong> Supabase PostgreSQL database architecture with granular RLS policies isolating administrative circulation write capabilities from public OPAC read queries.
+              </p>
+              <p>
+                <strong>Hosting:</strong> Netlify with automated git-triggered deployments and standard USB/Bluetooth barcode scanner compatibility.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        {/* 6. PROJECT GALLERY */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between border-b pb-2">
+            <h4 className="font-bold text-slate-800 text-sm flex items-center gap-2">
+              📸 Project Gallery: Production System in Action
+            </h4>
+            <span className="text-[11px] text-slate-400">Click any image to inspect full HD</span>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
             <a
               href="/images/wsi-library-opac.png"
@@ -572,6 +917,25 @@ const projects: Project[] = [
             </a>
           </div>
         </div>
+
+        {/* 7. CTA BANNER INSIDE MODAL */}
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-50 via-white to-slate-50 border border-indigo-200/90 text-center space-y-3">
+          <h4 className="text-base font-bold text-slate-900">
+            Need an Inventory or Resource Management Portal for Your Team?
+          </h4>
+          <p className="text-xs text-slate-600 max-w-lg mx-auto">
+            Let&apos;s eliminate manual checkouts, lost paperwork, and untracked assets with a scan-based cloud portal.
+          </p>
+          <div className="pt-1">
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-indigo-500/20 transition-all"
+            >
+              <Calendar className="w-4 h-4" />
+              <span>Book a Free Workflow Review</span>
+            </a>
+          </div>
+        </div>
       </div>
     ),
     isFeatured: true,
@@ -640,9 +1004,9 @@ export default function Projects() {
   const IconComponent = activeProject.icon || Building2;
   const displayImage =
     activeProject.imageUrl ||
-    (typeof activeProject.imagePlaceholder === "string"
-      ? activeProject.imagePlaceholder
-      : null);
+    (typeof activeProject.imagePlaceholder === "object"
+      ? null
+      : activeProject.imagePlaceholder);
 
   return (
     <section id="projects" className="py-20 bg-slate-100/70 border-y border-slate-200/80 overflow-hidden">
@@ -651,13 +1015,13 @@ export default function Projects() {
           {/* Section Header */}
           <div className="text-center space-y-3 max-w-3xl mx-auto">
             <span className="text-xs font-bold tracking-wider text-indigo-600 uppercase bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
-              Featured Work &amp; ROI
+              Proven Case Studies &amp; Operational ROI
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
-              Custom Web Portals &amp; Business Automation Systems
+              Custom Business Portals Running in Production
             </h2>
-            <p className="text-slate-500 text-base max-w-2xl mx-auto">
-              Real-world software built to replace spreadsheets, automate administrative friction, and maximize operational ROI.
+            <p className="text-slate-600 text-base max-w-2xl mx-auto">
+              Real-world systems engineered to replace spreadsheets, automate administrative friction, and eliminate operational bottlenecks for schools and organizations.
             </p>
           </div>
 
@@ -686,7 +1050,7 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
                   <div className="absolute top-3 left-3">
                     <span className="text-[10px] font-bold uppercase tracking-wider bg-slate-900/80 backdrop-blur-md text-white px-2 py-0.5 rounded-md border border-white/20">
-                      ← Previous
+                      ← Previous Case Study
                     </span>
                   </div>
                 </div>
@@ -734,8 +1098,8 @@ export default function Projects() {
                         </div>
                         {activeProject.isFeatured && (
                           <div className="absolute top-3 right-3 z-20">
-                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
-                              🌟 FEATURED SHOWCASE
+                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50">
+                              ⭐ PROVEN PRODUCTION SYSTEM
                             </span>
                           </div>
                         )}
@@ -743,11 +1107,11 @@ export default function Projects() {
                           {activeProject.inActiveProduction ? (
                             <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1.5">
                               <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-ping"></span>
-                              In Active Production @ Washington School
+                              In Active Daily Production @ Washington School
                             </span>
                           ) : (
                             <span className="text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white px-2.5 py-1 rounded-md shadow-xs">
-                              Live Ready Tool
+                              Live Production Portal
                             </span>
                           )}
                         </div>
@@ -766,8 +1130,8 @@ export default function Projects() {
                             <IconComponent className="w-5 h-5" />
                           </div>
                           {activeProject.isFeatured && (
-                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50 animate-pulse">
-                              🌟 FEATURED SHOWCASE
+                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50">
+                              ⭐ PROVEN PRODUCTION SYSTEM
                             </span>
                           )}
                         </div>
@@ -811,7 +1175,7 @@ export default function Projects() {
                       )}
                     </div>
 
-                    {/* Tech Stack Pills & Modal Trigger */}
+                    {/* Operational Scope & Modal Trigger */}
                     <div className="space-y-4 pt-4 border-t border-slate-100">
                       <div className="flex flex-wrap gap-1.5">
                         {activeProject.techStack.map((tag, tIdx) => (
@@ -828,7 +1192,7 @@ export default function Projects() {
                         onClick={() => setSelectedProject(activeProject)}
                         className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white rounded-xl border border-indigo-200/80 hover:border-indigo-600 shadow-2xs transition-all duration-200 group/btn cursor-pointer"
                       >
-                        Explore Complete Architecture &amp; Case Study
+                        Explore Case Study &amp; Business ROI
                         <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
                       </button>
                     </div>
@@ -860,7 +1224,7 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
                   <div className="absolute top-3 right-3">
                     <span className="text-[10px] font-bold uppercase tracking-wider bg-slate-900/80 backdrop-blur-md text-white px-2 py-0.5 rounded-md border border-white/20">
-                      Next Up →
+                      Next Case Study →
                     </span>
                   </div>
                 </div>
@@ -914,7 +1278,7 @@ export default function Projects() {
                   className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md shadow-indigo-500/20 group"
                   aria-label="Next project"
                 >
-                  <span>Next Project</span>
+                  <span>Next Case Study</span>
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </div>
@@ -955,16 +1319,11 @@ export default function Projects() {
 
               {/* Top Banner / Image Header */}
               <div className="h-64 sm:h-72 relative overflow-hidden bg-slate-950 rounded-t-2xl shrink-0">
-                {selectedProject.imageUrl || typeof selectedProject.imagePlaceholder === "string" ? (
+                {selectedProject.imageUrl ? (
                   <div className="w-full h-full relative">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={
-                        selectedProject.imageUrl ||
-                        (typeof selectedProject.imagePlaceholder === "string"
-                          ? selectedProject.imagePlaceholder
-                          : "")
-                      }
+                      src={selectedProject.imageUrl}
                       alt={selectedProject.title}
                       className="w-full h-full object-cover object-top"
                     />
@@ -973,15 +1332,8 @@ export default function Projects() {
                       <div className="flex flex-wrap items-center gap-2 mb-1">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-600 text-white shadow-md">
                           <ShieldCheck className="w-3.5 h-3.5" />
-                          {selectedProject.inActiveProduction
-                            ? "In Active Production @ Washington School"
-                            : "Verified Deployment"}
+                          In Active Production @ Washington School
                         </div>
-                        {selectedProject.isFeatured && (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50">
-                            🌟 FEATURED SHOWCASE
-                          </span>
-                        )}
                       </div>
                       <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
                         {selectedProject.title}
@@ -989,36 +1341,10 @@ export default function Projects() {
                     </div>
                   </div>
                 ) : (
-                  <div
-                    className={`w-full h-full bg-gradient-to-br ${
-                      typeof selectedProject.imagePlaceholder === "object"
-                        ? selectedProject.imagePlaceholder.color
-                        : "from-indigo-600 to-blue-700"
-                    } p-8 flex flex-col justify-end relative overflow-hidden text-white`}
-                  >
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-bl-full pointer-events-none" />
-                    <div className="z-10 space-y-1">
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md border border-white/20 text-white">
-                          <ShieldCheck className="w-3.5 h-3.5" />
-                          Verified Architecture
-                        </div>
-                        {selectedProject.isFeatured && (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 text-white px-3 py-1 rounded-full shadow-lg ring-2 ring-amber-300/50">
-                            🌟 FEATURED SHOWCASE
-                          </span>
-                        )}
-                      </div>
-                      <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-                        {selectedProject.title}
-                      </h2>
-                      <p className="text-sm text-white/80 font-medium">
-                        Screenshot:{" "}
-                        {typeof selectedProject.imagePlaceholder === "object"
-                          ? selectedProject.imagePlaceholder.label
-                          : selectedProject.title}
-                      </p>
-                    </div>
+                  <div className="w-full h-full bg-gradient-to-br from-indigo-600 to-blue-700 p-8 flex flex-col justify-end text-white">
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+                      {selectedProject.title}
+                    </h2>
                   </div>
                 )}
               </div>
@@ -1043,114 +1369,42 @@ export default function Projects() {
                   </div>
                 )}
 
-                {/* Case Study Details */}
-                <div className="space-y-2">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Project Overview &amp; Technical Case Study
-                  </h3>
-                  <div className="text-slate-700 text-base leading-relaxed font-normal">
-                    {selectedProject.fullDescription}
-                  </div>
-                </div>
-
-                {/* Agentic Engineering Workflow Callout Box */}
-                <div className="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-indigo-50/90 via-indigo-50/40 to-slate-50 border border-indigo-200/80 space-y-3 relative overflow-hidden">
-                  <div className="flex items-center gap-2 text-indigo-700 font-bold text-sm tracking-tight">
-                    <div className="p-2 rounded-lg bg-indigo-600 text-white shadow-xs">
-                      <Sparkles className="w-4 h-4 animate-pulse" />
-                    </div>
-                    <span>Agentic Engineering Workflow</span>
-                  </div>
-                  <p className="text-slate-700 text-sm leading-relaxed font-normal">
-                    {selectedProject.agenticWorkflow}
-                  </p>
-                </div>
-
-                {/* Demo Credentials or Production Notice Box */}
-                {selectedProject.demoCredentials ? (
-                  <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-                    <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
-                      <Key className="w-4 h-4 text-indigo-600" />
-                      <span>Demo Access Credentials</span>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                      <div className="p-3 bg-white rounded-lg border border-slate-200">
-                        <span className="text-slate-400 block font-medium text-[10px] uppercase">
-                          Role
-                        </span>
-                        <span className="font-semibold text-slate-800">
-                          {selectedProject.demoCredentials.role}
-                        </span>
-                      </div>
-                      <div className="p-3 bg-white rounded-lg border border-slate-200">
-                        <span className="text-slate-400 block font-medium text-[10px] uppercase">
-                          Email
-                        </span>
-                        <span className="font-semibold text-slate-800 truncate block">
-                          {selectedProject.demoCredentials.email}
-                        </span>
-                      </div>
-                      {selectedProject.demoCredentials.password && (
-                        <div className="p-3 bg-white rounded-lg border border-slate-200">
-                          <span className="text-slate-400 block font-medium text-[10px] uppercase">
-                            Password
-                          </span>
-                          <span className="font-semibold text-slate-800 font-mono">
-                            {selectedProject.demoCredentials.password}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="p-5 rounded-xl bg-emerald-50/80 border border-emerald-200 space-y-2">
-                    <div className="flex items-center gap-2 text-emerald-900 font-bold text-sm">
-                      <Building2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                      <span>🏫 Live Production System — Active Institutional Use</span>
-                    </div>
-                    <p className="text-xs text-emerald-900 leading-relaxed font-normal">
-                      Public demo access credentials are disabled to safeguard private student profiles, daily diaries, and school administrative data at Washington School International.
-                    </p>
-                  </div>
-                )}
-
-                {/* Tech Stack Pills */}
-                <div className="space-y-2">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Technologies &amp; Architecture
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.techStack.map((tech, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                {/* 7-Part Case Study Content */}
+                <div className="space-y-6">
+                  {selectedProject.fullDescription}
                 </div>
 
                 {/* Footer Action Buttons */}
-                <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-end gap-4">
-                  <a
-                    href={selectedProject.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl shadow-xs transition-colors"
-                  >
-                    <GithubIcon className="w-4 h-4 text-slate-900" />
-                    View Source Code (GitHub)
-                  </a>
+                <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="flex items-center gap-3 w-full sm:w-auto">
+                    <a
+                      href={selectedProject.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl shadow-xs transition-colors"
+                    >
+                      <GithubIcon className="w-4 h-4 text-slate-900" />
+                      View Source Code
+                    </a>
+
+                    <a
+                      href={selectedProject.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl shadow-xs transition-colors"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5 text-slate-600" />
+                      Launch Live Portal
+                    </a>
+                  </div>
 
                   <a
-                    href={selectedProject.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-md shadow-indigo-500/20 transition-all"
+                    href="#contact"
+                    onClick={() => setSelectedProject(null)}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-md shadow-indigo-500/20 transition-all"
                   >
-                    Launch Live App
-                    <ExternalLink className="w-4 h-4" />
+                    <Calendar className="w-4 h-4" />
+                    Book a Free Workflow Review
                   </a>
                 </div>
               </div>

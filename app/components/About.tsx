@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Briefcase, Compass, CheckCircle2 } from "lucide-react";
+import { School, TrendingUp, CheckCircle2, UserCheck, ShieldCheck } from "lucide-react";
 
 export default function About() {
   return (
@@ -17,13 +17,13 @@ export default function About() {
           {/* Section Header */}
           <div className="text-center space-y-3">
             <span className="text-xs font-bold tracking-wider text-indigo-600 uppercase bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
-              About Me
+              The Background Behind The Work
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
-              Translating Operational Bottlenecks into High-ROI Systems
+              An Educator’s Perspective on Business Automation
             </h2>
             <p className="text-slate-500 text-base max-w-2xl mx-auto">
-              Bridging non-technical business needs with scalable, enterprise-grade software.
+              Bridging the gap between non-technical decision makers and the software systems that help them scale.
             </p>
           </div>
 
@@ -33,59 +33,81 @@ export default function About() {
 
             <div className="flex flex-col md:flex-row gap-8 items-start">
               {/* Profile Highlight Badge Column */}
-              <div className="w-full md:w-1/3 flex flex-col gap-4">
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-3">
-                  <div className="flex items-center gap-3 text-slate-900 font-semibold text-sm">
+              <div className="w-full md:w-1/3 flex flex-col gap-3.5">
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
+                  <div className="flex items-center gap-2.5 text-slate-900 font-bold text-sm">
                     <div className="p-2 rounded-lg bg-indigo-600 text-white">
-                      <Briefcase className="w-4 h-4" />
+                      <School className="w-4 h-4" />
                     </div>
-                    <span>ESL Teacher</span>
+                    <span>Educator Roots</span>
                   </div>
-                  <p className="text-xs text-slate-500 font-medium">
-                    Washington School
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    Former ESL educator at Washington School with firsthand operational experience on the frontlines.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-3">
-                  <div className="flex items-center gap-3 text-slate-900 font-semibold text-sm">
-                    <div className="p-2 rounded-lg bg-indigo-600 text-white">
-                      <GraduationCap className="w-4 h-4" />
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
+                  <div className="flex items-center gap-2.5 text-slate-900 font-bold text-sm">
+                    <div className="p-2 rounded-lg bg-emerald-600 text-white">
+                      <TrendingUp className="w-4 h-4" />
                     </div>
-                    <span>Computer Programming</span>
+                    <span>Business-First Focus</span>
                   </div>
-                  <p className="text-xs text-slate-500 font-medium">
-                    Imus Computer College
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    Learning how organizations operate and measuring success by hours saved and friction removed.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
+                  <div className="flex items-center gap-2.5 text-slate-900 font-bold text-sm">
+                    <div className="p-2 rounded-lg bg-indigo-600 text-white">
+                      <UserCheck className="w-4 h-4" />
+                    </div>
+                    <span>Non-Technical Bridge</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    Fluent in communicating directly with administrators, principals, and business owners.
                   </p>
                 </div>
               </div>
 
-              {/* Bio & Business Translation Column */}
-              <div className="w-full md:w-2/3 space-y-6">
-                <div className="inline-flex items-center gap-2 text-indigo-600 font-semibold text-sm">
-                  <Compass className="w-4 h-4" />
-                  <span>Engineering & Business Philosophy</span>
+              {/* Bio & Philosophy Column */}
+              <div className="w-full md:w-2/3 space-y-5">
+                <div className="space-y-4 text-slate-700 text-base sm:text-lg leading-relaxed font-normal">
+                  <p>
+                    Before becoming a software engineer, I worked as an educator.
+                  </p>
+                  <p>
+                    While working inside schools, I saw firsthand how much time was lost to spreadsheets, paper processes, duplicate data entry, and fragmented reporting systems.
+                  </p>
+                  <p>
+                    Rather than simply learning to code, I focused on learning how organizations actually operate.
+                  </p>
+                  <p>
+                    Today, I build custom web applications that replace manual workflows, automate repetitive tasks, and provide administrators with real-time visibility into their operations.
+                  </p>
+                  <p className="font-semibold text-slate-900">
+                    I bridge the gap between non-technical decision makers and the software systems that help them scale.
+                  </p>
                 </div>
 
-                <p className="text-slate-700 text-base sm:text-lg leading-relaxed font-normal">
-                  My journey into software engineering is rooted in my experience as an educator. While working as an ESL teacher at Washington School and simultaneously studying Computer Programming at Imus Computer College, I witnessed firsthand the administrative friction that slows down institutions. This dual perspective drives my philosophy: I don't just write code; I bridge the gap between non-technical decision-makers who need ROI and the technical architectures that deliver it.
-                </p>
-
-                <div className="pt-4 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-slate-700">
+                {/* Core Pillars */}
+                <div className="pt-5 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-slate-800">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
-                    <span>Operational Bottleneck Elimination</span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Educator &amp; Institutional Background</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
-                    <span>Paper-to-Digital Transformation</span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Real Operational Experience</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
-                    <span>ROI-Driven SaaS Architecture</span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Business-First Mindset</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
-                    <span>Scalable Database & API Design</span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Measurable ROI-Focused Delivery</span>
                   </div>
                 </div>
               </div>
