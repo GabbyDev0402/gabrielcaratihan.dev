@@ -195,6 +195,19 @@ const projectsData = [
       "Built multi-tier ISBN metadata enrichment pipeline (Google Books + Open Library API) with resilient fallback.",
       "Developed in-browser Code128 barcode generation, <10s circulation desk, & zero-password student clearance portal."
     ]
+  },
+  {
+    title: "3. Washington School IB CAS Digital Portfolio Portal (PRODUCTION)",
+    subtitle: "ROI: 100% Paperless IB Audit Readiness & Zero-Friction External Sign-Offs",
+    badgeText: "In Active Production @ Washington School",
+    liveUrl: "https://wsi-cas-portal.vercel.app/",
+    githubUrl: "https://github.com/GabbyDev0402/washington-school-ib-cas-portal",
+    imageFile: "IB-CAS-portal/Coordinator Dashboard.png",
+    bullets: [
+      "Built full-stack IB CAS compliance portal using Next.js 16 App Router, React 19, TypeScript, and Supabase RLS.",
+      "Engineered multi-strand tracking (Creativity, Activity, Service) with reflection logs and cloud evidence attachments.",
+      "Designed passwordless magic-link verification for external mentors and read-only routes for official IB audit reviews."
+    ]
   }
 ];
 

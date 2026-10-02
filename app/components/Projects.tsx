@@ -8,6 +8,7 @@ import {
   School,
   Building2,
   BookOpen,
+  GraduationCap,
   ChevronRight,
   ChevronLeft,
   ShieldCheck,
@@ -940,6 +941,436 @@ const projects: Project[] = [
     ),
     isFeatured: true,
     icon: BookOpen,
+  },
+  {
+    id: "wsi-ib-cas",
+    title: "Washington School IB CAS Digital Portfolio Portal",
+    shortDescription:
+      "A centralized compliance and workflow portal built for the International Baccalaureate (IB) Diploma Programme, replacing paper binders, spreadsheets, and manual email sign-offs with role-based student journaling and passwordless mentor verifications.",
+    businessImpact: {
+      metric: "⚡ 100% Paperless IB Audit Readiness & Zero-Friction External Sign-Offs",
+      summary:
+        "Built for Washington School (an IB candidate school in the Philippines). Replaced lost paperwork and email threads with single-route role dashboards, audit-ready read-only review screens, and token-based supervisor verifications.",
+    },
+    category: "EdTech & Workflow Automation",
+    techStack: [
+      "Next.js 16 (App Router)",
+      "React 19",
+      "TypeScript 5",
+      "Tailwind CSS v4",
+      "Supabase (PostgreSQL 15+ & RLS)",
+      "Server Actions",
+    ],
+    inActiveProduction: true,
+    githubLink: "https://github.com/GabbyDev0402/washington-school-ib-cas-portal",
+    liveLink: "https://wsi-cas-portal.vercel.app/",
+    imageUrl: "/images/IB-CAS-portal/Student dashboard.png",
+    imagePlaceholder: {
+      color: "from-teal-600 via-emerald-700 to-indigo-800",
+      label: "Washington School IB CAS Digital Portfolio Portal",
+    },
+    fullDescription: (
+      <div className="space-y-8 text-slate-700">
+        {/* Production Verification Badge */}
+        <div className="p-4 rounded-xl bg-emerald-50/90 border border-emerald-200 space-y-1 text-emerald-950">
+          <div className="flex items-center gap-2 font-bold text-emerald-900 text-sm">
+            <Building2 className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>🏫 Deployed &amp; In Active Production at Washington School (IB Candidate School)</span>
+          </div>
+          <p className="text-xs text-emerald-900 leading-relaxed font-normal">
+            A full-stack, role-based digital management system built for the International Baccalaureate (IB) Diploma Programme’s Creativity, Activity, Service (CAS) requirements.
+          </p>
+        </div>
+
+        {/* 1. CLIENT PROBLEM */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-rose-100 text-rose-700 font-bold text-xs flex items-center justify-center">
+              1
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Client Problem: Fragmented Paperwork, Spreadsheets &amp; Audit Risks
+            </h4>
+          </div>
+          <p className="text-sm leading-relaxed text-slate-600">
+            In the International Baccalaureate curriculum, candidates must complete and document experiences across three strands—<strong>Creativity</strong>, <strong>Activity</strong>, and <strong>Service</strong>—verified by adult supervisors and audited by coordinators. Prior to this portal, the process suffered from severe administrative bottlenecks:
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Physical Binders &amp; Loose Evidence
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Students kept paper journals, printouts, and physical forms over two years, creating high risk of lost reflections and unorganized artifacts.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Coordinator Review Friction
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Coordinators managed candidate progress via disjointed spreadsheets and manual email threads, with no real-time status of pending approvals.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Chasing External Adult Supervisors
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Collecting verification from outside sports coaches, volunteer heads, and tutors required awkward sign-in barriers, physical signatures, or unreturned emails.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-lg bg-rose-50/70 border border-rose-100 text-xs text-rose-900 space-y-1">
+              <span className="font-bold flex items-center gap-1.5 text-rose-800">
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                Compliance &amp; Accreditation Audit Anxiety
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                Preparing candidate portfolios for official IB accreditation inspections risked accidental modifications and missing supervisor sign-offs.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 2. BUSINESS SOLUTION */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center">
+              2
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Business Solution: Centralized, Audit-Ready Digital CAS Platform
+            </h4>
+          </div>
+          <p className="text-sm leading-relaxed text-slate-600">
+            Architected and deployed a secure, centralized web portal connecting three distinct user groups—<strong>Students</strong>, <strong>CAS Coordinators</strong>, and <strong>External Adult Supervisors</strong>—into an automated, frictionless workflow:
+          </p>
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2 text-xs">
+            <span className="font-bold text-slate-800 block text-xs uppercase tracking-wider">
+              System Capabilities:
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>Single-Route Role Intelligence:</strong> Automatically delivers custom dashboards for Students vs Coordinators from a single URL.</span>
+              </div>
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>Multi-Strand Proposal Engine:</strong> Interactive toggling for Creativity, Activity, and Service with supervisor contact validation.</span>
+              </div>
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>Reflection &amp; Evidence Hub:</strong> Chronological reflection log with direct attachments for Google Drive, portfolios, and multimedia.</span>
+              </div>
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>Coordinator Control Desk:</strong> Real-time KPI analytics, one-click &quot;Approve&quot; or &quot;Request Revision&quot; actions, and candidate rosters.</span>
+              </div>
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>Passwordless Magic Links:</strong> External supervisors sign off on student experiences in seconds with zero login or password friction.</span>
+              </div>
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
+                <span><strong>Tamper-Proof Audit Mode:</strong> Strict read-only candidate review routes built specifically for official compliance inspections.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. BUSINESS RESULTS */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center">
+              3
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Business Results &amp; Operational ROI
+            </h4>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                100% Paperless &amp; Audit-Ready
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Completely eliminated physical binders, lost paperwork, and multi-binder archival overhead across candidate cohorts.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                75%+ Faster Coordinator Review
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Centralized review queues reduced time spent evaluating experience proposals and reflections from hours to minutes.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                Zero-Friction External Sign-Offs
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                One-click passwordless verification tokens eliminated weeks of delayed mentor follow-ups and unreturned emails.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 space-y-1">
+              <span className="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                Guaranteed Audit Integrity
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Strict read-only candidate audit routes ensure zero accidental edits or lost records during official IB inspections.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 4. KEY FEATURES */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center">
+              4
+            </div>
+            <h4 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+              Key Features &amp; Functional Modules
+            </h4>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+              <span className="font-bold text-slate-900 block text-xs border-b pb-1">
+                🎨 Strand Proposal Engine
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Interactive multi-select strand toggling (Creativity, Activity, Service) with automatic supervisor review token provisioning.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+              <span className="font-bold text-slate-900 block text-xs border-b pb-1">
+                📝 Reflection Journal Hub
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Chronological reflection timeline with status chips and external evidence links (Google Drive, portfolios, video links).
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+              <span className="font-bold text-slate-900 block text-xs border-b pb-1">
+                📊 Coordinator Control Desk
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Tabbed overview featuring candidate KPIs, 1-click &quot;Approve&quot; / &quot;Request Revision&quot; actions, and candidate directory.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+              <span className="font-bold text-slate-900 block text-xs border-b pb-1">
+                🔑 Passwordless Verification
+              </span>
+              <p className="text-slate-600 leading-relaxed">
+                Outside mentors inspect student experience summaries and sign off with a single click via secure cryptographic magic links.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 5. TECHNICAL HIGHLIGHTS (Collapsible Section) */}
+        <div className="space-y-3">
+          <details className="group border border-slate-200 rounded-xl p-4 bg-slate-50/70 hover:bg-slate-50 transition-colors cursor-pointer">
+            <summary className="font-bold text-slate-800 text-sm flex items-center justify-between select-none">
+              <span className="flex items-center gap-2">
+                <span>⚙️ Technical Highlights &amp; Architecture</span>
+                <span className="text-[11px] font-normal text-slate-500">(Click to expand engineering details)</span>
+              </span>
+              <ChevronDown className="w-4 h-4 text-slate-500 group-open:rotate-180 transition-transform" />
+            </summary>
+            <div className="pt-4 border-t border-slate-200/80 mt-3 space-y-2.5 text-xs text-slate-600">
+              <p>
+                <strong>Next.js 16 App Router &amp; Server Actions:</strong> Built on React 19, Server Components, and Server Actions for minimal client JavaScript overhead, direct database querying, and instant optimistic cache revalidation (<code>revalidatePath</code>).
+              </p>
+              <p>
+                <strong>PostgreSQL 15+ &amp; Row-Level Security (RLS):</strong> Cloud PostgreSQL via Supabase with granular RLS policies ensuring students access only their own records, while coordinators view institution-wide queues.
+              </p>
+              <p>
+                <strong>Passwordless Cryptographic Verification:</strong> Secure database-generated UUID tokens (<code>supervisor_token</code>) verified via <code>SECURITY DEFINER</code> PostgreSQL functions, allowing external mentors to sign off without account registration.
+              </p>
+              <p>
+                <strong>Automated Profile Provisioning:</strong> Database triggers (<code>on_auth_user_created</code>) automatically sync newly authenticated user accounts into the <code>profiles</code> table with default permission tiers.
+              </p>
+              <p>
+                <strong>Tamper-Proof Audit Architecture:</strong> Dedicated candidate review routes (<code>/dashboard/student/[id]</code>) built with strict read-only primitives, ensuring zero accidental edits during accreditation inspections.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        {/* 6. PROJECT GALLERY */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between border-b pb-2">
+            <h4 className="font-bold text-slate-800 text-sm flex items-center gap-2">
+              📸 Project Gallery: Production System in Action
+            </h4>
+            <span className="text-[11px] text-slate-400">Click any image to inspect full HD</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+            <a
+              href="/images/IB-CAS-portal/Student dashboard.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              <img
+                src="/images/IB-CAS-portal/Student dashboard.png"
+                alt="Student CAS Dashboard"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Student Experience Dashboard</span>
+                  <span className="text-[11px] text-slate-500">Live strand tracking (Creativity, Activity, Service) &amp; status cards</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+
+            <a
+              href="/images/IB-CAS-portal/Coordinator Dashboard.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              <img
+                src="/images/IB-CAS-portal/Coordinator Dashboard.png"
+                alt="Coordinator Operations Dashboard"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Coordinator Operations Center</span>
+                  <span className="text-[11px] text-slate-500">School-wide candidate KPIs, pending reviews, and active status counters</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+
+            <a
+              href="/images/IB-CAS-portal/Propose-CAS-experience.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              <img
+                src="/images/IB-CAS-portal/Propose-CAS-experience.png"
+                alt="Propose CAS Experience Form"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Multi-Strand Proposal Engine</span>
+                  <span className="text-[11px] text-slate-500">Interactive strand selection and external supervisor contact capture</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+
+            <a
+              href="/images/IB-CAS-portal/Reflection journal and one-time supervisor link.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              <img
+                src="/images/IB-CAS-portal/Reflection journal and one-time supervisor link.png"
+                alt="Reflection Journal & Supervisor Magic Link"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Reflection Log &amp; Magic Link Generator</span>
+                  <span className="text-[11px] text-slate-500">Milestone reflections with cloud evidence links &amp; token sharing</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+
+            <a
+              href="/images/IB-CAS-portal/CAS-experience-approval view.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              <img
+                src="/images/IB-CAS-portal/CAS-experience-approval view.png"
+                alt="CAS Experience Approval Queue"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Coordinator Approval Queue</span>
+                  <span className="text-[11px] text-slate-500">1-click &quot;Approve&quot; and &quot;Request Revision&quot; actions with instant feedback</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+
+            <a
+              href="/images/IB-CAS-portal/coordinator student roster view and view portfolio action.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-200 rounded-xl overflow-hidden bg-slate-900 group block hover:ring-2 hover:ring-indigo-500 transition-all"
+            >
+              <img
+                src="/images/IB-CAS-portal/coordinator student roster view and view portfolio action.png"
+                alt="Coordinator Student Roster & Audit View"
+                className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-2.5 bg-white border-t border-slate-100 flex items-start justify-between gap-2">
+                <div>
+                  <span className="font-bold text-xs text-slate-800 block">Student Roster &amp; Audit Portfolio</span>
+                  <span className="text-[11px] text-slate-500">Directory of candidates with direct access to tamper-proof read-only portfolios</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 mt-0.5" />
+              </div>
+            </a>
+          </div>
+        </div>
+
+        {/* 7. CTA BANNER INSIDE MODAL */}
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-50 via-white to-slate-50 border border-indigo-200/90 text-center space-y-3">
+          <h4 className="text-base font-bold text-slate-900">
+            Need a Verification or Compliance Portal for Your Organization?
+          </h4>
+          <p className="text-xs text-slate-600 max-w-lg mx-auto">
+            Let&apos;s eliminate manual paperwork, signature chasing, and spreadsheets with an audit-ready digital system.
+          </p>
+          <div className="pt-1">
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-indigo-500/20 transition-all"
+            >
+              <Calendar className="w-4 h-4" />
+              <span>Book a Free Workflow Review</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    ),
+    isFeatured: true,
+    icon: GraduationCap,
   },
 ];
 
