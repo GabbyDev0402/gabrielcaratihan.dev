@@ -19,6 +19,8 @@ import {
   ChevronDown,
   Layers,
   Calendar,
+  Play,
+  Video,
 } from "lucide-react";
 import GithubIcon from "./icons/GithubIcon";
 
@@ -36,6 +38,8 @@ export interface Project {
   inActiveProduction?: boolean;
   githubLink: string;
   liveLink: string;
+  videoEmbedUrl?: string;
+  videoShareUrl?: string;
   imageUrl?: string;
   imagePlaceholder?: {
     color: string;
@@ -570,6 +574,8 @@ const projects: Project[] = [
     inActiveProduction: true,
     githubLink: "https://github.com/supportwashingtonschool/wsi-library-management-system",
     liveLink: "https://wsi-library.netlify.app/",
+    videoEmbedUrl: "https://www.loom.com/embed/8d5efef0219943cc87b21d5aa036bae8?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+    videoShareUrl: "https://www.loom.com/share/8d5efef0219943cc87b21d5aa036bae8",
     imageUrl: "/images/wsi-library-opac.png",
     imagePlaceholder: {
       color: "from-blue-700 via-indigo-700 to-sky-800",
@@ -586,6 +592,52 @@ const projects: Project[] = [
           <p className="text-xs text-emerald-900 leading-relaxed font-normal">
             A centralized library management system and 24/7 public OPAC catalog replacing manual paper logs and book registries.
           </p>
+        </div>
+
+        {/* Live Video Walkthrough Embed */}
+        <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 text-white shadow-xl border border-indigo-500/30 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-start sm:items-center gap-3">
+              <span className="p-2.5 rounded-xl bg-red-600 text-white shadow-lg animate-pulse shrink-0">
+                <Play className="w-4 h-4 fill-current ml-0.5" />
+              </span>
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h4 className="text-sm sm:text-base font-bold text-white tracking-wide uppercase">
+                    Live System Walkthrough &amp; Automation Demo
+                  </h4>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/30 text-indigo-300 border border-indigo-400/30">
+                    2.5 Mins
+                  </span>
+                </div>
+                <p className="text-xs text-slate-300 leading-snug mt-0.5">
+                  Watch Gabriel demonstrate automated ISBN cataloging, printable barcode sticker sheets, and &lt;10s checkout desks in action.
+                </p>
+              </div>
+            </div>
+            <a
+              href="https://www.loom.com/share/8d5efef0219943cc87b21d5aa036bae8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition-colors border border-white/10 shrink-0 self-start sm:self-auto shadow-xs"
+            >
+              <span>Watch on Loom</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          <div
+            className="relative w-full overflow-hidden rounded-xl bg-black border border-white/10 shadow-2xl"
+            style={{ paddingBottom: "59.3%" }}
+          >
+            <iframe
+              src="https://www.loom.com/embed/8d5efef0219943cc87b21d5aa036bae8?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true"
+              frameBorder="0"
+              allowFullScreen
+              title="Washington School Library LMS Walkthrough"
+              className="absolute top-0 left-0 w-full h-full"
+            />
+          </div>
         </div>
 
         {/* 1. CLIENT PROBLEM */}
@@ -1534,6 +1586,25 @@ export default function Projects() {
                             </span>
                           </div>
                         )}
+                        {/* Play Video Floating Badge if video exists */}
+                        {activeProject.videoEmbedUrl && (
+                          <div className="absolute inset-0 m-auto w-fit h-fit z-20">
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectedProject(activeProject);
+                              }}
+                              className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-900/90 hover:bg-indigo-600 text-white backdrop-blur-md border border-white/30 shadow-2xl transition-all duration-200 hover:scale-105 cursor-pointer group/vidbtn"
+                            >
+                              <span className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center shadow-md group-hover/vidbtn:bg-white group-hover/vidbtn:text-indigo-600 transition-colors">
+                                <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                              </span>
+                              <span className="text-xs font-bold tracking-wide">
+                                Watch 2.5-Min Walkthrough
+                              </span>
+                            </button>
+                          </div>
+                        )}
                         <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between">
                           {activeProject.inActiveProduction ? (
                             <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1.5">
@@ -1619,13 +1690,32 @@ export default function Projects() {
                         ))}
                       </div>
 
-                      <button
-                        onClick={() => setSelectedProject(activeProject)}
-                        className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white rounded-xl border border-indigo-200/80 hover:border-indigo-600 shadow-2xs transition-all duration-200 group/btn cursor-pointer"
-                      >
-                        Explore Case Study &amp; Business ROI
-                        <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
-                      </button>
+                      {activeProject.videoEmbedUrl ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                          <button
+                            onClick={() => setSelectedProject(activeProject)}
+                            className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-md shadow-indigo-500/20 transition-all duration-200 group/btn cursor-pointer"
+                          >
+                            <Play className="w-4 h-4 fill-current" />
+                            Watch Video Demo
+                          </button>
+                          <button
+                            onClick={() => setSelectedProject(activeProject)}
+                            className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-xl border border-indigo-200/80 transition-all duration-200 group/btn cursor-pointer"
+                          >
+                            Case Study &amp; ROI
+                            <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => setSelectedProject(activeProject)}
+                          className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white rounded-xl border border-indigo-200/80 hover:border-indigo-600 shadow-2xs transition-all duration-200 group/btn cursor-pointer"
+                        >
+                          Explore Case Study &amp; Business ROI
+                          <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
+                        </button>
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -1807,7 +1897,19 @@ export default function Projects() {
 
                 {/* Footer Action Buttons */}
                 <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="flex items-center gap-3 w-full sm:w-auto">
+                  <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
+                    {selectedProject.videoShareUrl && (
+                      <a
+                        href={selectedProject.videoShareUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-semibold text-white bg-red-600 hover:bg-red-700 rounded-xl shadow-xs transition-colors"
+                      >
+                        <Play className="w-3.5 h-3.5 fill-current" />
+                        Watch Video Demo
+                      </a>
+                    )}
+
                     <a
                       href={selectedProject.githubLink}
                       target="_blank"
